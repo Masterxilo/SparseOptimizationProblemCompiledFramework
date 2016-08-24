@@ -1,0 +1,8 @@
+allow calling many CUDAKERNEL_FUNCTION from mathematica, giving 
+also the parameters for grid size/dim,
+automatically copying things over as needed
+
+(c.f. CUDALink)
+
+allow calling any FUNCTION as if it where a CUDAKERNEL_FUNCTION
+where this makes sense

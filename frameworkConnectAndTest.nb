@@ -1,0 +1,424 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15666,        416]
+NotebookOptionsPosition[     14555,        374]
+NotebookOutlinePosition[     14900,        389]
+CellTagsIndexPosition[     14857,        386]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["connect to and exercise Framework.exe", "Title",
+ CellChangeTimes->{{3.68097220503975*^9, 3.6809722111962605`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"SetEnvironment", "[", 
+  RowBox[{"\"\<NSIGHT_CUDA_DEBUGGER\>\"", "->", "\"\<1\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"exe", "=", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<x64\\\\Debug\\\\Framework.exe\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"reload", "[", "]"}], ":=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"TaskKill", "@", 
+      RowBox[{"FileNameTake", "@", "exe"}]}], ";", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"l", "=", 
+         RowBox[{"Install", "[", "exe", "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", "POST", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "@", 
+         RowBox[{"VerificationTest", "[", 
+          RowBox[{
+           RowBox[{"addf", "[", 
+            RowBox[{"2.", ",", "3."}], "]"}], ",", "5."}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "@", 
+         RowBox[{"VerificationTest", "[", 
+          RowBox[{
+           TagBox[
+            RowBox[{"get42", "[", "]"}],
+            HoldForm], ",", "42"}], "]"}]}], ";", 
+        RowBox[{"(*", 
+         RowBox[{"interestingly", ",", " ", 
+          RowBox[{"this", " ", "often", " ", "fails"}], ",", " ", 
+          RowBox[{
+          "the", " ", "link", " ", "seems", " ", "to", " ", "not", " ", "get",
+            " ", "properly", " ", "set", " ", "up", " ", "for", " ", "this", 
+           " ", "one"}], ",", " ", 
+          RowBox[{"or", " ", "it", " ", "returns", " ", "too", " ", 
+           RowBox[{"early", "?"}]}]}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"printv", "@", 
+         RowBox[{"RandomReal", "[", 
+          RowBox[{"1.", ",", 
+           RowBox[{"{", "100", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"testMain", "[", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"print", "[", "\"\<POST ends\>\"", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "@", 
+         RowBox[{"LinkPatterns", "@", "l"}]}], ";"}]}], "\[IndentingNewLine]",
+       "]"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"reload", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.679784390320188*^9, 3.6797843922408705`*^9}, {
+   3.6798496721961603`*^9, 3.6798496941493025`*^9}, {3.6798499937479525`*^9, 
+   3.6798500967130027`*^9}, {3.679850383808968*^9, 3.6798503907573633`*^9}, {
+   3.679850527917113*^9, 3.679850530296189*^9}, {3.679850845845179*^9, 
+   3.6798508603907895`*^9}, {3.6798511822302732`*^9, 
+   3.6798511870639973`*^9}, {3.6798542591231136`*^9, 
+   3.6798542649074707`*^9}, {3.679946085688039*^9, 3.6799461084363794`*^9}, {
+   3.680024577823819*^9, 3.6800245877391915`*^9}, {3.6809722773507414`*^9, 
+   3.680972300320099*^9}, {3.680977222810085*^9, 3.6809772232738266`*^9}, {
+   3.6810204604992046`*^9, 3.6810204628743305`*^9}, {3.681057888895979*^9, 
+   3.681057898036318*^9}, 3.681060349577965*^9}],
+
+Cell[CellGroupData[{
+
+Cell["receiveAndPrintOptimizationData", "Chapter",
+ CellChangeTimes->{3.6798501523875237`*^9}],
+
+Cell["\<\
+c.f. output in the WSTP app\[CloseCurlyQuote]s console
+
+c.f. flattenSparseDerivativeZtoYIndices for the serialized format of \
+SparseDerivativeZtoYIndices\
+\>", "Text",
+ CellChangeTimes->{{3.680972315461341*^9, 3.6809723227116385`*^9}, {
+  3.6809723853908167`*^9, 3.680972414971734*^9}}],
+
+Cell[BoxData[
+ RowBox[{"receiveAndPrintOptimizationData", "[", 
+  RowBox[{"1", ",", "1", ",", 
+   RowBox[{"{", "1.", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"{", 
+     RowBox[{"{", "0", "}"}], "}"}]}], ",", 
+   RowBox[{"{", "0", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.679830270912426*^9, 3.6798302890876904`*^9}, {
+   3.679830399199088*^9, 3.679830400996046*^9}, 3.6798324729917107`*^9, {
+   3.6798504548695717`*^9, 3.679850457444024*^9}}],
+
+Cell[BoxData[
+ RowBox[{"receiveAndPrintOptimizationDataCUDA", "[", 
+  RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", 
+   RowBox[{"{", "1.", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"{", 
+     RowBox[{"{", "0", "}"}], "}"}]}], ",", 
+   RowBox[{"{", "0", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.680024661054714*^9, 3.680024665137783*^9}, 
+   3.6809723252742424`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MakeAndPrintSparseMatrix", "Chapter",
+ CellChangeTimes->{{3.6798501233221493`*^9, 3.679850127259384*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"makeAndPrintSparseMatrix", "[", 
+   RowBox[{"s_SparseArray", ",", 
+    RowBox[{"makeAndPrintSparseMatrix_:", "makeAndPrintSparseMatrix"}]}], 
+   "]"}], ":=", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"r", "=", 
+     RowBox[{"Most", "@", 
+      RowBox[{"ArrayRules", "@", "s"}]}]}], "}"}], "~", "With", "~", 
+   RowBox[{"makeAndPrintSparseMatrix", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Sequence", "@@", 
+      RowBox[{"Dimensions", "@", "s"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1.", 
+      RowBox[{"Values", "@", "r"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Keys", "@", "r"}], "-", "1"}], "]"}]}], 
+    RowBox[{"(*", 
+     RowBox[{"//", "CIndex"}], "*)"}], "\[IndentingNewLine]", 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"makeAndPrintSparseMatrix", "[", 
+   RowBox[{
+    RowBox[{"s_", "?", "MatrixQ"}], ",", 
+    RowBox[{"makeAndPrintSparseMatrix_:", "makeAndPrintSparseMatrix"}]}], 
+   "]"}], ":=", 
+  RowBox[{"makeAndPrintSparseMatrix", "@", 
+   RowBox[{"SparseArray", "@", "s"}]}]}]}], "Input",
+ CellChangeTimes->{{3.679825818597696*^9, 3.6798259910586133`*^9}, {
+  3.679830510235588*^9, 3.6798305113972087`*^9}, {3.6798307176835027`*^9, 
+  3.67983072596888*^9}, {3.6809720705735044`*^9, 3.6809721067770677`*^9}, {
+  3.6809725217002697`*^9, 3.6809725296910954`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"makeAndPrintSparseMatrix", "@", 
+  RowBox[{"IdentityMatrix", "@", "3"}]}]], "Input",
+ CellChangeTimes->{{3.679825886762618*^9, 3.679825894947528*^9}, {
+   3.679825935792844*^9, 3.679825936792925*^9}, 3.679830492927296*^9, 
+   3.6809721075896173`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"makeAndPrintSparseMatrix", "[", 
+   RowBox[{"1", ",", "1", ",", 
+    RowBox[{"{", "1.", "}"}], ",", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], "}"}]}]}], "]"}], "//", 
+  "AbsoluteTiming"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"makeAndPrintSparseMatrixCUDA", "[", 
+   RowBox[{"1", ",", "1", ",", 
+    RowBox[{"(*", 
+     RowBox[{"grid", ",", " ", 
+      RowBox[{"block", " ", "dim"}]}], "*)"}], "\[IndentingNewLine]", "1", 
+    ",", "1", ",", 
+    RowBox[{"{", "1.", "}"}], ",", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], "}"}]}]}], "]"}], "//", 
+  "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{{3.67982601501455*^9, 3.679826029908802*^9}, {
+  3.680972066448307*^9, 3.6809720666045785`*^9}, {3.680972112744722*^9, 
+  3.680972124776486*^9}, {3.6809722367285357`*^9, 3.680972239275484*^9}, {
+  3.6809725519263306`*^9, 3.680972585438075*^9}, {3.680973186561476*^9, 
+  3.6809731928742266`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.004374364664892255`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6798260304455748`*^9, 3.679945281812589*^9, {3.680972543004093*^9, 
+   3.680972554285802*^9}, 3.680972586828714*^9, {3.680973198483819*^9, 
+   3.680973203921511*^9}, 3.680973549280792*^9, 3.680973878509222*^9, {
+   3.6809740643562984`*^9, 3.680974079023604*^9}, 3.680976707627159*^9, 
+   3.6809772736569757`*^9, 3.6809784896227036`*^9, 3.680979331278411*^9, 
+   3.681019993011938*^9, 3.68105621606241*^9, 3.68105680998944*^9, 
+   3.681056955726233*^9, 3.6810573562649593`*^9, 3.6810603471722264`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.011948567925567824`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6798260304455748`*^9, 3.679945281812589*^9, {3.680972543004093*^9, 
+   3.680972554285802*^9}, 3.680972586828714*^9, {3.680973198483819*^9, 
+   3.680973203921511*^9}, 3.680973549280792*^9, 3.680973878509222*^9, {
+   3.6809740643562984`*^9, 3.680974079023604*^9}, 3.680976707627159*^9, 
+   3.6809772736569757`*^9, 3.6809784896227036`*^9, 3.680979331278411*^9, 
+   3.681019993011938*^9, 3.68105621606241*^9, 3.68105680998944*^9, 
+   3.681056955726233*^9, 3.6810573562649593`*^9, 3.6810603471722264`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create a random sparse matrix", "Chapter",
+ CellChangeTimes->{{3.679850106196881*^9, 3.6798501107563343`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"m", ",", "n"}], "}"}], "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "20"}], "}"}], ",", "2"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"nnz", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"Times", "[", 
+      RowBox[{"m", ",", "n"}], "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"s", "=", 
+    RowBox[{"SparseArray", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"m", ",", "n"}], "}"}], ",", "0."}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"i", ",", "j"}], "}"}], "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"RandomInteger", "@", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "m"}], "}"}]}], ",", 
+         RowBox[{"RandomInteger", "@", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "n"}], "}"}]}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"s", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+       RowBox[{"RandomReal", "[", "]"}]}]}], "\[IndentingNewLine]", ",", 
+     "nnz"}], "]"}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"s", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.6809726047044783`*^9, 3.680972637674217*^9}, 
+   3.68097934264752*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3", ",", "16"}], "}"}]], "Output",
+ CellChangeTimes->{{3.680972596797854*^9, 3.680972642143108*^9}, {
+   3.6809731986713133`*^9, 3.680973203984014*^9}, 3.6809735493276653`*^9, 
+   3.68097387857174*^9, {3.680974064418786*^9, 3.6809740790860596`*^9}, 
+   3.680976707674036*^9, 3.6809788199310503`*^9, {3.6809793358816566`*^9, 
+   3.6809793432163534`*^9}, 3.681019993090066*^9, 3.68105621628117*^9, 
+   3.6810568104425664`*^9, 3.68105695581997*^9, 3.681057356358699*^9, 
+   3.6810603472503543`*^9}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{{3.680972596797854*^9, 3.680972642143108*^9}, {
+   3.6809731986713133`*^9, 3.680973203984014*^9}, 3.6809735493276653`*^9, 
+   3.68097387857174*^9, {3.680974064418786*^9, 3.6809740790860596`*^9}, 
+   3.680976707674036*^9, 3.6809788199310503`*^9, {3.6809793358816566`*^9, 
+   3.6809793432163534`*^9}, 3.681019993090066*^9, 3.68105621628117*^9, 
+   3.6810568104425664`*^9, 3.68105695581997*^9, 3.681057356358699*^9, 
+   3.681060347265995*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`", 
+      "0.`", "0.`", "0.506874624279259`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.8661832936660723`", 
+      "0.34494179245855583`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`", "0.`",
+       "0.`"},
+     {"0.8781722445731177`", "0.`", "0.`", "0.`", "0.`", 
+      "0.16976774487193813`", "0.`", "0.18835766738266324`", "0.`", "0.`", 
+      "0.`", "0.`", "0.`", "0.7848461238820865`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[
+   SparseArray[
+    Automatic, {3, 16}, 0., {
+     1, {{0, 1, 3, 7}, {{13}, {8}, {7}, {1}, {6}, {14}, {8}}}, {
+      0.506874624279259, 0.34494179245855583`, 0.8661832936660723, 
+      0.8781722445731177, 0.16976774487193813`, 0.7848461238820865, 
+      0.18835766738266324`}}]]]]], "Output",
+ CellChangeTimes->{{3.680972596797854*^9, 3.680972642143108*^9}, {
+   3.6809731986713133`*^9, 3.680973203984014*^9}, 3.6809735493276653`*^9, 
+   3.68097387857174*^9, {3.680974064418786*^9, 3.6809740790860596`*^9}, 
+   3.680976707674036*^9, 3.6809788199310503`*^9, {3.6809793358816566`*^9, 
+   3.6809793432163534`*^9}, 3.681019993090066*^9, 3.68105621628117*^9, 
+   3.6810568104425664`*^9, 3.68105695581997*^9, 3.681057356358699*^9, 
+   3.6810603472816057`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"send", " ", "it", " ", "over"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"makeAndPrintSparseMatrix", "[", "s", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"makeAndPrintSparseMatrix", "[", 
+    RowBox[{"s", ",", 
+     RowBox[{
+      RowBox[{"makeAndPrintSparseMatrixCUDA", "[", 
+       RowBox[{"1", ",", "1", ",", "##"}], "]"}], "&"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6798256830748005`*^9, 3.6798257875393295`*^9}, {
+  3.6809719582387433`*^9, 3.680972053610362*^9}, {3.680972248463358*^9, 
+  3.680972256615559*^9}, {3.6809726604251413`*^9, 3.680972663378363*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{866, 1021},
+WindowMargins->{{Automatic, 85}, {Automatic, 139}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 121, 1, 90, "Title"],
+Cell[704, 25, 2990, 66, 292, "Input"],
+Cell[CellGroupData[{
+Cell[3719, 95, 94, 1, 64, "Chapter"],
+Cell[3816, 98, 297, 7, 68, "Text"],
+Cell[4116, 107, 530, 12, 31, "Input"],
+Cell[4649, 121, 454, 11, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5140, 137, 111, 1, 64, "Chapter"],
+Cell[5254, 140, 1405, 34, 192, "Input"],
+Cell[6662, 176, 274, 5, 31, "Input"],
+Cell[CellGroupData[{
+Cell[6961, 185, 1067, 27, 72, "Input"],
+Cell[8031, 214, 621, 10, 31, "Output"],
+Cell[8655, 226, 621, 10, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9325, 242, 116, 1, 64, "Chapter"],
+Cell[CellGroupData[{
+Cell[9466, 247, 1589, 49, 212, "Input"],
+Cell[11058, 298, 535, 9, 31, "Output"],
+Cell[11596, 309, 487, 7, 31, "Output"],
+Cell[12086, 318, 1786, 36, 57, "Output"]
+}, Open  ]],
+Cell[13887, 357, 640, 13, 72, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
