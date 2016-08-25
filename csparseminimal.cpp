@@ -27,7 +27,7 @@ typedef float real;
 /* --- primary CSparse routines and data structures ------------------------- */
 typedef struct cs_sparse    /* matrix in compressed-column or triplet form . must be aligned on 8 bytes */
 {
-    int nzmax;	    /* maximum number of entries */
+    int nzmax;	/* maximum number of entries allocated for triplet. Actual number of entries for compressed col. */
     int m;	    /* number of rows */
 
     int n;	    /* number of columns */
@@ -293,8 +293,10 @@ CSPARSEFUNC int cs_print(const cs * const A, int brief = 0)
 }
 
 
-/* y = alpha A x + beta y */
-CSPARSEFUNC int cs_mv(real *y, real alpha, const cs *A, const real *x, real beta) {
+/* y = alpha A x + beta y 
+the memory for y and x cannot overlap
+*/
+CSPARSEFUNC int cs_mv(real * y, real alpha, const cs *  A, const real * x, real beta) {
     assert(A && x && y);	    /* check inputs */
     assertFinite(beta); 
     assertFinite(alpha);
@@ -341,13 +343,24 @@ struct vector {
     }
 };
 
+CSPARSEFUNC void assertFinite(_In_reads_(n) const real* const x, const int n) {
+    for (int i = 0; i < n; i++)
+        assertFinite(x[i]);
+}
+
+CSPARSEFUNC void assertFinite(const vector& const v) {
+    assertFinite(v.x, v.n);
+}
+
 CSPARSEFUNC vector vector_wrapper(real* x, int n) {
     vector v;
     v.n = n;
     v.x = x;
+    assertFinite(v);
     return v;
 }
 
+// uninitialized: must be written before it is read!
 CSPARSEFUNC vector vector_allocate(int n, MEMPOOL) {
     vector v;
     v.n = n;
@@ -360,6 +373,7 @@ CSPARSEFUNC vector vector_copy(const vector& other, MEMPOOL) {
     v.n = other.n;
     cs_malloc(v.x, sizeof(real) * nextEven(v.n));
     memcpy(v.x, other.x, sizeof(real) * v.n);
+    assertFinite(v);
     return v;
 }
 
@@ -379,6 +393,7 @@ struct matrix {
     CSPARSEFUNC matrix(const cs* const mat) : mat(mat) {
         assert(!cs_is_triplet(mat));
         assert(mat->m && mat->n);
+        assertFinite(mat->x, mat->nz);
     }
 
     CSPARSEFUNC void print() {
@@ -445,6 +460,8 @@ ATAx = ATb
 As an iterative method, it is not necessary to form ATA explicitly in memory but only to perform the matrix-vector and transpose matrix-vector multiplications.
 
 x is an n-vector in this case still
+
+x is used as the initial guess -- it may be 0 but must in any case contain valid numbers
 */
 CSPARSEFUNC void conjgrad_normal(
     const matrix& A,
@@ -464,12 +481,16 @@ CSPARSEFUNC void conjgrad_normal(
     vector p = vector_copy(r, MEMPOOLPARAM);//p=r;
 
     real rsold = dot(r, r);//rsold=r'*r;
+    if (sqrt(rsold) < 1e-5) goto end; // low residual: solution found
 
     vector Ap = vector_allocate(A.cols, MEMPOOLPARAM);
 
     for (int i = 1; i <= b.n; i++) {
         mv(t, A, p); mv(Ap, AT, t);//t = A*p;Ap=A^T*t;//Ap=A^T*A*p;
+
+        if (abs(dot(p, Ap)) < 1e-9) { printf("conjgrad_normal emergency exit\n"); break; }// avoid almost division by 0
         real alpha = rsold / (dot(p, Ap));//alpha=rsold/(p'*Ap);
+
         axpy(x, alpha, p);//x = alpha p + x;//x=x+alpha*p;
         axpy(r, -alpha, Ap);//r = -alpha*Ap + r;//r=r-alpha*Ap;
         real rsnew = dot(r, r);//rsnew=r'*r;
@@ -479,6 +500,7 @@ CSPARSEFUNC void conjgrad_normal(
         rsold = rsnew;//rsold=rsnew;
     }
 
+end:
     memoryPop(); // free anything allocated since memory push
 }
 
@@ -489,6 +511,7 @@ CSPARSEFUNC void conjgrad_normal(
 Uses memory pool to allocate transposed copy of A and four vectors with size m or n
 */
 CSPARSEFUNC int cs_cg(const cs *A, real *b, real *x, MEMPOOL) {
+    assert(A && b && x && memoryPool && memory_size > 0);
     auto xv = vector_wrapper(x, A->n);
     conjgrad_normal(matrix(A), vector_wrapper(b, A->m), xv, MEMPOOLPARAM);
     return 1;

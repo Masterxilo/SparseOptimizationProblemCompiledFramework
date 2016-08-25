@@ -29,8 +29,11 @@ GLOBAL(
     "It would be more efficient to compile with dprintf defined to nothing of course"
     );
 
+#ifdef __CUDA_ARCH__
+#define dprintf(formatstr, ...) {if (dprintEnabled) printf("CUDA " formatstr, __VA_ARGS__);}
+#else
 #define dprintf(formatstr, ...) {if (dprintEnabled) printf(formatstr, __VA_ARGS__);}
-
+#endif
 
 FUNCTION(void,
     print,
@@ -150,16 +153,18 @@ FUNCTION(void, extract, (
 
 // DEBUG TODO moved memory to global space for debugging -- move to __shared__ again.
 // down the stack, no two functions should be calling SOMEMEM at the same time!
-__managed__ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152*/ * 1000]; // TODO could allocate 8 byte sized type, should be aligned then (?)
-__managed__ bool claimedMemory = false;
+
+//__managed__ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152*/ * 1000]; // TODO could allocate 8 byte sized type, should be aligned then (?)
+//__managed__ bool claimedMemory = false;
 
 #define SOMEMEM() \
+    char memory[40000/*"Maximum Shared Memory Per Block" -> 49152*/ ];\
     char* mem = (char*)(((unsigned long long)memory+7) & (~ 0x7ull)); /* align on 8 byte boundary */\
     assert(aligned(mem, 8) && after(mem, memory));\
     int memsz = sizeof(memory)-8;/*be safe*/ \
-    assert(!claimedMemory); claimedMemory = true;
+    //assert(!claimedMemory); claimedMemory = true;
 
-#define FREESOMEMEM() claimedMemory = false;
+#define FREESOMEMEM() //claimedMemory = false;
 
 #define SOMEMEMP mem, memsz
 
@@ -374,9 +379,15 @@ FUNCTION(void,
     dprintf("sparse leastSquares (cg) %d x %d... (this might take a while)\n",
         J->m, J->n);
 
+    assert(lengthY > 0);
+
+    // h must be initialized -- initial guess -- use 0
+    memset(h, 0, sizeof(real) * lengthFx);
+
     cs_cg(J, minusFx, h, MEMPOOLPARAM);
 
     dprintf("h:\n"); printv(h, lengthY);
+
 }
 
 FUNCTION(
@@ -395,7 +406,7 @@ FUNCTION(
     addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore,
     (),
     "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + h"
-    "returns total energy delta achieved"
+    "returns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
     ) {
     assert(yIndices);
     assert(x);
@@ -428,6 +439,7 @@ FUNCTION(
         dprintf("reduced stepsize, lambda =  %f, ||F[y0]||_2^2 = %f\n", lambda, norm2Faty0);
     }
     dprintf("optimization finishes, total energy change: %f\n", norm2Faty0-norm2Fatx0);
+    /*assert(norm2Faty0 - norm2Fatx0 <= 0.);*/
     return norm2Faty0 - norm2Fatx0;
 }
 
@@ -472,6 +484,7 @@ CPU_FUNCTION(
     ::lengthFx = lengthfz * lengthP;
     ::lengthx = xLength;
     ::minusFx = tmalloc<real>(lengthFx);
+
     ::h = tmalloc<real>(lengthY);
 }
 
@@ -524,7 +537,10 @@ FUNCTION(
 
         buildFxAndJFxAndSolve(buildFx);
         const float delta = addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore();
-        if (delta < 0.001) return;
+        if (delta > -0.001) {
+            dprintf("delta was only %f, stopping optimization\n", delta);
+            return;
+        }
     }
 }
 
