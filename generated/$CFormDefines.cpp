@@ -30,8 +30,9 @@ __host__ __device__
 #endif
 float min(T1 a, T2 b) { return a < b ? a : b; }
 
+template<typename T>
 inline
 #ifdef __CUDACC__
 __host__ __device__
 #endif
-float sqr(double x) { return x*x; }
+float sqr(T x) { return x*x; }

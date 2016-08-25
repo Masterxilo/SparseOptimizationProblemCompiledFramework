@@ -190,12 +190,26 @@ GLOBALDYNAMICARRAY(
     "stores the current data vector 'x' which is updated to reduce the energy ||F(x)||^2"
     );
 
+// Required for including definitions of f and df:
+#include "$CFormDefines.cpp"
+#define x(i) input[i]
 
-/*
-1>J:\Masterarbeit\Implementation\Scratch\Framework\generated\f.cpp(4): error : calling a __host__ function from a __host__ __device__ function is not allowed
-is wrongly reported when this is placed before x is defined
-*/
-#include "fdfz.cpp"
+// TODO generate them like that (FUNCTION), add parameters of length for in and out that are asserted
+// but since its and output parameter it still cannot be called from WL --> 
+//  make special declarations for such variables (microsoft has a standard annotation)
+
+FUNCTION(void, f, (
+    _In_reads_(lengthz) const real* const input, // TODO support these kinds of constant-sized vectors in the WSTP wrapper code
+    _Out_writes_(lengthfz) real* const out), "the local energy vector computing function") {
+#include "f.cpp" // generated
+}
+FUNCTION(void, df, (int const i,
+    _In_reads_(lengthz) real const * const input,
+    _Out_writes_(lengthfz) real * const out
+    ), "the derivatives along the i-th variable of the local energy vector computing function") {
+#include "df.cpp" // generated
+}
+#undef x
 
 GLOBALDYNAMICARRAY(
     real, minusFx, lengthFx,
