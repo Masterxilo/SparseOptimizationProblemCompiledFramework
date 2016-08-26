@@ -1,47 +1,40 @@
-void receiveOptimizationData(real const * const xI, size_t const xLength, int const * const sparseDerivativeZtoYIndicesI, size_t const sparseDerivativeZtoYIndicesLength, int const * const xIndicesI, size_t const xIndicesLength, int const * const yIndicesI, size_t const yIndicesLength);
+void setPartitions(size_t newPartitionsCount);
+
+extern "C" void setPartitions_()
+{
+WSGet(long long, newPartitionsCount, Integer64);
+setPartitions(newPartitionsCount);
+WL_RETURN_VOID();
+}
+
+void receiveSharedOptimizationData(real const * const xI, size_t const xLength);
+
+extern "C" void receiveSharedOptimizationData_()
+{
+WSGetList(float, xI, xI_length, Real32);
+int xLength;
+xLength = xI_length;
+receiveSharedOptimizationData(xI, xLength);
+WL_RETURN_VOID();
+WSReleaseList(xI, xI_length, Real32);
+}
+
+void receiveOptimizationData(int const partition, int const * const sparseDerivativeZtoYIndicesI, size_t const sparseDerivativeZtoYIndicesLength, int const * const xIndicesI, size_t const xIndicesLength, int const * const yIndicesI, size_t const yIndicesLength);
 
 extern "C" void receiveOptimizationData_()
 {
-WSGetList(float, xI, xI_length, Real32);
+WSGet(int, partition, Integer32);
 WSGetList(int, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesI_length, Integer32);
 WSGetList(int, xIndicesI, xIndicesI_length, Integer32);
 WSGetList(int, yIndicesI, yIndicesI_length, Integer32);
-int xLength;
-xLength = xI_length;
 int sparseDerivativeZtoYIndicesLength;
 sparseDerivativeZtoYIndicesLength = sparseDerivativeZtoYIndicesI_length;
 int xIndicesLength;
 xIndicesLength = xIndicesI_length;
 int yIndicesLength;
 yIndicesLength = yIndicesI_length;
-receiveOptimizationData(xI, xLength, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength, xIndicesI, xIndicesLength, yIndicesI, yIndicesLength);
+receiveOptimizationData(partition, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength, xIndicesI, xIndicesLength, yIndicesI, yIndicesLength);
 WL_RETURN_VOID();
-WSReleaseList(xI, xI_length, Real32);
-WSReleaseList(sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesI_length, Integer32);
-WSReleaseList(xIndicesI, xIndicesI_length, Integer32);
-WSReleaseList(yIndicesI, yIndicesI_length, Integer32);
-}
-
-void receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly(real const * const xI, size_t const xLength, int const * const sparseDerivativeZtoYIndicesI, size_t const sparseDerivativeZtoYIndicesLength, int const * const xIndicesI, size_t const xIndicesLength, int const * const yIndicesI, size_t const yIndicesLength, int const iterations);
-
-extern "C" void receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly_()
-{
-WSGetList(float, xI, xI_length, Real32);
-WSGetList(int, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesI_length, Integer32);
-WSGetList(int, xIndicesI, xIndicesI_length, Integer32);
-WSGetList(int, yIndicesI, yIndicesI_length, Integer32);
-WSGet(int, iterations, Integer32);
-int xLength;
-xLength = xI_length;
-int sparseDerivativeZtoYIndicesLength;
-sparseDerivativeZtoYIndicesLength = sparseDerivativeZtoYIndicesI_length;
-int xIndicesLength;
-xIndicesLength = xIndicesI_length;
-int yIndicesLength;
-yIndicesLength = yIndicesI_length;
-receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly(xI, xLength, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength, xIndicesI, xIndicesLength, yIndicesI, yIndicesLength, iterations);
-WL_RETURN_VOID();
-WSReleaseList(xI, xI_length, Real32);
 WSReleaseList(sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesI_length, Integer32);
 WSReleaseList(xIndicesI, xIndicesI_length, Integer32);
 WSReleaseList(yIndicesI, yIndicesI_length, Integer32);
@@ -492,236 +485,59 @@ memoryFree(sourceIndices_in);
 memoryFree(target);
 }
 
-__host__ __device__ void writeFx(size_t const i, real const val);
-
-extern "C" void writeFx_()
-{
-WSGet(long long, i, Integer64);
-WSGet(float, val, Real32);
-writeFx(i, val);
-WL_RETURN_VOID();
-}
-
-__global__ void KERNEL_writeFx(size_t const i, real const val)
-{
-writeFx(i, val);
-}
-
-extern "C" void writeFx_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(long long, i, Integer64);
-WSGet(float, val, Real32);
-CUDAKERNEL_LAUNCH(KERNEL_writeFx, gridDim, blockDim, i, val);
-WL_RETURN_VOID();
-}
-
-__host__ __device__ void readZ(real * z, size_t const rowz);
-
-extern "C" void readZ_()
-{
-WSGet(long long, rowz, Integer64);
-float * z;
-z = tmalloc<float>(lengthz);
-readZ(z, rowz);
-WSPutList(Real32, z, lengthz);
-memoryFree(z);
-}
-
-__global__ void KERNEL_readZ(real * z, size_t const rowz)
-{
-readZ(z, rowz);
-}
-
-extern "C" void readZ_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(long long, rowz, Integer64);
-float * z;
-z = tmalloc<float>(lengthz);
-CUDAKERNEL_LAUNCH(KERNEL_readZ, gridDim, blockDim, z, rowz);
-WSPutList(Real32, z, lengthz);
-memoryFree(z);
-}
-
-__host__ __device__ void readZandSetFxRow(real * z, size_t const rowz, size_t const rowfz);
-
-extern "C" void readZandSetFxRow_()
-{
-WSGet(long long, rowz, Integer64);
-WSGet(long long, rowfz, Integer64);
-float * z;
-z = tmalloc<float>(lengthz);
-readZandSetFxRow(z, rowz, rowfz);
-WSPutList(Real32, z, lengthz);
-memoryFree(z);
-}
-
-__global__ void KERNEL_readZandSetFxRow(real * z, size_t const rowz, size_t const rowfz)
-{
-readZandSetFxRow(z, rowz, rowfz);
-}
-
-extern "C" void readZandSetFxRow_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(long long, rowz, Integer64);
-WSGet(long long, rowfz, Integer64);
-float * z;
-z = tmalloc<float>(lengthz);
-CUDAKERNEL_LAUNCH(KERNEL_readZandSetFxRow, gridDim, blockDim, z, rowz, rowfz);
-WSPutList(Real32, z, lengthz);
-memoryFree(z);
-}
-
-__host__ __device__ void setFxRow(size_t const rowz, size_t const rowfz);
-
-extern "C" void setFxRow_()
-{
-WSGet(long long, rowz, Integer64);
-WSGet(long long, rowfz, Integer64);
-setFxRow(rowz, rowfz);
-WL_RETURN_VOID();
-}
-
-__global__ void KERNEL_setFxRow(size_t const rowz, size_t const rowfz)
-{
-setFxRow(rowz, rowfz);
-}
-
-extern "C" void setFxRow_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(long long, rowz, Integer64);
-WSGet(long long, rowfz, Integer64);
-CUDAKERNEL_LAUNCH(KERNEL_setFxRow, gridDim, blockDim, rowz, rowfz);
-WL_RETURN_VOID();
-}
-
-__host__ __device__ void buildFx();
-
-extern "C" void buildFx_()
-{
-buildFx();
-WL_RETURN_VOID();
-}
-
-__global__ void KERNEL_buildFx()
-{
-buildFx();
-}
-
-extern "C" void buildFx_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-CUDAKERNEL_LAUNCH(KERNEL_buildFx, gridDim, blockDim);
-WL_RETURN_VOID();
-}
-
-__host__ __device__ real norm2Fx();
-
-extern "C" void norm2Fx_()
-{
-real _result_;
-_result_ = norm2Fx();
-WSPut(Real32, _result_);
-}
-
-__global__ void KERNEL_norm2Fx(float * _returns_)
-{
-_returns_[linear_global_threadId()] = norm2Fx();
-}
-
-extern "C" void norm2Fx_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-float * _returns_;
-_returns_ = tmalloc<float>(gridDim * blockDim);
-CUDAKERNEL_LAUNCH(KERNEL_norm2Fx, gridDim, blockDim, _returns_);
-WSPutList(Real32, _returns_, gridDim * blockDim);
-memoryFree(_returns_);
-}
-
-__host__ __device__ float addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore();
-
-extern "C" void addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore_()
-{
-float _result_;
-_result_ = addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore();
-WSPut(Real32, _result_);
-}
-
-__global__ void KERNEL_addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore(float * _returns_)
-{
-_returns_[linear_global_threadId()] = addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore();
-}
-
-extern "C" void addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-float * _returns_;
-_returns_ = tmalloc<float>(gridDim * blockDim);
-CUDAKERNEL_LAUNCH(KERNEL_addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore, gridDim, blockDim, _returns_);
-WSPutList(Real32, _returns_, gridDim * blockDim);
-memoryFree(_returns_);
-}
-
-__host__ __device__ void getY(real * const outY, int lengthY);
+__host__ __device__ void getY(int partition, real * const outY, int lengthY);
 
 extern "C" void getY_()
 {
+WSGet(int, partition, Integer32);
 WSGet(int, lengthY, Integer32);
 float * outY;
 outY = tmalloc<float>(lengthY);
-getY(outY, lengthY);
+getY(partition, outY, lengthY);
 WSPutList(Real32, outY, lengthY);
 memoryFree(outY);
 }
 
-__global__ void KERNEL_getY(real * const outY, int lengthY)
+__global__ void KERNEL_getY(int partition, real * const outY, int lengthY)
 {
-getY(outY, lengthY);
+getY(partition, outY, lengthY);
 }
 
 extern "C" void getY_CUDA()
 {
 WSGet(int, gridDim, Integer32);
 WSGet(int, blockDim, Integer32);
+WSGet(int, partition, Integer32);
 WSGet(int, lengthY, Integer32);
 float * outY;
 outY = tmalloc<float>(lengthY);
-CUDAKERNEL_LAUNCH(KERNEL_getY, gridDim, blockDim, outY, lengthY);
+CUDAKERNEL_LAUNCH(KERNEL_getY, gridDim, blockDim, partition, outY, lengthY);
 WSPutList(Real32, outY, lengthY);
 memoryFree(outY);
 }
 
-__host__ __device__ void buildFxAndJFxAndSolveRepeatedly(int const iterations);
+__host__ __device__ void buildFxAndJFxAndSolveRepeatedly(int const partition, int const iterations);
 
 extern "C" void buildFxAndJFxAndSolveRepeatedly_()
 {
+WSGet(int, partition, Integer32);
 WSGet(int, iterations, Integer32);
-buildFxAndJFxAndSolveRepeatedly(iterations);
+buildFxAndJFxAndSolveRepeatedly(partition, iterations);
 WL_RETURN_VOID();
 }
 
-__global__ void KERNEL_buildFxAndJFxAndSolveRepeatedly(int const iterations)
+__global__ void KERNEL_buildFxAndJFxAndSolveRepeatedly(int const partition, int const iterations)
 {
-buildFxAndJFxAndSolveRepeatedly(iterations);
+buildFxAndJFxAndSolveRepeatedly(partition, iterations);
 }
 
 extern "C" void buildFxAndJFxAndSolveRepeatedly_CUDA()
 {
 WSGet(int, gridDim, Integer32);
 WSGet(int, blockDim, Integer32);
+WSGet(int, partition, Integer32);
 WSGet(int, iterations, Integer32);
-CUDAKERNEL_LAUNCH(KERNEL_buildFxAndJFxAndSolveRepeatedly, gridDim, blockDim, iterations);
+CUDAKERNEL_LAUNCH(KERNEL_buildFxAndJFxAndSolveRepeatedly, gridDim, blockDim, partition, iterations);
 WL_RETURN_VOID();
 }
 
@@ -1024,13 +840,6 @@ extern "C" void dprintEnabled_get()
 WSPut(Integer32, dprintEnabled);
 }
 
-extern int lengthP;
-
-extern "C" void lengthP_get()
-{
-WSPut(Integer32, lengthP);
-}
-
 extern int xx;
 
 extern "C" void xx_get()
@@ -1068,42 +877,9 @@ extern "C" void x_get()
 WSPutList(Real32, x, lengthx);
 }
 
-extern real * minusFx;
-
-extern int lengthFx;
-
-extern "C" void minusFx_get()
-{
-WSPutList(Real32, minusFx, lengthFx);
-}
-
-extern real * h;
-
-extern int lengthY;
-
-extern "C" void h_get()
-{
-WSPutList(Real32, h, lengthY);
-}
-
-extern int * yIndices;
-
-extern int lengthY;
-
-extern "C" void yIndices_get()
-{
-WSPutList(Integer32, yIndices, lengthY);
-}
-
 extern "C" void dprintEnabled_set()
 {
 WSGetInteger32(stdlink,&dprintEnabled);
-WL_RETURN_VOID();
-}
-
-extern "C" void lengthP_set()
-{
-WSGetInteger32(stdlink,&lengthP);
 WL_RETURN_VOID();
 }
 
@@ -1138,32 +914,5 @@ freemalloctmemcpy(&x, x_in, x_in_length);
 lengthx = x_in_length;
 WL_RETURN_VOID();
 WSReleaseList(x_in, x_in_length, Real32);
-}
-
-extern "C" void minusFx_set()
-{
-WSGetList(float, minusFx_in, minusFx_in_length, Real32);
-freemalloctmemcpy(&minusFx, minusFx_in, minusFx_in_length);
-lengthFx = minusFx_in_length;
-WL_RETURN_VOID();
-WSReleaseList(minusFx_in, minusFx_in_length, Real32);
-}
-
-extern "C" void h_set()
-{
-WSGetList(float, h_in, h_in_length, Real32);
-freemalloctmemcpy(&h, h_in, h_in_length);
-lengthY = h_in_length;
-WL_RETURN_VOID();
-WSReleaseList(h_in, h_in_length, Real32);
-}
-
-extern "C" void yIndices_set()
-{
-WSGetList(int, yIndices_in, yIndices_in_length, Integer32);
-freemalloctmemcpy(&yIndices, yIndices_in, yIndices_in_length);
-lengthY = yIndices_in_length;
-WL_RETURN_VOID();
-WSReleaseList(yIndices_in, yIndices_in_length, Integer32);
 }
 

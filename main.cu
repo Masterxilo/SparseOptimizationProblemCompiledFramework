@@ -49,11 +49,10 @@ Only primitive types can be passed back and forth automatically as of now.
 
 */
 
-#define WL_WSTP_MAIN        // undefine to use main below to debug without mathematica
+
+#define WL_WSTP_MAIN        // undefine to use main below to debug without mathematica 
 #define WL_ALLOC_CONSOLE
-//#ifdef __CUDACC__ // hide:
-#include <paulwl.h> // does something with real that vs intellisense does not like
-//#endif
+#include <paulwl.h> 
 #include <paul.h>
 
 
@@ -131,9 +130,10 @@ CONSTANTD int lengthfz =
 ;
 
 
-#include "$WSTPWrappingCDefinesCUDA.h" /* generated for interface */
+#include "$WSTPWrappingCDefinesCUDA.h" /* generated for interface, used for memory management */
+#ifdef WL_WSTP_MAIN
 #include "wstpExternC.cu"              /* generated for interface */
-
+#endif
 
 #include "$CFormDefines.cpp"  /* generated for problem, rarely changes */  // Required for including definitions of f and df
 #define x(i) input[i] /* definitions of f/df use x(i) to refer to input[], c.f. RIFunctionCForm* */
@@ -838,6 +838,40 @@ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152 -- also cannot be 
 
 // --- ---
 
+
+// one separate SOP, shares only x
+// has custom y, p and values derived from that
+// pointers are to __managed__ memory
+struct SOPPartition {
+    real* minusFx; size_t lengthFx; // "-F(x)"
+    real* h; size_t lengthY; // "h, the update to y (subset of x, the parameters currently optimized over)"
+
+    /*
+    "amount of 'points' at which the function f is evaluated."
+    "lengthP * lengthz is the length of xIndices, "
+    "and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
+    */
+    size_t lengthP;
+
+    // integer matrix of dimensions lengthz x lengthP, indexing into x to find the values to pass to f
+    int* xIndices;
+
+    // Used to construct J, c.f. SOPJF
+    int* sparseDerivativeZtoYIndices; // serialized form of this ragged array
+
+    /*
+    "the indices into x that indicate where the y are"
+    "needed to write out the final update h to the parameters"
+    */
+    int* yIndices; /* lengthY */
+};
+
+
+
+GLOBALDYNAMICARRAY(
+    SOPPartition, partitionTable, partitions,
+    " partitions of the SOPD");
+
 FUNCTION(void, writeJFx, (cs* const J, const size_t i, const size_t j, const real x),
     "set J(i, j) = x"
     ) {
@@ -850,12 +884,12 @@ FUNCTION(void, writeJFx, (cs* const J, const size_t i, const size_t j, const rea
     cs_entry(J, i, j, x);
 }
 
-FUNCTION(void, writeFx, (const size_t i, const real val), "F(x)_i = val") {
-    assert(i < lengthFx);
-    assert(minusFx);
+FUNCTION(void, writeFx, (SOPPartition* const sop, const size_t i, const real val), "F(x)_i = val") {
+    assert(i < sop->lengthFx);
+    assert(sop->minusFx);
     assertFinite(val);
 
-    minusFx[i] = -val;
+    sop->minusFx[i] = -val;
 }
 
 GLOBALDYNAMICARRAY(
@@ -863,40 +897,6 @@ GLOBALDYNAMICARRAY(
     "stores the current data vector 'x' which is updated to reduce the energy ||F(x)||^2"
     );
 
-
-
-GLOBALDYNAMICARRAY(
-    real, minusFx, lengthFx,
-    "-F(x)"
-    );
-
-GLOBALDYNAMICARRAY(
-    real, h, lengthY,
-    "h, the update to y (subset of x, the parameters currently optimized over)"
-    );
-
-// Could be const on GPU side
-GLOBAL(
-    int, lengthP, 0,
-    "amount of 'points' at which the function f is evaluated."
-    "lengthP * lengthz is the length of xIndices, "
-    "and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
-    );
-
-// Could be const on GPU side
-// integer matrix of dimensions lengthz x lengthP, indexing into x to find the values to pass to f
-__managed__ int* xIndices = 0;
-
-// Could be const on GPU side
-// Used to construct J, c.f. SOPJF
-__managed__ int* sparseDerivativeZtoYIndices = 0;
-
-// Could be const on GPU side
-GLOBALDYNAMICARRAY_SHAREDLENGTH(
-    int, yIndices, lengthY,
-    "the indices into x that indicate where the y are"
-    "needed to write out the final update h to the parameters"
-    );
 
 
 // -----------------------
@@ -925,17 +925,19 @@ void writeJFx(int i, int j, real val)
 
 using only elementary C constructs
 */
-
+// TODO move these functions to SOPParition instead of passing the pointer
 FUNCTION(void, readZ, (
+    SOPPartition* const sop,
     _Out_writes_all_(lengthz) real* z,
     const size_t rowz
     ), "z = x[[xIndices[[rowz;;rowz+lengthz-1]]]]"){
     assert(divisible(rowz, lengthz));
 
-    extract(z, x, lengthx, xIndices + rowz, lengthz); // z = x[[xIndices]]
+    extract(z, x, lengthx, sop->xIndices + rowz, lengthz); // z = x[[xIndices]]
 }
 
 FUNCTION(void, readZandSetFxRow, (
+    SOPPartition* const sop,
     _Out_writes_all_(lengthz) real* z,
     const size_t rowz,
     const size_t rowfz
@@ -943,49 +945,50 @@ FUNCTION(void, readZandSetFxRow, (
     assert(divisible(rowz, lengthz));
     assert(divisible(rowfz, lengthfz));
 
-    readZ(z, rowz); // z = x[[xIndices]]
+    readZ(sop, z, rowz); // z = x[[xIndices]]
 
     real fz[lengthfz];
     f(z, fz); // fz = f(z)
 
-    DO(i, lengthfz) writeFx(rowfz + i, fz[i]); // Fx[[rowfz;;rowfz+lengthfz-1]] = fz
+    DO(i, lengthfz) writeFx(sop, rowfz + i, fz[i]); // Fx[[rowfz;;rowfz+lengthfz-1]] = fz
 }
 
 FUNCTION(void, setFxRow, (
+    SOPPartition* const sop,
     const size_t rowz,
     const size_t rowfz
     ), "compute and store Fx[[rowfz;;rowfz+lengthfz-1]]"){
     real z[lengthz];
-    readZandSetFxRow(z, rowz, rowfz);
+    readZandSetFxRow(sop, z, rowz, rowfz);
 }
 
-FUNCTION(void, buildFx,(), "from the current x, computes F(x)" ){
+FUNCTION(void, buildFx, (SOPPartition* const sop), "from the current x, computes just F(x)"){
     size_t rowz = 0;
     size_t rowfz = 0;
 
-    FOR(size_t, i, 0, lengthP, (rowz += lengthz, rowfz += lengthfz, 1)) MAKE_CONST(rowz) MAKE_CONST(rowfz) {
+    FOR(size_t, i, 0, sop->lengthP, (rowz += lengthz, rowfz += lengthfz, 1)) MAKE_CONST(rowz) MAKE_CONST(rowfz) {
         DBG_UNREFERENCED_LOCAL_VARIABLE(i);
-        setFxRow(rowz, rowfz);
+        setFxRow(sop, rowz, rowfz);
     }
 }
 
-FUNCTION(void, buildFxandJFx, (cs* const J, bool buildFx), 
+FUNCTION(void, buildFxandJFx, (SOPPartition* const sop, cs* const J, bool buildFx),
     "from the current x, computes F(x) [if buildFx == true] and JF(x)"
     "Note that J is stored into the matrix pointed to"
     "this J must by in triplet form and have allocated enough space to fill in the computed df"
     ) {
     assert(cs_is_triplet(J));
-    auto* currentSparseDerivativeZtoYIndices = sparseDerivativeZtoYIndices;
+    auto* currentSparseDerivativeZtoYIndices = sop->sparseDerivativeZtoYIndices;
     size_t rowz = 0;
     size_t rowfz = 0;
 
-    FOR(size_t, i, 0, lengthP, (rowz += lengthz, rowfz += lengthfz, 1)) MAKE_CONST(rowz) MAKE_CONST(rowfz) {
+    FOR(size_t, i, 0, sop->lengthP, (rowz += lengthz, rowfz += lengthfz, 1)) MAKE_CONST(rowz) MAKE_CONST(rowfz) {
         DBG_UNREFERENCED_LOCAL_VARIABLE(i);
         real z[lengthz];
         if (buildFx)
-            readZandSetFxRow(z, rowz, rowfz);
+            readZandSetFxRow(sop, z, rowz, rowfz);
         else
-            readZ(z, rowz);
+            readZ(sop, z, rowz);
 
         // deserialize sparseDerivativeZtoYIndices, c.f. flattenSparseDerivativeZtoYIndices
         // convert back to two lists of integers of the same length (K)
@@ -1000,7 +1003,7 @@ FUNCTION(void, buildFxandJFx, (cs* const J, bool buildFx),
             const int yIndex = yIndices[k];
 
             assert(zIndex < lengthz);
-            assert(yIndex < lengthY);
+            assert(yIndex < sop->lengthY);
 
             real localJColumn[lengthfz];
             df(zIndex, z, localJColumn);
@@ -1018,62 +1021,63 @@ FUNCTION(void, buildFxandJFx, (cs* const J, bool buildFx),
 
 FUNCTION(void,
     solve,
-    (cs const * const J, MEMPOOL),
+    (SOPPartition* const sop, cs const * const J, MEMPOOL),
     "assumes x, -Fx and J have been built"
     "computes the adjustment vector h, which is the least-squares solution to the system"
     "Jh = -Fx"
     ) {
-    assert(J && x && minusFx && h);
+    assert(J && x && sop && sop->minusFx && sop->h);
     assert(cs_is_compressed_col(J));
 
     dprintf("sparse leastSquares (cg) %d x %d... (this might take a while)\n",
         J->m, J->n);
 
-    assert(lengthY > 0);
+    assert(sop->lengthY > 0);
 
     // h must be initialized -- initial guess -- use 0
-    memset(h, 0, sizeof(real) * lengthY); // not lengthFx! -- in page writing error -- use struct vector to keep vector always with its length (existing solutions?)
+    memset(sop->h, 0, sizeof(real) * sop->lengthY); // not lengthFx! -- in page writing error -- use struct vector to keep vector always with its length (existing solutions?)
 
-    cs_cg(J, minusFx, h, MEMPOOLPARAM);
+    cs_cg(J, sop->minusFx, sop->h, MEMPOOLPARAM);
 
-    dprintf("h:\n"); printv(h, lengthY);
-    assertFinite(h, lengthY);
+    dprintf("h:\n"); printv(sop->h, sop->lengthY);
+    assertFinite(sop->h, sop->lengthY);
 }
 
 FUNCTION(
     real,
     norm2Fx,
-    (), "Assuming F(x) is computed, returns ||F(x)||_2^2" 
+    (SOPPartition const * const sop), "Assuming F(x) is computed, returns ||F(x)||_2^2"
     ) {
-    assert(minusFx);
+    assert(sop->minusFx);
     real x = 0;
-    DO(i, lengthFx) x += minusFx[i] * minusFx[i];
+    DO(i, sop->lengthFx) x += sop->minusFx[i] * sop->minusFx[i];
     return assertFinite(x);
 }
 
 FUNCTION(
     float,
     addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore,
-    (),
+    (SOPPartition * const sop),
     "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + h"
     "returns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
     ) {
-    assert(yIndices);
-    assert(minusFx);
+    assert(sop);
+    assert(sop->yIndices);
+    assert(sop->minusFx);
     assert(x);
 
     // determine old norm
-    const real norm2Fatx0 = norm2Fx();
+    const real norm2Fatx0 = norm2Fx(sop);
     dprintf("||F[x0]||_2^2 = %f\n", norm2Fatx0);
 
     // add full h
     real lambda = 1.;
     dprintf("x = "); printv(x, lengthx);
-    axpyWithReindexing(x, lengthx, lambda, h, yIndices, lengthY); // xv = x0 + h
+    axpyWithReindexing(x, lengthx, lambda, sop->h, sop->yIndices, sop->lengthY); // xv = x0 + h
     dprintf("x = x0 + h = "); printv(x, lengthx); 
 
-    buildFx();
-    real norm2Faty0 = norm2Fx();
+    buildFx(sop);
+    real norm2Faty0 = norm2Fx(sop);
     dprintf("||F[x0 + h]||_2^2 = %f\n", norm2Faty0);
 
 
@@ -1081,12 +1085,12 @@ FUNCTION(
     size_t n = 0; // safety net, limit iterations
     while (norm2Faty0 > norm2Fatx0 && n++ < 20) {
         lambda /= 2.;
-        axpyWithReindexing(x, lengthx, -lambda, h, yIndices, lengthY); // xv -= lambda * h // note the -!
+        axpyWithReindexing(x, lengthx, -lambda, sop->h, sop->yIndices, sop->lengthY); // xv -= lambda * h // note the -!
 
         dprintf("x = "); printv(x, lengthx); 
 
-        buildFx(); // rebuild Fx after this change to x
-        norm2Faty0 = norm2Fx(); // reevaluate norm
+        buildFx(sop); // rebuild Fx after this change to x
+        norm2Faty0 = norm2Fx(sop); // reevaluate norm
         dprintf("reduced stepsize, lambda =  %f, ||F[y0]||_2^2 = %f\n", lambda, norm2Faty0);
     }
     dprintf("optimization finishes, total energy change: %f\n", norm2Faty0-norm2Fatx0);
@@ -1100,6 +1104,7 @@ FUNCTION(
     void,
     getY,
     (
+    int partition,
     _Out_writes_all_(lengthY) real* const outY,
     int lengthY
     ),
@@ -1109,54 +1114,85 @@ FUNCTION(
     "then we wouldn't need to supply the redundant lengthY here"
     )
 {
-    assert(x && yIndices && lengthx && lengthY);
-    assert(lengthY == ::lengthY);
-    extract(outY, ::x, ::lengthx, ::yIndices, lengthY);
+    assert(partition >= 0 && partition < partitions);
+    const SOPPartition* const sop = &partitionTable[partition];
+    assert(x && sop && sop->yIndices && lengthx && sop->lengthY);
+    assert(sop->lengthY <= lengthx);
+    assert(lengthY == sop->lengthY);
+    extract(outY, ::x, ::lengthx, sop->yIndices, sop->lengthY);
+}
+
+// TODO size_t not properly supported because of WSTP receiving only Integer64
+CPU_FUNCTION(
+    void, setPartitions, (size_t newPartitionsCount), "set the amount of partitions") {
+
+    // free old stuff first
+    assert(partitions >= 0);
+    DO(i, partitions) {
+        SOPPartition* const sop = &partitionTable[i];
+
+        memoryFree(sop->sparseDerivativeZtoYIndices);
+        memoryFree(sop->xIndices);
+        memoryFree(sop->yIndices);
+        memoryFree(sop->minusFx);
+        memoryFree(sop->h);
+    }
+    memoryFree(partitionTable);
+
+    // allocate
+    ::partitions = newPartitionsCount;
+    partitionTable = tmalloczeroed<SOPPartition>(partitions); // pointers not yet initialized
 }
 
 CPU_FUNCTION(
     void,
+    receiveSharedOptimizationData,
+    (
+    _In_reads_(xLength) const real* const xI, const size_t xLength
+    ),
+    "Receives x"
+    ) {
+    memoryFree(x);
+    ::x = copy(xI, xLength);
+    ::lengthx = xLength;
+}
+
+#define extractSop(partition) assert(partition >= 0 && partition < partitions); SOPPartition* const sop = &partitionTable[partition];
+CPU_FUNCTION(
+    void,
     receiveOptimizationData,
     (
-    _In_reads_(xLength) const real* const xI, const size_t xLength,
+    const int partition,
     _In_reads_(sparseDerivativeZtoYIndicesLength) const int* const sparseDerivativeZtoYIndicesI, const size_t sparseDerivativeZtoYIndicesLength,
     _In_reads_(xIndicesLength) const int* const xIndicesI, const size_t xIndicesLength,
     _In_reads_(yIndicesLength) const int* const yIndicesI, const size_t yIndicesLength
     ),
-    "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndices"
+    "Receives sparseDerivativeZtoYIndices, xIndices and yIndices"
     "Appropriately sized vectors for receiving these data items are newly allocated in __managed__ memory, hence this is a CPU only function"
     ) {
-    memoryFree(x);
-    memoryFree(sparseDerivativeZtoYIndices);
-    memoryFree(xIndices);
-    memoryFree(yIndices);
-    memoryFree(minusFx);
-    memoryFree(h);
+    extractSop(partition);
 
-    // compiler seems confused when both are called x
-    ::x = copy(xI, xLength); // TODO modifiable Lvalue problem
-    ::sparseDerivativeZtoYIndices = copy(sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength);
-    ::xIndices = copy(xIndicesI, xIndicesLength);
-    ::yIndices = copy(yIndicesI, yIndicesLength);
+    sop->sparseDerivativeZtoYIndices = copy(sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength);
+    sop->xIndices = copy(xIndicesI, xIndicesLength);
+    sop->yIndices = copy(yIndicesI, yIndicesLength);
 
     assert(lengthz > 0);
     assert(divisible(xIndicesLength, lengthz));
     assert(lengthfz > 0);
 
-    ::lengthP = xIndicesLength / lengthz;
-    ::lengthY = yIndicesLength;
-    ::lengthFx = lengthfz * lengthP;
-    ::lengthx = xLength;
+    sop->lengthP = xIndicesLength / lengthz;
+    sop->lengthY = yIndicesLength;
+    sop->lengthFx = lengthfz * sop->lengthP;
 
-    ::minusFx = tmalloc<real>(lengthFx);
+    sop->minusFx = tmalloc<real>(sop->lengthFx);
 
-    ::h = tmalloc<real>(lengthY);
+    sop->h = tmalloc<real>(sop->lengthY);
 }
 
 FUNCTION(
     void,
     buildFxAndJFxAndSolve,
-    (bool buildFx),
+    (SOPPartition * const sop, bool buildFx),
     "using current data, builds JFx (and Fx) and solves the least squares problem"
     "optionally does not compute Fx, assuming it is current with the x data (true after every solve)"
     ""
@@ -1165,16 +1201,16 @@ FUNCTION(
     )
 {
     // Build F and JF
-    const size_t maxNNZ = (lengthfz*lengthz) * lengthP; // very pessimistic estimate/overestimation: assume every derivative figures for every P -- usually not all of them will be needed
+    const size_t maxNNZ = (lengthfz*lengthz) * sop->lengthP; // very pessimistic estimate/overestimation: assume every derivative figures for every P -- usually not all of them will be needed
     // ^^ e.g. in vsfs the 3 color channels are all not optimized over, neither doriginal
 
     // consider using dynamic allocation in SOMEMEM!
 
     SOMEMEM(); 
     dprintf("allocating sparse matrix for %d entries\n", maxNNZ);
-    cs* J = cs_spalloc(lengthFx, lengthY, maxNNZ, 1, SOMEMEMP); // might run out of memory here
+    cs* J = cs_spalloc(sop->lengthFx, sop->lengthY, maxNNZ, 1, SOMEMEMP); // might run out of memory here
 
-    buildFxandJFx(J, buildFx);
+    buildFxandJFx(sop, J, buildFx);
 
     dprintf("used %d of %d allocated spaces in J\n", J->nz, J->nzmax);
     J = cs_triplet(J, SOMEMEMP); // "optimizes storage of J, after which it may no longer be modified" 
@@ -1182,13 +1218,13 @@ FUNCTION(
 
     // State
     dprintf("-F(x):\n");
-    printv(minusFx, lengthFx);
+    printv(sop->minusFx, sop->lengthFx);
     dprintf("JF(x):\n");
     printJ(J);
 
     // Solve
     dprintf("solve:\n");
-    solve(J, SOMEMEMP); // TODO allocates even more memory
+    solve(sop, J, SOMEMEMP); // TODO allocates even more memory
 
     FREESOMEMEM();
 }
@@ -1196,47 +1232,28 @@ FUNCTION(
 FUNCTION(
     void,
     buildFxAndJFxAndSolveRepeatedly,
-    (const int iterations),
+    (const int partition, const int iterations),
     "using current data, builds JFx (and Fx) and solves the least squares problem"
     "then does a gradient descent step"
     "reapeats this whole process as often as desired"
     )
-{ // TODO we might want to do this externally
+{ 
+    extractSop(partition);
+
+    // TODO we might want to do this externally
     dprintf("buildFxAndJFxAndSolveRepeatedly %d times\n", iterations);
     assert(iterations > 0); // TODO iterations should be size_t
     
     DO(i, iterations) {
         bool buildFx = i == 0; // Fx is always up-to date after first iteration
 
-        buildFxAndJFxAndSolve(buildFx);
-        const float delta = addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore();
+        buildFxAndJFxAndSolve(sop, buildFx);
+        const float delta = addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore(sop);
         if (delta > -0.001) {
             dprintf("delta was only %f, stopping optimization\n", delta);
             return;
         }
     }
-}
-
-
-CPU_FUNCTION(
-    void,
-    receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly,
-    (
-    _In_reads_(xLength) const real* const xI, const size_t xLength,
-    _In_reads_(sparseDerivativeZtoYIndicesLength) const int* const sparseDerivativeZtoYIndicesI, const size_t sparseDerivativeZtoYIndicesLength,
-    _In_reads_(xIndicesLength) const int* const xIndicesI, const size_t xIndicesLength,
-    _In_reads_(yIndicesLength) const int* const yIndicesI, const size_t yIndicesLength,
-    const int iterations
-    ),
-    "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndices"
-    "Appropriately sized vectors for receiving these data items is allocated in __managed__ memory, hence this is a CPU only function"
-    "currently also builds F(x), JF(x), but that could also be done on the GPU later"
-    "it also calls solve, because J is built in local memory so it would be lost later"
-    ) {
-    receiveOptimizationData(xI, xLength, sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesLength,
-        xIndicesI, xIndicesLength, yIndicesI, yIndicesLength);
-
-    buildFxAndJFxAndSolveRepeatedly(iterations);
 }
 
 // Prototyping functions

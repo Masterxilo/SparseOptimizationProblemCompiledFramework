@@ -1,4 +1,5 @@
 :Evaluate: BeginPackage@"SOPCompiled`Private`";
+:Evaluate: ClearAll@"SOPCompiled`Private`*";
 
 :Begin:
 :Function:       f_
@@ -118,72 +119,9 @@
 :Evaluate: extract::usage = "target = source[[sourceIndices]]. Note that all of target is initialized (_Out_writes_all_)"
 
 :Begin:
-:Function:       writeFx_
-:Pattern:        writeFx[i : _Integer, val : _Real]
-:Arguments:      {i, val}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: writeFx::usage = "F(x)_i = val"
-
-:Begin:
-:Function:       readZ_
-:Pattern:        readZ[rowz : _Integer]
-:Arguments:      {rowz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: readZ::usage = "z = x[[xIndices[[rowz;;rowz+lengthz-1]]]]"
-
-:Begin:
-:Function:       readZandSetFxRow_
-:Pattern:        readZandSetFxRow[rowz : _Integer, rowfz : _Integer]
-:Arguments:      {rowz, rowfz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: readZandSetFxRow::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z = x[[xIndices[[rowz;;rowz+lengthz-1]]]] required for that"
-
-:Begin:
-:Function:       setFxRow_
-:Pattern:        setFxRow[rowz : _Integer, rowfz : _Integer]
-:Arguments:      {rowz, rowfz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: setFxRow::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]]"
-
-:Begin:
-:Function:       buildFx_
-:Pattern:        buildFx[]
-:Arguments:      {}
-:ArgumentTypes:  {  }
-:ReturnType:     Manual
-:End:
-:Evaluate: buildFx::usage = "from the current x, computes F(x)"
-
-:Begin:
-:Function:       norm2Fx_
-:Pattern:        norm2Fx[]
-:Arguments:      {}
-:ArgumentTypes:  {  }
-:ReturnType:     Manual
-:End:
-:Evaluate: norm2Fx::usage = "Assuming F(x) is computed, returns ||F(x)||_2^2"
-
-:Begin:
-:Function:       addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore_
-:Pattern:        addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore[]
-:Arguments:      {}
-:ArgumentTypes:  {  }
-:ReturnType:     Manual
-:End:
-:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
-
-:Begin:
 :Function:       getY_
-:Pattern:        getY[lengthY : _Integer]
-:Arguments:      {lengthY}
+:Pattern:        getY[partition : _Integer, lengthY : _Integer]
+:Arguments:      {partition, lengthY}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
@@ -191,8 +129,8 @@
 
 :Begin:
 :Function:       buildFxAndJFxAndSolveRepeatedly_
-:Pattern:        buildFxAndJFxAndSolveRepeatedly[iterations : _Integer]
-:Arguments:      {iterations}
+:Pattern:        buildFxAndJFxAndSolveRepeatedly[partition : _Integer, iterations : _Integer]
+:Arguments:      {partition, iterations}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
@@ -271,22 +209,31 @@
 :Evaluate: multiout::usage = "returns more than one thing: when called via WSTP this will return an Association with all results"
 
 :Begin:
-:Function:       receiveOptimizationData_
-:Pattern:        receiveOptimizationData[xI : {___Real}, sparseDerivativeZtoYIndicesI : {___Integer}, xIndicesI : {___Integer}, yIndicesI : {___Integer}]
-:Arguments:      {xI, sparseDerivativeZtoYIndicesI, xIndicesI, yIndicesI}
+:Function:       setPartitions_
+:Pattern:        setPartitions[newPartitionsCount : _Integer]
+:Arguments:      {newPartitionsCount}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: receiveOptimizationData::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items are newly allocated in __managed__ memory, hence this is a CPU only function"
+:Evaluate: setPartitions::usage = "set the amount of partitions"
 
 :Begin:
-:Function:       receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly_
-:Pattern:        receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly[xI : {___Real}, sparseDerivativeZtoYIndicesI : {___Integer}, xIndicesI : {___Integer}, yIndicesI : {___Integer}, iterations : _Integer]
-:Arguments:      {xI, sparseDerivativeZtoYIndicesI, xIndicesI, yIndicesI, iterations}
+:Function:       receiveSharedOptimizationData_
+:Pattern:        receiveSharedOptimizationData[xI : {___Real}]
+:Arguments:      {xI}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items is allocated in __managed__ memory, hence this is a CPU only functioncurrently also builds F(x), JF(x), but that could also be done on the GPU laterit also calls solve, because J is built in local memory so it would be lost later"
+:Evaluate: receiveSharedOptimizationData::usage = "Receives x"
+
+:Begin:
+:Function:       receiveOptimizationData_
+:Pattern:        receiveOptimizationData[partition : _Integer, sparseDerivativeZtoYIndicesI : {___Integer}, xIndicesI : {___Integer}, yIndicesI : {___Integer}]
+:Arguments:      {partition, sparseDerivativeZtoYIndicesI, xIndicesI, yIndicesI}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: receiveOptimizationData::usage = "Receives sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items are newly allocated in __managed__ memory, hence this is a CPU only function"
 
 :Begin:
 :Function:       f_CUDA
@@ -406,72 +353,9 @@
 :Evaluate: extractCUDA::usage = "target = source[[sourceIndices]]. Note that all of target is initialized (_Out_writes_all_)"
 
 :Begin:
-:Function:       writeFx_CUDA
-:Pattern:        writeFxCUDA[gridDim_Integer, blockDim_Integer, i : _Integer, val : _Real]
-:Arguments:      {gridDim, blockDim, i, val}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: writeFxCUDA::usage = "F(x)_i = val"
-
-:Begin:
-:Function:       readZ_CUDA
-:Pattern:        readZCUDA[gridDim_Integer, blockDim_Integer, rowz : _Integer]
-:Arguments:      {gridDim, blockDim, rowz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: readZCUDA::usage = "z = x[[xIndices[[rowz;;rowz+lengthz-1]]]]"
-
-:Begin:
-:Function:       readZandSetFxRow_CUDA
-:Pattern:        readZandSetFxRowCUDA[gridDim_Integer, blockDim_Integer, rowz : _Integer, rowfz : _Integer]
-:Arguments:      {gridDim, blockDim, rowz, rowfz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: readZandSetFxRowCUDA::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z = x[[xIndices[[rowz;;rowz+lengthz-1]]]] required for that"
-
-:Begin:
-:Function:       setFxRow_CUDA
-:Pattern:        setFxRowCUDA[gridDim_Integer, blockDim_Integer, rowz : _Integer, rowfz : _Integer]
-:Arguments:      {gridDim, blockDim, rowz, rowfz}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: setFxRowCUDA::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]]"
-
-:Begin:
-:Function:       buildFx_CUDA
-:Pattern:        buildFxCUDA[gridDim_Integer, blockDim_Integer]
-:Arguments:      {gridDim, blockDim}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: buildFxCUDA::usage = "from the current x, computes F(x)"
-
-:Begin:
-:Function:       norm2Fx_CUDA
-:Pattern:        norm2FxCUDA[gridDim_Integer, blockDim_Integer]
-:Arguments:      {gridDim, blockDim}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: norm2FxCUDA::usage = "Assuming F(x) is computed, returns ||F(x)||_2^2"
-
-:Begin:
-:Function:       addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore_CUDA
-:Pattern:        addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBeforeCUDA[gridDim_Integer, blockDim_Integer]
-:Arguments:      {gridDim, blockDim}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBeforeCUDA::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
-
-:Begin:
 :Function:       getY_CUDA
-:Pattern:        getYCUDA[gridDim_Integer, blockDim_Integer, lengthY : _Integer]
-:Arguments:      {gridDim, blockDim, lengthY}
+:Pattern:        getYCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, lengthY : _Integer]
+:Arguments:      {gridDim, blockDim, partition, lengthY}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
@@ -479,8 +363,8 @@
 
 :Begin:
 :Function:       buildFxAndJFxAndSolveRepeatedly_CUDA
-:Pattern:        buildFxAndJFxAndSolveRepeatedlyCUDA[gridDim_Integer, blockDim_Integer, iterations : _Integer]
-:Arguments:      {gridDim, blockDim, iterations}
+:Pattern:        buildFxAndJFxAndSolveRepeatedlyCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, iterations : _Integer]
+:Arguments:      {gridDim, blockDim, partition, iterations}
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
@@ -568,15 +452,6 @@
 :Evaluate: dprintEnabledGet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of courseDefault: true"
 
 :Begin:
-:Function:       lengthP_get
-:Pattern:        lengthPGet[]
-:Arguments:      {}
-:ArgumentTypes:  { }
-:ReturnType:     Manual
-:End:
-:Evaluate: lengthPGet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
-
-:Begin:
 :Function:       xx_get
 :Pattern:        xxGet[]
 :Arguments:      {}
@@ -622,33 +497,6 @@
 :Evaluate: xGet::usage = "stores the current data vector 'x' which is updated to reduce the energy ||F(x)||^2"
 
 :Begin:
-:Function:       minusFx_get
-:Pattern:        minusFxGet[]
-:Arguments:      {}
-:ArgumentTypes:  { }
-:ReturnType:     Manual
-:End:
-:Evaluate: minusFxGet::usage = "-F(x)"
-
-:Begin:
-:Function:       h_get
-:Pattern:        hGet[]
-:Arguments:      {}
-:ArgumentTypes:  { }
-:ReturnType:     Manual
-:End:
-:Evaluate: hGet::usage = "h, the update to y (subset of x, the parameters currently optimized over)"
-
-:Begin:
-:Function:       yIndices_get
-:Pattern:        yIndicesGet[]
-:Arguments:      {}
-:ArgumentTypes:  { }
-:ReturnType:     Manual
-:End:
-:Evaluate: yIndicesGet::usage = "the indices into x that indicate where the y areneeded to write out the final update h to the parameters"
-
-:Begin:
 :Function:       dprintEnabled_set
 :Pattern:        dprintEnabledSet[dprintEnabled : _Integer]
 :Arguments:      {dprintEnabled}
@@ -656,15 +504,6 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: dprintEnabledSet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of courseDefault: true"
-
-:Begin:
-:Function:       lengthP_set
-:Pattern:        lengthPSet[lengthP : _Integer]
-:Arguments:      {lengthP}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: lengthPSet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
 
 :Begin:
 :Function:       xx_set
@@ -710,31 +549,4 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: xSet::usage = "stores the current data vector 'x' which is updated to reduce the energy ||F(x)||^2"
-
-:Begin:
-:Function:       minusFx_set
-:Pattern:        minusFxSet[minusFx : {___Real}]
-:Arguments:      {minusFx}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: minusFxSet::usage = "-F(x)"
-
-:Begin:
-:Function:       h_set
-:Pattern:        hSet[h : {___Real}]
-:Arguments:      {h}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: hSet::usage = "h, the update to y (subset of x, the parameters currently optimized over)"
-
-:Begin:
-:Function:       yIndices_set
-:Pattern:        yIndicesSet[yIndices : {___Integer}]
-:Arguments:      {yIndices}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: yIndicesSet::usage = "the indices into x that indicate where the y areneeded to write out the final update h to the parameters"
 :Evaluate: EndPackage[];

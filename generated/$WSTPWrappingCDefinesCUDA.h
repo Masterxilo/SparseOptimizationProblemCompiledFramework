@@ -35,13 +35,24 @@ inline int linear_global_threadId() {
 
 template<typename T>
 INLINEFUNCTION T* tmalloc(const size_t n) {
+assert(n);
     T* out;
     memoryAllocate(out, sizeof(T) * n);
     return out;
 }
 
 template<typename T>
+INLINEFUNCTION T* tmalloczeroed(const size_t n) {
+assert(n);
+    T* out;
+    memoryAllocate(out, sizeof(T) * n);
+    memset(out, 0, sizeof(T) * n);
+    return out;
+}
+
+template<typename T>
 INLINEFUNCTION T* mallocmemcpy(T const * const x, const size_t n) {
+assert(n);
     auto out = tmalloc<T>(n);
     memcpy(out, x, sizeof(T) * n);
     return out;
@@ -77,6 +88,7 @@ void freemallocstrcpy(char** dest, const char* const src) {
 
 template<typename T>
 void freemalloctmemcpy(T** dest, const T* const src, int n)  {
+assert(n);
     if (*dest) memoryFree(*dest);
 
     auto sz = sizeof(T) * n;
