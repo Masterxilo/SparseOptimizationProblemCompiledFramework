@@ -1,6 +1,78 @@
 :Evaluate: BeginPackage@"SOPCompiled`Private`";
 
 :Begin:
+:Function:       f_
+:Pattern:        f[input : {___Real}]
+:Arguments:      {input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: f::usage = "the local energy vector computing function"
+
+:Begin:
+:Function:       df_
+:Pattern:        df[i : _Integer, input : {___Real}]
+:Arguments:      {i, input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: df::usage = "the derivatives along the i-th variable of the local energy vector computing function"
+
+:Begin:
+:Function:       nextEven_
+:Pattern:        nextEven[i : _Integer]
+:Arguments:      {i}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: nextEven::usage = "support even allocation"
+
+:Begin:
+:Function:       cs_cumsum_
+:Pattern:        cscumsum[p : {___Integer}, c : {___Integer}, n : _Integer]
+:Arguments:      {p, c, n}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: cscumsum::usage = "p [0..n] = cumulative sum of c [0..n-1], and then copy p [0..n-1] into c "
+
+:Begin:
+:Function:       print_
+:Pattern:        print[x : _String]
+:Arguments:      {x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: print::usage = "prints a string to stdout"
+
+:Begin:
+:Function:       printd_
+:Pattern:        printd[v : {___Integer}]
+:Arguments:      {v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printd::usage = "dprints a vector of integers, space separated and newline terminated"
+
+:Begin:
+:Function:       printv_
+:Pattern:        printv[v : {___Real}]
+:Arguments:      {v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printv::usage = "dprints a vector of doubles, space separated and newline terminated"
+
+:Begin:
+:Function:       assertFinite_
+:Pattern:        assertFinite[x : {___Real}]
+:Arguments:      {x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: assertFinite::usage = "assert that each element in v is finite"
+
+:Begin:
 :Function:       lengthzGet_
 :Pattern:        lengthzGet[]
 :Arguments:      {}
@@ -19,33 +91,6 @@
 :Evaluate: lengthfzGet::usage = "lengthfz"
 
 :Begin:
-:Function:       print_
-:Pattern:        print[x : _String]
-:Arguments:      {x}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: print::usage = "prints a string to stdout"
-
-:Begin:
-:Function:       printv_
-:Pattern:        printv[v : {___Real}]
-:Arguments:      {v}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: printv::usage = "dprints a vector of doubles, space separated and newline terminated"
-
-:Begin:
-:Function:       printd_
-:Pattern:        printd[v : {___Integer}]
-:Arguments:      {v}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: printd::usage = "dprints a vector of integers, space separated and newline terminated"
-
-:Begin:
 :Function:       assertEachInRange_
 :Pattern:        assertEachInRange[v : {___Integer}, min : _Integer, max : _Integer]
 :Arguments:      {v, min, max}
@@ -61,7 +106,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: axpyWithReindexing::usage = "targetBase[[targetIndices]] += a * addedValues. Repeated indices are not supported, so addedValues cannot be longer than the target.Note that not necessarily all of target is updated"
+:Evaluate: axpyWithReindexing::usage = "targetBase[[targetIndices]] += a * addedValues. Repeated indices are not supported, so addedValues cannot be longer than the target.Note that not necessarily all of target is updated (_Inout_updates_, not _Inout_updates_all_)"
 
 :Begin:
 :Function:       extract_
@@ -70,7 +115,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: extract::usage = "target = source[[sourceIndices]]. Note that all of target is updated"
+:Evaluate: extract::usage = "target = source[[sourceIndices]]. Note that all of target is initialized (_Out_writes_all_)"
 
 :Begin:
 :Function:       writeFx_
@@ -88,7 +133,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: readZ::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z required for that"
+:Evaluate: readZ::usage = "z = x[[xIndices[[rowz;;rowz+lengthz-1]]]]"
 
 :Begin:
 :Function:       readZandSetFxRow_
@@ -97,7 +142,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: readZandSetFxRow::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z required for that"
+:Evaluate: readZandSetFxRow::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z = x[[xIndices[[rowz;;rowz+lengthz-1]]]] required for that"
 
 :Begin:
 :Function:       setFxRow_
@@ -133,7 +178,7 @@
 :ArgumentTypes:  {  }
 :ReturnType:     Manual
 :End:
-:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved"
+:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBefore::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
 
 :Begin:
 :Function:       getY_
@@ -142,7 +187,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: getY::usage = "Extracts from x the elements that are ylengthY must match the length passed at initializationTODO make WSTP support having global variables specify the necessary array length, support non size_t lengths"
+:Evaluate: getY::usage = "Extracts from x the elements that are ylengthY must match the length passed at initializationTODO make WSTP support having global variables specify the necessary array length, support non size_t lengthsthen we wouldn't need to supply the redundant lengthY here"
 
 :Begin:
 :Function:       buildFxAndJFxAndSolveRepeatedly_
@@ -169,7 +214,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: makeAndPrintSparseMatrix::usage = "Creates a sparse matrix from a list of values and a list of pairs of (i, j) indices specifying where to put the corresponding values. Note: This is a prototyping function without any further purpose"
+:Evaluate: makeAndPrintSparseMatrix::usage = "Creates a sparse matrix from a list of values and a list of pairs of (i, j) indices specifying where to put the corresponding values (triplet form)Note: This is a prototyping function without any further purpose"
 
 :Begin:
 :Function:       testMain_
@@ -223,7 +268,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: multiout::usage = "return more than one thing"
+:Evaluate: multiout::usage = "returns more than one thing: when called via WSTP this will return an Association with all results"
 
 :Begin:
 :Function:       receiveOptimizationData_
@@ -232,7 +277,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: receiveOptimizationData::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items is allocated in __managed__ memory, hence this is a CPU only function"
+:Evaluate: receiveOptimizationData::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items are newly allocated in __managed__ memory, hence this is a CPU only function"
 
 :Begin:
 :Function:       receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly_
@@ -242,6 +287,78 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: receiveOptimizationDataBuildFxAndJFxAndSolveRepeatedly::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items is allocated in __managed__ memory, hence this is a CPU only functioncurrently also builds F(x), JF(x), but that could also be done on the GPU laterit also calls solve, because J is built in local memory so it would be lost later"
+
+:Begin:
+:Function:       f_CUDA
+:Pattern:        fCUDA[gridDim_Integer, blockDim_Integer, input : {___Real}]
+:Arguments:      {gridDim, blockDim, input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: fCUDA::usage = "the local energy vector computing function"
+
+:Begin:
+:Function:       df_CUDA
+:Pattern:        dfCUDA[gridDim_Integer, blockDim_Integer, i : _Integer, input : {___Real}]
+:Arguments:      {gridDim, blockDim, i, input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: dfCUDA::usage = "the derivatives along the i-th variable of the local energy vector computing function"
+
+:Begin:
+:Function:       nextEven_CUDA
+:Pattern:        nextEvenCUDA[gridDim_Integer, blockDim_Integer, i : _Integer]
+:Arguments:      {gridDim, blockDim, i}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: nextEvenCUDA::usage = "support even allocation"
+
+:Begin:
+:Function:       cs_cumsum_CUDA
+:Pattern:        cscumsumCUDA[gridDim_Integer, blockDim_Integer, p : {___Integer}, c : {___Integer}, n : _Integer]
+:Arguments:      {gridDim, blockDim, p, c, n}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: cscumsumCUDA::usage = "p [0..n] = cumulative sum of c [0..n-1], and then copy p [0..n-1] into c "
+
+:Begin:
+:Function:       print_CUDA
+:Pattern:        printCUDA[gridDim_Integer, blockDim_Integer, x : _String]
+:Arguments:      {gridDim, blockDim, x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printCUDA::usage = "prints a string to stdout"
+
+:Begin:
+:Function:       printd_CUDA
+:Pattern:        printdCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}]
+:Arguments:      {gridDim, blockDim, v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printdCUDA::usage = "dprints a vector of integers, space separated and newline terminated"
+
+:Begin:
+:Function:       printv_CUDA
+:Pattern:        printvCUDA[gridDim_Integer, blockDim_Integer, v : {___Real}]
+:Arguments:      {gridDim, blockDim, v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printvCUDA::usage = "dprints a vector of doubles, space separated and newline terminated"
+
+:Begin:
+:Function:       assertFinite_CUDA
+:Pattern:        assertFiniteCUDA[gridDim_Integer, blockDim_Integer, x : {___Real}]
+:Arguments:      {gridDim, blockDim, x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: assertFiniteCUDA::usage = "assert that each element in v is finite"
 
 :Begin:
 :Function:       lengthzGet_CUDA
@@ -262,33 +379,6 @@
 :Evaluate: lengthfzGetCUDA::usage = "lengthfz"
 
 :Begin:
-:Function:       print_CUDA
-:Pattern:        printCUDA[gridDim_Integer, blockDim_Integer, x : _String]
-:Arguments:      {gridDim, blockDim, x}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: printCUDA::usage = "prints a string to stdout"
-
-:Begin:
-:Function:       printv_CUDA
-:Pattern:        printvCUDA[gridDim_Integer, blockDim_Integer, v : {___Real}]
-:Arguments:      {gridDim, blockDim, v}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: printvCUDA::usage = "dprints a vector of doubles, space separated and newline terminated"
-
-:Begin:
-:Function:       printd_CUDA
-:Pattern:        printdCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}]
-:Arguments:      {gridDim, blockDim, v}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: printdCUDA::usage = "dprints a vector of integers, space separated and newline terminated"
-
-:Begin:
 :Function:       assertEachInRange_CUDA
 :Pattern:        assertEachInRangeCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}, min : _Integer, max : _Integer]
 :Arguments:      {gridDim, blockDim, v, min, max}
@@ -304,7 +394,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: axpyWithReindexingCUDA::usage = "targetBase[[targetIndices]] += a * addedValues. Repeated indices are not supported, so addedValues cannot be longer than the target.Note that not necessarily all of target is updated"
+:Evaluate: axpyWithReindexingCUDA::usage = "targetBase[[targetIndices]] += a * addedValues. Repeated indices are not supported, so addedValues cannot be longer than the target.Note that not necessarily all of target is updated (_Inout_updates_, not _Inout_updates_all_)"
 
 :Begin:
 :Function:       extract_CUDA
@@ -313,7 +403,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: extractCUDA::usage = "target = source[[sourceIndices]]. Note that all of target is updated"
+:Evaluate: extractCUDA::usage = "target = source[[sourceIndices]]. Note that all of target is initialized (_Out_writes_all_)"
 
 :Begin:
 :Function:       writeFx_CUDA
@@ -331,7 +421,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: readZCUDA::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z required for that"
+:Evaluate: readZCUDA::usage = "z = x[[xIndices[[rowz;;rowz+lengthz-1]]]]"
 
 :Begin:
 :Function:       readZandSetFxRow_CUDA
@@ -340,7 +430,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: readZandSetFxRowCUDA::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z required for that"
+:Evaluate: readZandSetFxRowCUDA::usage = "compute and store Fx[[rowfz;;rowfz+lengthfz-1]] = f(z) and return the z = x[[xIndices[[rowz;;rowz+lengthz-1]]]] required for that"
 
 :Begin:
 :Function:       setFxRow_CUDA
@@ -376,7 +466,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBeforeCUDA::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved"
+:Evaluate: addContinuouslySmallerMultiplesOfHtoXUntilNorm2FxIsSmallerThanBeforeCUDA::usage = "scales h such that F(x0 + h) < F(x) in the 2-norm and updates x = x0 + hreturns total energy delta achieved which should be negative but might not be when the iteration count is exceeded"
 
 :Begin:
 :Function:       getY_CUDA
@@ -385,7 +475,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: getYCUDA::usage = "Extracts from x the elements that are ylengthY must match the length passed at initializationTODO make WSTP support having global variables specify the necessary array length, support non size_t lengths"
+:Evaluate: getYCUDA::usage = "Extracts from x the elements that are ylengthY must match the length passed at initializationTODO make WSTP support having global variables specify the necessary array length, support non size_t lengthsthen we wouldn't need to supply the redundant lengthY here"
 
 :Begin:
 :Function:       buildFxAndJFxAndSolveRepeatedly_CUDA
@@ -412,7 +502,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: makeAndPrintSparseMatrixCUDA::usage = "Creates a sparse matrix from a list of values and a list of pairs of (i, j) indices specifying where to put the corresponding values. Note: This is a prototyping function without any further purpose"
+:Evaluate: makeAndPrintSparseMatrixCUDA::usage = "Creates a sparse matrix from a list of values and a list of pairs of (i, j) indices specifying where to put the corresponding values (triplet form)Note: This is a prototyping function without any further purpose"
 
 :Begin:
 :Function:       testMain_CUDA
@@ -466,7 +556,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: multioutCUDA::usage = "return more than one thing"
+:Evaluate: multioutCUDA::usage = "returns more than one thing: when called via WSTP this will return an Association with all results"
 
 :Begin:
 :Function:       dprintEnabled_get
@@ -475,7 +565,7 @@
 :ArgumentTypes:  { }
 :ReturnType:     Manual
 :End:
-:Evaluate: dprintEnabledGet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of course"
+:Evaluate: dprintEnabledGet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of courseDefault: true"
 
 :Begin:
 :Function:       lengthP_get
@@ -484,7 +574,7 @@
 :ArgumentTypes:  { }
 :ReturnType:     Manual
 :End:
-:Evaluate: lengthPGet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many] [k many]) "
+:Evaluate: lengthPGet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
 
 :Begin:
 :Function:       xx_get
@@ -547,7 +637,7 @@
 :ArgumentTypes:  { }
 :ReturnType:     Manual
 :End:
-:Evaluate: hGet::usage = "h, the update to y, subset of x, the parameters currently optimized over"
+:Evaluate: hGet::usage = "h, the update to y (subset of x, the parameters currently optimized over)"
 
 :Begin:
 :Function:       yIndices_get
@@ -556,7 +646,7 @@
 :ArgumentTypes:  { }
 :ReturnType:     Manual
 :End:
-:Evaluate: yIndicesGet::usage = "the indices into x that indicate where the y are"
+:Evaluate: yIndicesGet::usage = "the indices into x that indicate where the y areneeded to write out the final update h to the parameters"
 
 :Begin:
 :Function:       dprintEnabled_set
@@ -565,7 +655,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: dprintEnabledSet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of course"
+:Evaluate: dprintEnabledSet::usage = "if true, dprintf writes to stdout, otherwise dprintf does nothingIt would be more efficient to compile with dprintf defined to nothing of courseDefault: true"
 
 :Begin:
 :Function:       lengthP_set
@@ -574,7 +664,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: lengthPSet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many] [k many]) "
+:Evaluate: lengthPSet::usage = "amount of 'points' at which the function f is evaluated.lengthP * lengthz is the length of xIndices, and sparseDerivativeZtoYIndices contains lengthP sequences of the form (k [k many z indices] [k many y indices]) "
 
 :Begin:
 :Function:       xx_set
@@ -637,7 +727,7 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: hSet::usage = "h, the update to y, subset of x, the parameters currently optimized over"
+:Evaluate: hSet::usage = "h, the update to y (subset of x, the parameters currently optimized over)"
 
 :Begin:
 :Function:       yIndices_set
@@ -646,5 +736,5 @@
 :ArgumentTypes:  { Manual }
 :ReturnType:     Manual
 :End:
-:Evaluate: yIndicesSet::usage = "the indices into x that indicate where the y are"
+:Evaluate: yIndicesSet::usage = "the indices into x that indicate where the y areneeded to write out the final update h to the parameters"
 :Evaluate: EndPackage[];

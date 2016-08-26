@@ -1,4 +1,3 @@
-#include "framework.h"
 void receiveOptimizationData(real const * const xI, size_t const xLength, int const * const sparseDerivativeZtoYIndicesI, size_t const sparseDerivativeZtoYIndicesLength, int const * const xIndicesI, size_t const xIndicesLength, int const * const yIndicesI, size_t const yIndicesLength);
 
 extern "C" void receiveOptimizationData_()
@@ -46,6 +45,259 @@ WSReleaseList(xI, xI_length, Real32);
 WSReleaseList(sparseDerivativeZtoYIndicesI, sparseDerivativeZtoYIndicesI_length, Integer32);
 WSReleaseList(xIndicesI, xIndicesI_length, Integer32);
 WSReleaseList(yIndicesI, yIndicesI_length, Integer32);
+}
+
+__host__ __device__ void f(real const * const input, real * const out);
+
+extern "C" void f_()
+{
+WSGetList(float, input, input_length, Real32);
+float * out;
+out = tmalloc<float>(lengthfz);
+f(input, out);
+WSPutList(Real32, out, lengthfz);
+WSReleaseList(input, input_length, Real32);
+memoryFree(out);
+}
+
+__global__ void KERNEL_f(real const * const input, real * const out)
+{
+f(input, out);
+}
+
+extern "C" void f_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetList(float, input, input_length, Real32);
+float * input_in;
+input_in = mallocmemcpy(input, input_length);
+float * out;
+out = tmalloc<float>(lengthfz);
+CUDAKERNEL_LAUNCH(KERNEL_f, gridDim, blockDim, input_in, out);
+WSPutList(Real32, out, lengthfz);
+WSReleaseList(input, input_length, Real32);
+memoryFree(input_in);
+memoryFree(out);
+}
+
+__host__ __device__ void df(int const i, real const * const input, real * const out);
+
+extern "C" void df_()
+{
+WSGet(int, i, Integer32);
+WSGetList(float, input, input_length, Real32);
+float * out;
+out = tmalloc<float>(lengthfz);
+df(i, input, out);
+WSPutList(Real32, out, lengthfz);
+WSReleaseList(input, input_length, Real32);
+memoryFree(out);
+}
+
+__global__ void KERNEL_df(int const i, real const * const input, real * const out)
+{
+df(i, input, out);
+}
+
+extern "C" void df_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGet(int, i, Integer32);
+WSGetList(float, input, input_length, Real32);
+float * input_in;
+input_in = mallocmemcpy(input, input_length);
+float * out;
+out = tmalloc<float>(lengthfz);
+CUDAKERNEL_LAUNCH(KERNEL_df, gridDim, blockDim, i, input_in, out);
+WSPutList(Real32, out, lengthfz);
+WSReleaseList(input, input_length, Real32);
+memoryFree(input_in);
+memoryFree(out);
+}
+
+__host__ __device__ int nextEven(int i);
+
+extern "C" void nextEven_()
+{
+WSGet(int, i, Integer32);
+int _result_;
+_result_ = nextEven(i);
+WSPut(Integer32, _result_);
+}
+
+__global__ void KERNEL_nextEven(int i, int * _returns_)
+{
+_returns_[linear_global_threadId()] = nextEven(i);
+}
+
+extern "C" void nextEven_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGet(int, i, Integer32);
+int * _returns_;
+_returns_ = tmalloc<int>(gridDim * blockDim);
+CUDAKERNEL_LAUNCH(KERNEL_nextEven, gridDim, blockDim, i, _returns_);
+WSPutList(Integer32, _returns_, gridDim * blockDim);
+memoryFree(_returns_);
+}
+
+__host__ __device__ int cs_cumsum(int * p, int * c, int const n);
+
+extern "C" void cs_cumsum_()
+{
+WSGetList(int, p, p_length, Integer32);
+WSGetList(int, c, c_length, Integer32);
+WSGet(int, n, Integer32);
+int _result_;
+_result_ = cs_cumsum(p, c, n);
+WSPut(Integer32, _result_);
+WSReleaseList(p, p_length, Integer32);
+WSReleaseList(c, c_length, Integer32);
+}
+
+__global__ void KERNEL_cs_cumsum(int * p, int * c, int const n, int * _returns_)
+{
+_returns_[linear_global_threadId()] = cs_cumsum(p, c, n);
+}
+
+extern "C" void cs_cumsum_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetList(int, p, p_length, Integer32);
+WSGetList(int, c, c_length, Integer32);
+WSGet(int, n, Integer32);
+int * _returns_;
+_returns_ = tmalloc<int>(gridDim * blockDim);
+CUDAKERNEL_LAUNCH(KERNEL_cs_cumsum, gridDim, blockDim, p, c, n, _returns_);
+WSPutList(Integer32, _returns_, gridDim * blockDim);
+WSReleaseList(p, p_length, Integer32);
+WSReleaseList(c, c_length, Integer32);
+memoryFree(_returns_);
+}
+
+__host__ __device__ void print(char const * const x);
+
+extern "C" void print_()
+{
+WSGetCString(x);
+print(x);
+WL_RETURN_VOID();
+WSReleaseCString(x);
+}
+
+__global__ void KERNEL_print(char const * const x)
+{
+print(x);
+}
+
+extern "C" void print_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetCString(x);
+CUDAKERNEL_LAUNCH(KERNEL_print, gridDim, blockDim, x);
+WL_RETURN_VOID();
+WSReleaseCString(x);
+}
+
+__host__ __device__ void printd(int const * v, size_t n);
+
+extern "C" void printd_()
+{
+WSGetList(int, v, v_length, Integer32);
+int n;
+n = v_length;
+printd(v, n);
+WL_RETURN_VOID();
+WSReleaseList(v, v_length, Integer32);
+}
+
+__global__ void KERNEL_printd(int const * v, size_t n)
+{
+printd(v, n);
+}
+
+extern "C" void printd_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetList(int, v, v_length, Integer32);
+int * v_in;
+v_in = mallocmemcpy(v, v_length);
+int n;
+n = v_length;
+CUDAKERNEL_LAUNCH(KERNEL_printd, gridDim, blockDim, v_in, n);
+WL_RETURN_VOID();
+WSReleaseList(v, v_length, Integer32);
+memoryFree(v_in);
+}
+
+__host__ __device__ void printv(real const * v, size_t n);
+
+extern "C" void printv_()
+{
+WSGetList(float, v, v_length, Real32);
+int n;
+n = v_length;
+printv(v, n);
+WL_RETURN_VOID();
+WSReleaseList(v, v_length, Real32);
+}
+
+__global__ void KERNEL_printv(real const * v, size_t n)
+{
+printv(v, n);
+}
+
+extern "C" void printv_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetList(float, v, v_length, Real32);
+float * v_in;
+v_in = mallocmemcpy(v, v_length);
+int n;
+n = v_length;
+CUDAKERNEL_LAUNCH(KERNEL_printv, gridDim, blockDim, v_in, n);
+WL_RETURN_VOID();
+WSReleaseList(v, v_length, Real32);
+memoryFree(v_in);
+}
+
+__host__ __device__ void assertFinite(real const * const x, int const n);
+
+extern "C" void assertFinite_()
+{
+WSGetList(float, x, x_length, Real32);
+int n;
+n = x_length;
+assertFinite(x, n);
+WL_RETURN_VOID();
+WSReleaseList(x, x_length, Real32);
+}
+
+__global__ void KERNEL_assertFinite(real const * const x, int const n)
+{
+assertFinite(x, n);
+}
+
+extern "C" void assertFinite_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGetList(float, x, x_length, Real32);
+float * x_in;
+x_in = mallocmemcpy(x, x_length);
+int n;
+n = x_length;
+CUDAKERNEL_LAUNCH(KERNEL_assertFinite, gridDim, blockDim, x_in, n);
+WL_RETURN_VOID();
+WSReleaseList(x, x_length, Real32);
+memoryFree(x_in);
 }
 
 __host__ __device__ int lengthzGet();
@@ -96,95 +348,6 @@ _returns_ = tmalloc<int>(gridDim * blockDim);
 CUDAKERNEL_LAUNCH(KERNEL_lengthfzGet, gridDim, blockDim, _returns_);
 WSPutList(Integer32, _returns_, gridDim * blockDim);
 memoryFree(_returns_);
-}
-
-__host__ __device__ void print(char const * const x);
-
-extern "C" void print_()
-{
-WSGetCString(x);
-print(x);
-WL_RETURN_VOID();
-WSReleaseCString(x);
-}
-
-__global__ void KERNEL_print(char const * const x)
-{
-print(x);
-}
-
-extern "C" void print_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGetCString(x);
-CUDAKERNEL_LAUNCH(KERNEL_print, gridDim, blockDim, x);
-WL_RETURN_VOID();
-WSReleaseCString(x);
-}
-
-__host__ __device__ void printv(real const * v, size_t n);
-
-extern "C" void printv_()
-{
-WSGetList(float, v, v_length, Real32);
-int n;
-n = v_length;
-printv(v, n);
-WL_RETURN_VOID();
-WSReleaseList(v, v_length, Real32);
-}
-
-__global__ void KERNEL_printv(real const * v, size_t n)
-{
-printv(v, n);
-}
-
-extern "C" void printv_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGetList(float, v, v_length, Real32);
-float * v_in;
-v_in = mallocmemcpy(v, v_length);
-int n;
-n = v_length;
-CUDAKERNEL_LAUNCH(KERNEL_printv, gridDim, blockDim, v_in, n);
-WL_RETURN_VOID();
-WSReleaseList(v, v_length, Real32);
-memoryFree(v_in);
-}
-
-__host__ __device__ void printd(int const * v, size_t n);
-
-extern "C" void printd_()
-{
-WSGetList(int, v, v_length, Integer32);
-int n;
-n = v_length;
-printd(v, n);
-WL_RETURN_VOID();
-WSReleaseList(v, v_length, Integer32);
-}
-
-__global__ void KERNEL_printd(int const * v, size_t n)
-{
-printd(v, n);
-}
-
-extern "C" void printd_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGetList(int, v, v_length, Integer32);
-int * v_in;
-v_in = mallocmemcpy(v, v_length);
-int n;
-n = v_length;
-CUDAKERNEL_LAUNCH(KERNEL_printd, gridDim, blockDim, v_in, n);
-WL_RETURN_VOID();
-WSReleaseList(v, v_length, Integer32);
-memoryFree(v_in);
 }
 
 __host__ __device__ void assertEachInRange(int const * v, size_t len, int const min, int const max);

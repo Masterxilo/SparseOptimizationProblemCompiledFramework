@@ -32,9 +32,6 @@
     <ClCompile Include="generated\WSTPMain.c">
       <Filter>Source Files\generated</Filter>
     </ClCompile>
-    <ClCompile Include="csparseminimal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="generated\$CFormDefines.cpp">
       <Filter>Source Files\generated</Filter>
     </ClCompile>
@@ -49,7 +46,9 @@
     <CudaCompile Include="main.cu">
       <Filter>Source Files</Filter>
     </CudaCompile>
-    <CudaCompile Include="generated\wstpExternC.cu" />
+    <CudaCompile Include="generated\wstpExternC.cu">
+      <Filter>Source Files\generated</Filter>
+    </CudaCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="generated\WSTPTemplateFile.tm">
