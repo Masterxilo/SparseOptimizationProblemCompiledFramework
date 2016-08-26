@@ -1165,7 +1165,10 @@ FUNCTION(
     )
 {
     // Build F and JF
-    const size_t maxNNZ = (lengthfz*lengthz) * lengthP; // very pessimistic estimate: assume every derivative figures for every P -- usually not all of them will be needed
+    const size_t maxNNZ = (lengthfz*lengthz) * lengthP; // very pessimistic estimate/overestimation: assume every derivative figures for every P -- usually not all of them will be needed
+    // ^^ e.g. in vsfs the 3 color channels are all not optimized over, neither doriginal
+
+    // consider using dynamic allocation in SOMEMEM!
 
     SOMEMEM(); 
     dprintf("allocating sparse matrix for %d entries\n", maxNNZ);
