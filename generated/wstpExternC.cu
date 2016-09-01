@@ -110,33 +110,6 @@ memoryFree(input_in);
 memoryFree(out);
 }
 
-__host__ __device__ int nextEven(int i);
-
-extern "C" void nextEven_()
-{
-WSGet(int, i, Integer32);
-int _result_;
-_result_ = nextEven(i);
-WSPut(Integer32, _result_);
-}
-
-__global__ void KERNEL_nextEven(int i, int * _returns_)
-{
-_returns_[linear_global_threadId()] = nextEven(i);
-}
-
-extern "C" void nextEven_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(int, i, Integer32);
-int * _returns_;
-_returns_ = tmalloc<int>(gridDim * blockDim);
-CUDAKERNEL_LAUNCH(KERNEL_nextEven, gridDim, blockDim, i, _returns_);
-WSPutList(Integer32, _returns_, gridDim * blockDim);
-memoryFree(_returns_);
-}
-
 __host__ __device__ int cs_cumsum(int * p, int * c, int const n);
 
 extern "C" void cs_cumsum_()
@@ -538,6 +511,29 @@ WSGet(int, blockDim, Integer32);
 WSGet(int, partition, Integer32);
 WSGet(int, iterations, Integer32);
 CUDAKERNEL_LAUNCH(KERNEL_buildFxAndJFxAndSolveRepeatedly, gridDim, blockDim, partition, iterations);
+WL_RETURN_VOID();
+}
+
+__host__ __device__ void buildFxAndJFxAndSolveRepeatedlyThreadIdPartition(int const iterations);
+
+extern "C" void buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_()
+{
+WSGet(int, iterations, Integer32);
+buildFxAndJFxAndSolveRepeatedlyThreadIdPartition(iterations);
+WL_RETURN_VOID();
+}
+
+__global__ void KERNEL_buildFxAndJFxAndSolveRepeatedlyThreadIdPartition(int const iterations)
+{
+buildFxAndJFxAndSolveRepeatedlyThreadIdPartition(iterations);
+}
+
+extern "C" void buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA()
+{
+WSGet(int, gridDim, Integer32);
+WSGet(int, blockDim, Integer32);
+WSGet(int, iterations, Integer32);
+CUDAKERNEL_LAUNCH(KERNEL_buildFxAndJFxAndSolveRepeatedlyThreadIdPartition, gridDim, blockDim, iterations);
 WL_RETURN_VOID();
 }
 

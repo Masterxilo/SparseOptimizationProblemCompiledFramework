@@ -1,6 +1,6 @@
-:Evaluate: BeginPackage@"SOPCompiled`Private`";
+:Evaluate: $oldContextPath = $ContextPath; $ContextPath = {"System`"};
+:Evaluate: Begin@"SOPCompiled`Private`";
 :Evaluate: ClearAll@"SOPCompiled`Private`*";
-
 :Begin:
 :Function:       f_
 :Pattern:        f[input : {___Real}]
@@ -18,15 +18,6 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: df::usage = "the derivatives along the i-th variable of the local energy vector computing function"
-
-:Begin:
-:Function:       nextEven_
-:Pattern:        nextEven[i : _Integer]
-:Arguments:      {i}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: nextEven::usage = "support even allocation"
 
 :Begin:
 :Function:       cs_cumsum_
@@ -135,6 +126,15 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: buildFxAndJFxAndSolveRepeatedly::usage = "using current data, builds JFx (and Fx) and solves the least squares problemthen does a gradient descent stepreapeats this whole process as often as desired"
+
+:Begin:
+:Function:       buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_
+:Pattern:        buildFxAndJFxAndSolveRepeatedlyThreadIdPartition[iterations : _Integer]
+:Arguments:      {iterations}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: buildFxAndJFxAndSolveRepeatedlyThreadIdPartition::usage = "buildFxAndJFxAndSolveRepeatedly on the partition given by linear_global_threadId.does nothing when linear_global_threadId is >= partitionsTODO this should be the block id, threads in the same block should cooperate in the same partition"
 
 :Begin:
 :Function:       receiveAndPrintOptimizationData_
@@ -254,15 +254,6 @@
 :Evaluate: dfCUDA::usage = "the derivatives along the i-th variable of the local energy vector computing function"
 
 :Begin:
-:Function:       nextEven_CUDA
-:Pattern:        nextEvenCUDA[gridDim_Integer, blockDim_Integer, i : _Integer]
-:Arguments:      {gridDim, blockDim, i}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: nextEvenCUDA::usage = "support even allocation"
-
-:Begin:
 :Function:       cs_cumsum_CUDA
 :Pattern:        cscumsumCUDA[gridDim_Integer, blockDim_Integer, p : {___Integer}, c : {___Integer}, n : _Integer]
 :Arguments:      {gridDim, blockDim, p, c, n}
@@ -369,6 +360,15 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: buildFxAndJFxAndSolveRepeatedlyCUDA::usage = "using current data, builds JFx (and Fx) and solves the least squares problemthen does a gradient descent stepreapeats this whole process as often as desired"
+
+:Begin:
+:Function:       buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA
+:Pattern:        buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA[gridDim_Integer, blockDim_Integer, iterations : _Integer]
+:Arguments:      {gridDim, blockDim, iterations}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA::usage = "buildFxAndJFxAndSolveRepeatedly on the partition given by linear_global_threadId.does nothing when linear_global_threadId is >= partitionsTODO this should be the block id, threads in the same block should cooperate in the same partition"
 
 :Begin:
 :Function:       receiveAndPrintOptimizationData_CUDA
@@ -549,4 +549,6 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: xSet::usage = "stores the current data vector 'x' which is updated to reduce the energy ||F(x)||^2"
-:Evaluate: EndPackage[];
+
+:Evaluate: End[];
+:Evaluate: $ContextPath = $oldContextPath;

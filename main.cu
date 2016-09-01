@@ -1,7 +1,14 @@
 /*
 This program solves least-squares problems with energies of the form
 
-    \sum_{p \in P} ||f(select_p(x))||_2^2
+    \sum_{P \in Q} \sum_{p \in P} ||f(select_p(x))||_2^2
+
+Q gives a partitioning of the domain. In the simplest case, there is only one partition.
+
+The solution to this may or may not be close to the solution to
+
+    \sum_{p \in \Cup Q} ||f(select_p(x))||_2^2
+
 */
 
 /*
@@ -21,14 +28,14 @@ Except for paul.h, standard/windows/cuda headers and generated files, this file 
 #include <math.h>
 #include <float.h>
 #include <stdio.h>
-#include <memory.h> // memset, but not malloc/free
+#include <memory.h> // just memset, but not malloc/free
 
 #define _CRT_SECURE_NO_WARNINGS
 #define NOMINMAX
 #define WINDOWS_LEAN_AND_MEAN
 #include <windows.h>
 
-#include <sal.h>
+#include <sal.h> // c.f. sal.txt
 
 #include <cuda.h>
 #include <cuda_runtime_api.h>
@@ -110,9 +117,9 @@ Only primitive types can be passed back and forth automatically as of now.
 
 
 // can theoretically work with any floating point type
-typedef float real; // memory alignment issues in CUDA have to be readdressed should this be changed to double
-//#define real float // intellisense complains about real?
+// memory alignment issues in CUDA have to be readdressed should this be changed to double
 // if this is 8 bytes instead of 4, many nextEven calls could be saved
+typedef float real; 
 
 
 
@@ -135,7 +142,7 @@ CONSTANTD int lengthfz =
 #include "wstpExternC.cu"              /* generated for interface */
 #endif
 
-#include "$CFormDefines.cpp"  /* generated for problem, rarely changes */  // Required for including definitions of f and df
+#include "$CFormDefines.cpp"  /* generated for problem, rarely changes */  // Required for including *working* definitions of f and df -- this defines what times(x,y) etc. mean
 #define x(i) input[i] /* definitions of f/df use x(i) to refer to input[], c.f. RIFunctionCForm* */
 
 // TODO support these (_In_reads_(lengthz)) kinds of constant-sized vectors in the WSTP wrapper code
@@ -145,7 +152,7 @@ FUNCTION(void, f, (
     _In_reads_(lengthz) const real* const input,
     _Out_writes_(lengthfz) real* const out
     ), "the local energy vector computing function") {
-#include "f.cpp" /* generated for each problem */
+#include "f.cpp" /* generated for each problem, depends on $CFormDefines*/
 }
 FUNCTION(void, df, (int const i,
     _In_reads_(lengthz) real const * const input,
@@ -156,30 +163,39 @@ FUNCTION(void, df, (int const i,
 #undef x
 
 /*
-CSPARSE library, reduced to only the things needed for sparse conjugate gradient method
+CSPARSE
+A Concise Sparse Matrix Package in C
+
+http://people.sc.fsu.edu/~jburkardt/c_src/csparse/csparse.html
+
+CSparse Version 1.2.0 Copyright (c) Timothy A. Davis, 2006
+
+reduced to only the things needed for sparse conjugate gradient method
+
+by Paul Frischknecht, August 2016
+
 and for running on CUDA, with a user-supplied memory-pool
 
-Based on
-CSparse Version 1.2.0 Copyright (c) Timothy A. Davis, 2006
-without permission
+modified & used without permission
 */
 
 
 /* --- primary CSparse routines and data structures ------------------------- */
 struct cs    /* matrix in compressed-column or triplet form . must be aligned on 8 bytes */
 {
-    int nzmax;	/* maximum number of entries allocated for triplet. Actual number of entries for compressed col. */
-    int m;	    /* number of rows */
+    int nzmax;	/* maximum number of entries allocated for triplet. Actual number of entries for compressed col. > 0 */
+    int m;	    /* number of rows > 0 */
 
-    int n;	    /* number of columns */
-    int nz;	    /* # of entries in triplet matrix, -1 for compressed-col */
+    int n;	    /* number of columns  > 0 */
+    int nz;	    /* # of entries in triplet matrix, NZ_COMPRESSED_COLUMN_INDICATOR for compressed-col, >= 0 otherwise */
 
-    // this order preserves alignment
+    // Note: this order preserves 8-byte pointer (64 bit) alignment, DO NOT CHANGE
+    // all pointers are always valid
     int *p;	    /* column pointers (size n+1) or col indices (size nzmax) */
 
     int *i;	    /* row indices, size nzmax */
 
-    real *x;	    /* numerical values, size nzmax, always valid*/
+    real *x;	/* numerical values, size nzmax*/
 
 };
 
@@ -187,6 +203,7 @@ FUNCTION(bool,cs_is_triplet,(const cs *A), "whether A is a triplet matrix") {
     assert(A);
     return A->nz >= 0;
 }
+
 const int NZ_COMPRESSED_COLUMN_INDICATOR = -1;
 
 FUNCTION(bool,cs_is_compressed_col,(const cs *A),"whether A is a crompressed-column form matrix") {
@@ -204,7 +221,7 @@ FUNCTION(bool,cs_is_compressed_col,(const cs *A),"whether A is a crompressed-col
 
 
 FUNCTION(char* ,cs_malloc_,(char*& memoryPool, int& memory_size, size_t sz), 
-"allocate new stuff can only allocate multiples of 8 bytes to preserve alignment of pointers in cs"){
+"allocate new stuff. can only allocate multiples of 8 bytes to preserve alignment of pointers in cs. Use nextEven to round up when allocating 4 byte stuff (e.g. int)"){
     assert(memory_size >= sz);
     assert(aligned(memoryPool, 8));
     assert(divisible(sz, 8));
@@ -224,11 +241,6 @@ FUNCTION(void ,cs_free_,(char*& memoryPool, int& memory_size, size_t sz) ,"free 
 }
 
 #define cs_free(sz) {cs_free_(MEMPOOLPARAM, (sz));}
-
-FUNCTION(int,nextEven,(int i), "support even allocation"){ 
-    if (i % 2 == 0) return i;
-    return i + 1;
-}
 
 
 FUNCTION(int,cs_spalloc_size,(size_t m, size_t n, size_t nzmax, bool triplet),
@@ -280,7 +292,7 @@ FUNCTION(int, cs_cumsum, (_Inout_updates_all_(n + 1) int *p, _Inout_updates_all_
     return (nz);		    /* return sum (c [0..n-1]) */
 }
 
-FUNCTION(int*,allocZeroedIntegers,(const int n, MEMPOOL),"calloc with ints. n must be even") {
+FUNCTION(int*,allocZeroedIntegers,(const int n, MEMPOOL),"Allocate n integers set to 0. Implements calloc(n, sizeof(int)). n must be even") {
     assert(divisible(n, 2));
     int* w;
     cs_malloc(w, n * sizeof(int));
@@ -435,7 +447,8 @@ FUNCTION(int,cs_print,(const cs * const A, int brief = 0),"print a sparse matrix
 
 FUNCTION(int,cs_mv,(real * y, real alpha, const cs *  A, const real * x, real beta),
    "y = alpha A x + beta y"
-   "the memory for y and x cannot overlap")
+   "the memory for y and x cannot overlap"
+   "TODO implement a version that can transpose A implicitly")
 {
     assert(A && x && y);	    /* check inputs */
     assertFinite(beta);
@@ -515,8 +528,9 @@ FUNCTION(
 /*
 Implementation note:
 size_t n is not const because the implementation modifies it
-changes not visible outside anyways:
-the last const spec is always an implementation detail, but can indicate conceptual thinking
+
+changes to n are not visible outside anyways:
+-> the last const spec is always an implementation detail, not a promise to the caller, but can indicate conceptual thinking
 */
 FUNCTION(
     void,
@@ -811,7 +825,7 @@ FUNCTION(void, extract, (
 
 #ifdef __CUDA_ARCH__
 #define SOMEMEM() \
-    __shared__ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152 -- also cannot be much larger on stack: msvc default is 1MB*/  /* fake*/]; /* with * 100, stack overflow in CPU, with * 10, cudaGetLastError 2 cudaErrorMemoryAllocation out of memory */\
+    __shared__ char memory[0xc000/4 /*"Maximum Shared Memory Per Block" -> 49152 = 0xc000 (reduced due to debug?) -- also cannot be much larger on stack: msvc default is 1MB*/  /* fake*/]; /* with * 100, stack overflow in CPU, with * 10, cudaGetLastError 2 cudaErrorMemoryAllocation out of memory */\
     char* mem = (char*)(((unsigned long long)memory+7) & (~ 0x7ull)); /* align on 8 byte boundary */\
     assert(aligned(mem, 8) && after(mem, memory));\
     int memsz = sizeof(memory)-8;/*be safe*/ \
@@ -836,12 +850,13 @@ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152 -- also cannot be 
 
 #define SOMEMEMP mem, memsz
 
-// --- ---
+// --- end of memory pool stuff ---
 
 
-// one separate SOP, shares only x
+// one separate SOP (for one P in Q), shares only "x" with the global problem
 // has custom y, p and values derived from that
 // pointers are to __managed__ memory
+// F() is another function for each partition P. It is defined as (f(s_p(x)))_{p in P}
 struct SOPPartition {
     real* minusFx; size_t lengthFx; // "-F(x)"
     real* h; size_t lengthY; // "h, the update to y (subset of x, the parameters currently optimized over)"
@@ -870,7 +885,7 @@ struct SOPPartition {
 
 GLOBALDYNAMICARRAY(
     SOPPartition, partitionTable, partitions,
-    " partitions of the SOPD");
+    "partitions of the SOPD, allocated on call to setPartitions");
 
 FUNCTION(void, writeJFx, (cs* const J, const size_t i, const size_t j, const real x),
     "set J(i, j) = x"
@@ -925,7 +940,7 @@ void writeJFx(int i, int j, real val)
 
 using only elementary C constructs
 */
-// TODO move these functions to SOPParition instead of passing the pointer
+// TODO move these functions to SOPPartition instead of passing the pointer all the time
 FUNCTION(void, readZ, (
     SOPPartition* const sop,
     _Out_writes_all_(lengthz) real* z,
@@ -1157,7 +1172,9 @@ CPU_FUNCTION(
     ::lengthx = xLength;
 }
 
+// macro for indexing into partitionTable, sop = partitionTable[partition]
 #define extractSop(partition) assert(partition >= 0 && partition < partitions); SOPPartition* const sop = &partitionTable[partition];
+
 CPU_FUNCTION(
     void,
     receiveOptimizationData,
@@ -1198,6 +1215,8 @@ FUNCTION(
     ""
     "Note that we must do the solving right here, because this function handles the memory needed by J"
     "the solution is then accessible in h for further processing (updating x at yIndices)"
+    ""
+    "sop is passed here, not partition. Use buildFxAndJFxAndSolveRepeatedly as the external interface"
     )
 {
     // Build F and JF
@@ -1254,6 +1273,21 @@ FUNCTION(
             return;
         }
     }
+}
+
+FUNCTION(
+    void,
+    buildFxAndJFxAndSolveRepeatedlyThreadIdPartition,
+    (const int iterations),
+    "buildFxAndJFxAndSolveRepeatedly on the partition given by linear_global_threadId."
+    "does nothing when linear_global_threadId is >= partitions"
+    ""
+    "TODO this should be the block id, threads in the same block should cooperate in the same partition"
+    )
+{
+    if (linear_global_threadId() >= partitions) return;
+
+    buildFxAndJFxAndSolveRepeatedly(linear_global_threadId(), iterations);
 }
 
 // Prototyping functions
