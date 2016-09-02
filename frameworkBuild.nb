@@ -10,14 +10,32 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    350894,       8657]
-NotebookOptionsPosition[    347564,       8561]
-NotebookOutlinePosition[    347908,       8576]
-CellTagsIndexPosition[    347865,       8573]
+NotebookDataLength[    379946,       9046]
+NotebookOptionsPosition[    376582,       8949]
+NotebookOutlinePosition[    376923,       8964]
+CellTagsIndexPosition[    376880,       8961]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"BeginPackage", "[", 
+  RowBox[{"\"\<frameworkBuild`\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Global`\>\"", ",", "\"\<wstpWrapper`\>\"", ",", 
+     "\"\<SymbolicC`\>\""}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ClearAll", "@", "\"\<frameworkBuild`*\>\""}]}], "Input",
+ CellChangeTimes->{{3.681748815979802*^9, 3.6817488528317437`*^9}, {
+  3.6817489903252*^9, 3.681748990387701*^9}}],
+
+Cell[BoxData["\<\"frameworkBuild`\"\>"], "Output",
+ CellChangeTimes->{3.6817490115041847`*^9, 3.6817491607223377`*^9, 
+  3.681749250913489*^9, 3.681749333072975*^9, 3.6817497387025347`*^9}]
+}, Open  ]],
+
 Cell["\<\
 depends on WSTPWrapping.nb, run that first (and maybe the .testing notbook of \
 that too)\
@@ -260,7 +278,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -293,12 +311,12 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 77, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 138, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`knownTypeQ[{"real"}]], "ExpectedOutput" -> HoldForm[True], 
+      wstpWrapper`knownTypeQ[{"real"}]], "ExpectedOutput" -> HoldForm[True], 
     "ActualOutput" -> HoldForm[True], "ExpectedMessages" -> {}, 
     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
@@ -315,7 +333,9 @@ Cell[BoxData[
    3.68106257773285*^9, 3.681062639731922*^9, 3.681162107978305*^9, 
    3.681163686546423*^9, 3.6811638809646034`*^9, 3.6811639987457805`*^9, 
    3.6811640942368846`*^9, 3.6811643015526896`*^9, 3.6811980107561274`*^9, 
-   3.681198237300429*^9}],
+   3.681198237300429*^9, 3.6817487194868274`*^9, 3.681748756407666*^9, 
+   3.6817490116916933`*^9, 3.681749160909865*^9, 3.68174925105412*^9, 
+   3.681749333197979*^9, 3.6817497389056835`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -505,7 +525,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -538,12 +558,12 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 78, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 139, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`knownTypeQ[{"real", "*"}]], "ExpectedOutput" -> 
+      wstpWrapper`knownTypeQ[{"real", "*"}]], "ExpectedOutput" -> 
     HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
@@ -560,7 +580,9 @@ Cell[BoxData[
    3.68106257773285*^9, 3.681062639731922*^9, 3.681162107978305*^9, 
    3.681163686546423*^9, 3.6811638809646034`*^9, 3.6811639987457805`*^9, 
    3.6811640942368846`*^9, 3.6811643015526896`*^9, 3.6811980107561274`*^9, 
-   3.6811982373160543`*^9}],
+   3.681198237300429*^9, 3.6817487194868274`*^9, 3.681748756407666*^9, 
+   3.6817490116916933`*^9, 3.681749160909865*^9, 3.68174925105412*^9, 
+   3.681749333197979*^9, 3.681749738983797*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -725,12 +747,12 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"CCall", "[", 
                    RowBox[{"\<\"WSGetList\"\>", ",", 
-                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
-                   "]"}], ",", 
-                  RowBox[{"CCall", "[", 
-                   RowBox[{"\<\"WSReleaseList\"\>", ",", 
-                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
-                   "]"}]}], "}"}],
+                    RowBox[{"{", 
+                    RowBox[{"\<\"float\"\>", ",", "\<\"xI\"\>", ",", 
+                    RowBox[{"\[LeftSkeleton]", "11", "\[RightSkeleton]"}], 
+                    ",", "\<\"Real32\"\>"}], "}"}]}], "]"}], ",", 
+                  RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
+                 "}"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -750,12 +772,12 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"CCall", "[", 
                    RowBox[{"\<\"WSGetList\"\>", ",", 
-                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
-                   "]"}], ",", 
-                  RowBox[{"CCall", "[", 
-                   RowBox[{"\<\"WSReleaseList\"\>", ",", 
-                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
-                   "]"}]}], "}"}],
+                    RowBox[{"{", 
+                    RowBox[{"\<\"float\"\>", ",", "\<\"xI\"\>", ",", 
+                    RowBox[{"\[LeftSkeleton]", "11", "\[RightSkeleton]"}], 
+                    ",", "\<\"Real32\"\>"}], "}"}]}], "]"}], ",", 
+                  RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
+                 "}"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -773,7 +795,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -785,6 +807,7 @@ Cell[BoxData[
               "SummaryItem"]}]}
           },
           AutoDelete->False,
+          
           BaseStyle->{
            ShowStringCharacters -> False, NumberMarks -> False, 
             PrintPrecision -> 3, ShowSyntaxStyles -> False},
@@ -805,9 +828,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 79, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 140, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`wsReceiveReleaseFunctionCall[
+      wstpWrapper`wsReceiveReleaseFunctionCall[
       "xI", {"real", "const", "*", "const"}]], "ExpectedOutput" -> HoldForm[{
        SymbolicC`CCall["WSGetList", {"float", "xI", "xI_length", "Real32"}], 
        SymbolicC`CCall["WSReleaseList", {"xI", "xI_length", "Real32"}]}], 
@@ -815,7 +838,7 @@ Cell[BoxData[
        SymbolicC`CCall["WSGetList", {"float", "xI", "xI_length", "Real32"}], 
        SymbolicC`CCall["WSReleaseList", {"xI", "xI_length", "Real32"}]}], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[432, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
@@ -832,7 +855,9 @@ Cell[BoxData[
    3.68106257773285*^9, 3.681062639731922*^9, 3.681162107978305*^9, 
    3.681163686546423*^9, 3.6811638809646034`*^9, 3.6811639987457805`*^9, 
    3.6811640942368846`*^9, 3.6811643015526896`*^9, 3.6811980107561274`*^9, 
-   3.6811982373316803`*^9}],
+   3.681198237300429*^9, 3.6817487194868274`*^9, 3.681748756407666*^9, 
+   3.6817490116916933`*^9, 3.681749160909865*^9, 3.68174925105412*^9, 
+   3.681749333197979*^9, 3.6817497390463*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -1026,7 +1051,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -1059,14 +1084,14 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 80, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 141, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`toMMType[{"real", "const", "*", "const"}]], 
+      wstpWrapper`toMMType[{"real", "const", "*", "const"}]], 
     "ExpectedOutput" -> HoldForm[{
        BlankNullSequence[Real]}], "ActualOutput" -> HoldForm[{
        BlankNullSequence[Real]}], "ExpectedMessages" -> {}, 
     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
@@ -1083,7 +1108,9 @@ Cell[BoxData[
    3.68106257773285*^9, 3.681062639731922*^9, 3.681162107978305*^9, 
    3.681163686546423*^9, 3.6811638809646034`*^9, 3.6811639987457805`*^9, 
    3.6811640942368846`*^9, 3.6811643015526896`*^9, 3.6811980107561274`*^9, 
-   3.6811982373473053`*^9}]
+   3.681198237300429*^9, 3.6817487194868274`*^9, 3.681748756407666*^9, 
+   3.6817490116916933`*^9, 3.681749160909865*^9, 3.68174925105412*^9, 
+   3.681749333197979*^9, 3.6817497391240053`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1105,12 +1132,6 @@ Cell["This will allow the functions to be called from WL.", "Text",
 Cell[CellGroupData[{
 
 Cell[BoxData[{
- RowBox[{"SetDirectory", "[", 
-  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"<<", "paul`"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"<<", "cform`"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"ClearAll", "[", 
   RowBox[{"parseSalAnnotationSub", ",", "parseSalAnnotation"}], 
   "]"}], "\[IndentingNewLine]", 
@@ -1304,29 +1325,29 @@ Cell[BoxData[{
       RowBox[{"StartOfLine", "~~", "w", "~~", "WordBoundary", "~~", 
        RowBox[{"Whitespace", "..."}], "~~", "\"\<(\>\"", "~~", "___", "~~", 
        "EndOfString"}], ",", 
-      RowBox[{"Overlaps", "\[Rule]", "All"}]}], "]"}]}], ";"}], 
-  RowBox[{"(*", 
-   RowBox[{
+      RowBox[{"Overlaps", "\[Rule]", "All"}]}], "]"}]}], ";", 
+   RowBox[{"(*", 
     RowBox[{
      RowBox[{
-      RowBox[{"TODO", " ", "quite", " ", "fragile"}], " ", "-", " ", 
-      RowBox[{"what", " ", "if", " ", "we", " ", "have", " ", 
-       RowBox[{"{", "}"}], " ", "in", " ", "the", " ", 
-       RowBox[{"string", "?"}]}]}], " ", "\[Rule]", " ", 
-     RowBox[{
-      RowBox[{"unpalanced", " ", "parentheses"}], " ", "\[Rule]", " ", 
-      RowBox[{"parse", " ", "till", " ", "everything", " ", "is", " ", 
-       RowBox[{"balanced", "/", "to"}], " ", "the", " ", "end", " ", "of", 
-       " ", "the", " ", 
-       RowBox[{"(", ")"}]}]}]}], ",", " ", 
-    RowBox[{"ignoring", " ", "things", " ", "in", " ", 
-     RowBox[{"comments", "/", "strings"}]}]}], "*)"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"splitMacroInvocation", "=", 
-   RowBox[{
-   "BraceAndStringAwareCommaSplit", "@*", "StringFirstBracePairContents"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"TODO", " ", "quite", " ", "fragile"}], " ", "-", " ", 
+       RowBox[{"what", " ", "if", " ", "we", " ", "have", " ", 
+        RowBox[{"{", "}"}], " ", "in", " ", "the", " ", 
+        RowBox[{"string", "?"}]}]}], " ", "\[Rule]", " ", 
+      RowBox[{
+       RowBox[{"unpalanced", " ", "parentheses"}], " ", "\[Rule]", " ", 
+       RowBox[{"parse", " ", "till", " ", "everything", " ", "is", " ", 
+        RowBox[{"balanced", "/", "to"}], " ", "the", " ", "end", " ", "of", 
+        " ", "the", " ", 
+        RowBox[{"(", ")"}]}]}]}], ",", " ", 
+     RowBox[{"ignoring", " ", "things", " ", "in", " ", 
+      RowBox[{"comments", "/", "strings"}]}]}], "*)"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"splitMacroInvocation", "=", 
+    RowBox[{
+    "BraceAndStringAwareCommaSplit", "@*", 
+     "StringFirstBracePairContents"}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", "FUNCTION", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ClearAll", "@", "destructureFunction"}], 
@@ -1636,41 +1657,7 @@ energy ||F(x)||^2\>\""}], "}"}]}], "\[IndentingNewLine]"}], "Input",
    3.6810558996166353`*^9, 3.681055902819888*^9}, {3.6810559816788607`*^9, 
    3.681056051192332*^9}, {3.6810561396001434`*^9, 3.6810561613250246`*^9}, {
    3.6811623297902727`*^9, 3.68116233300566*^9}, {3.681162383015314*^9, 
-   3.6811624154500484`*^9}}],
-
-Cell[BoxData["\<\"C:\\\\Users\\\\Paul\\\\Dropbox\\\\Paul\\\\\
-MasterarbeitShared\\\\Research\\\\MathematicaLibraries\\\\Framework\"\>"], \
-"Output",
- CellChangeTimes->{
-  3.679840824778573*^9, 3.6798429597120724`*^9, 3.6798430322189407`*^9, 
-   3.679843414689515*^9, 3.6798464932476625`*^9, 3.6798487662401695`*^9, 
-   3.6798542814402275`*^9, 3.679854510001665*^9, 3.679854567274029*^9, 
-   3.6798551635498447`*^9, 3.6798559386292753`*^9, {3.679908974652997*^9, 
-   3.679908983217801*^9}, 3.6799090252818503`*^9, 3.6799090957803884`*^9, 
-   3.679909220943113*^9, 3.679909280812825*^9, 3.67990969081497*^9, 
-   3.6799097654419203`*^9, {3.679909926428109*^9, 3.679909937493825*^9}, 
-   3.6799106749538813`*^9, 3.679910705063919*^9, 3.679910836220885*^9, {
-   3.679910935977465*^9, 3.679910947317902*^9}, 3.6799110767916822`*^9, 
-   3.679911108535836*^9, 3.6799111776256275`*^9, 3.679911246577202*^9, 
-   3.6799113164409847`*^9, 3.6799113802985086`*^9, 3.6799114966740575`*^9, 
-   3.679912043420538*^9, 3.6799137540897193`*^9, 3.6799141816895146`*^9, 
-   3.679914557936777*^9, 3.6799215753276277`*^9, 3.679940555452692*^9, 
-   3.6799411635341907`*^9, 3.679941369909689*^9, 3.679942365717993*^9, 
-   3.6799426633123093`*^9, 3.6799430972773046`*^9, 3.6799932519462905`*^9, 
-   3.6800015215668883`*^9, 3.680005459381366*^9, 3.6800059264922295`*^9, 
-   3.6800068866642895`*^9, 3.680007914513811*^9, 3.6800079543935895`*^9, 
-   3.6800103190231056`*^9, 3.680010372132358*^9, 3.6800236706418624`*^9, 
-   3.680024239457616*^9, 3.680024402521082*^9, 3.6809718028378763`*^9, 
-   3.680973090676819*^9, 3.6810527920104303`*^9, 3.681053280839362*^9, 
-   3.6810535706940527`*^9, 3.6810537047323003`*^9, 3.68105466031781*^9, 
-   3.681055711991539*^9, 3.681055757324667*^9, {3.6810557907767878`*^9, 
-   3.6810557967396364`*^9}, {3.681056167693165*^9, 3.681056175201622*^9}, 
-   3.681056843645248*^9, 3.6810569084587364`*^9, 3.681060682779788*^9, 
-   3.6810611188414226`*^9, 3.681062578232885*^9, 3.681062640231923*^9, 
-   3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
-   3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
-   3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982373941827`*^9}],
+   3.6811624154500484`*^9}, {3.6817487292247086`*^9, 3.6817487297403536`*^9}}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -1903,15 +1890,14 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 81, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 142, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parseSalAnnotationSub[{
+      frameworkBuild`parseSalAnnotationSub[{
        "_In_reads_", {"(", {"source_len"}, ")"}}]], "ExpectedOutput" -> 
     HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ActualOutput" -> 
-    HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {},
-     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ActualOutput" -> HoldForm[
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {}, 
+    "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
     Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[88, "Bytes"]]],
   Editable->False,
@@ -1946,7 +1932,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237456685*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497393308334`*^9}],
 
 Cell[BoxData[
  RowBox[{"sal", "[", 
@@ -1980,7 +1968,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237456685*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739346444*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2209,14 +2199,13 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 82, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 143, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parseSalAnnotation["_In_reads_(source_len)"]], 
+      frameworkBuild`parseSalAnnotation["_In_reads_(source_len)"]], 
     "ExpectedOutput" -> HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ActualOutput" -> 
-    HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {},
-     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ActualOutput" -> HoldForm[
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {}, 
+    "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
     Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[184, "Bytes"]]],
   Editable->False,
@@ -2251,7 +2240,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982374723253`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739408963*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2480,14 +2471,13 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 83, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 144, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parseSalAnnotation["  _In_reads_ ( source_len  ) "]], 
+      frameworkBuild`parseSalAnnotation["  _In_reads_ ( source_len  ) "]], 
     "ExpectedOutput" -> HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ActualOutput" -> 
-    HoldForm[
-      $CellContext`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {},
-     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ActualOutput" -> HoldForm[
+      wstpWrapper`sal["_In_reads_", "source_len"]], "ExpectedMessages" -> {}, 
+    "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
     Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[184, "Bytes"]]],
   Editable->False,
@@ -2522,7 +2512,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237487937*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739471472*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2745,12 +2737,12 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 84, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 145, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parseSalAnnotation[" _In_z_ "]], "ExpectedOutput" -> 
+      frameworkBuild`parseSalAnnotation[" _In_z_ "]], "ExpectedOutput" -> 
     HoldForm[
-      $CellContext`sal["_In_z_"]], "ActualOutput" -> HoldForm[
-      $CellContext`sal["_In_z_"]], "ExpectedMessages" -> {}, 
+      wstpWrapper`sal["_In_z_"]], "ActualOutput" -> HoldForm[
+      wstpWrapper`sal["_In_z_"]], "ExpectedMessages" -> {}, 
     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
     Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[120, "Bytes"]]],
@@ -2786,7 +2778,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237503563*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739549593*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -2987,7 +2981,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -3020,17 +3014,17 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 85, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 146, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parseSalAnnotation[
+      frameworkBuild`parseSalAnnotation[
       "  _Out_writes_all_ (sourceIndicesAndTargetLength) "]], 
     "ExpectedOutput" -> HoldForm[
-      $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"]], 
+      wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"]], 
     "ActualOutput" -> HoldForm[
-      $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"]], 
+      wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"]], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[208, "Bytes"]]],
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[264, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -3063,7 +3057,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237519208*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497396120815`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3268,7 +3264,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -3301,15 +3297,15 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 86, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 147, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parsePossiblySalAnnotatedArgument[
+      frameworkBuild`parsePossiblySalAnnotatedArgument[
       "  \nconst double* const source"]], "ExpectedOutput" -> 
     HoldForm[{{"double", "const", "*", "const"}, "source"}], "ActualOutput" -> 
     HoldForm[{{"double", "const", "*", "const"}, "source"}], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[392, "Bytes"]]],
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[320, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -3342,7 +3338,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237519208*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497396902246`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3555,7 +3553,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.150514997831996","\"s\"","seconds","\"Seconds\""},
+                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -3588,17 +3586,17 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 87, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 148, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parsePossiblySalAnnotatedArgument[
+      frameworkBuild`parsePossiblySalAnnotatedArgument[
       "  \n_In_reads_(source_len) const double* const source"]], 
     "ExpectedOutput" -> HoldForm[{{"double", "const", "*", "const"}, 
-       $CellContext`sal["_In_reads_", "source_len"], "source"}], 
+       wstpWrapper`sal["_In_reads_", "source_len"], "source"}], 
     "ActualOutput" -> HoldForm[{{"double", "const", "*", "const"}, 
-       $CellContext`sal["_In_reads_", "source_len"], "source"}], 
+       wstpWrapper`sal["_In_reads_", "source_len"], "source"}], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.150514997831996, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[688, "Bytes"]]],
+    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[480, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -3631,7 +3629,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237534814*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497397683372`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3846,7 +3846,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -3879,18 +3879,18 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 88, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 149, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parsePossiblySalAnnotatedArgument[
+      frameworkBuild`parsePossiblySalAnnotatedArgument[
       "  _Out_writes_all_ (sourceIndicesAndTargetLength) real* const \
 target"]], "ExpectedOutput" -> HoldForm[{{"real", "*", "const"}, 
-       $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
+       wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
        "target"}], "ActualOutput" -> HoldForm[{{"real", "*", "const"}, 
-       $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
+       wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
        "target"}], "ExpectedMessages" -> {}, "ActualMessages" -> {}, 
-    "AbsoluteTimeUsed" -> Quantity[0``7.1505149978319915, "Seconds"], 
+    "AbsoluteTimeUsed" -> Quantity[0``7.150514997831988, "Seconds"], 
     "CPUTimeUsed" -> Quantity[0., "Seconds"], "MemoryUsed" -> 
-    Quantity[584, "Bytes"]]],
+    Quantity[448, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -3923,7 +3923,9 @@ target"]], "ExpectedOutput" -> HoldForm[{{"real", "*", "const"},
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982375504394`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739830841*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -4130,7 +4132,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -4163,16 +4165,16 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 89, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 150, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`parsePossiblySalAnnotatedArgument[
+      frameworkBuild`parsePossiblySalAnnotatedArgument[
       "  _In_z_ const char* const x"]], "ExpectedOutput" -> 
     HoldForm[{{"char", "const", "*", "const"}, 
-       $CellContext`sal["_In_z_"], "x"}], "ActualOutput" -> 
+       wstpWrapper`sal["_In_z_"], "x"}], "ActualOutput" -> 
     HoldForm[{{"char", "const", "*", "const"}, 
-       $CellContext`sal["_In_z_"], "x"}], "ExpectedMessages" -> {}, 
+       wstpWrapper`sal["_In_z_"], "x"}], "ExpectedMessages" -> {}, 
     "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[416, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
@@ -4206,7 +4208,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982375660653`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497399089866`*^9}],
 
 Cell[BoxData[
  RowBox[{"BraceAndStringAwareCommaSplit", "@*", 
@@ -4240,7 +4244,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982375660653`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497399089866`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -4457,7 +4463,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -4490,9 +4496,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 90, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 151, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`destructureFunction[
+      frameworkBuild`destructureFunction[
       "FUNCTION(unsigned int const,x,(int x, const double* y),\"test\") \
 there"]], "ExpectedOutput" -> 
     HoldForm[{{"unsigned", "int", "const"}, 
@@ -4501,8 +4507,8 @@ there"]], "ExpectedOutput" ->
     HoldForm[{{"unsigned", "int", "const"}, 
        "x", {{{"int"}, "x"}, {{"double", "const", "*"}, "y"}}, "test"}], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[1576, "Bytes"]]],
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[928, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -4535,7 +4541,9 @@ there"]], "ExpectedOutput" ->
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.681198237581691*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749739971489*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -4738,7 +4746,8 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0.0468792`5.821495189610153","\"s\"","seconds",
+                  "\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -4771,9 +4780,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 91, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 152, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`destructureFunction[
+      frameworkBuild`destructureFunction[
       "FUNCTION(void, extract, (\n    \
 _Out_writes_(sourceIndicesAndTarget_len) double* const target,\n\n    \
 _In_reads_(source_len) const double* const source,\n    const size_t \
@@ -4781,25 +4790,26 @@ source_len,\n\n    _In_reads_(sourceIndicesAndTarget_len) const int* const \
 sourceIndices,\n    const size_t sourceIndicesAndTarget_len\n    ),\n    \
 \"target = source[[sourceIndices]]\"\n    )"]], "ExpectedOutput" -> 
     HoldForm[{{"void"}, "extract", {{{"double", "*", "const"}, 
-         $CellContext`sal["_Out_writes_", "sourceIndicesAndTarget_len"], 
+         wstpWrapper`sal["_Out_writes_", "sourceIndicesAndTarget_len"], 
          "target"}, {{"double", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "source_len"], "source"}, {{
+         wstpWrapper`sal["_In_reads_", "source_len"], "source"}, {{
          "size_t", "const"}, "source_len"}, {{"int", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceIndicesAndTarget_len"], 
+         wstpWrapper`sal["_In_reads_", "sourceIndicesAndTarget_len"], 
          "sourceIndices"}, {{"size_t", "const"}, 
          "sourceIndicesAndTarget_len"}}, "target = source[[sourceIndices]]"}],
      "ActualOutput" -> 
     HoldForm[{{"void"}, "extract", {{{"double", "*", "const"}, 
-         $CellContext`sal["_Out_writes_", "sourceIndicesAndTarget_len"], 
+         wstpWrapper`sal["_Out_writes_", "sourceIndicesAndTarget_len"], 
          "target"}, {{"double", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "source_len"], "source"}, {{
+         wstpWrapper`sal["_In_reads_", "source_len"], "source"}, {{
          "size_t", "const"}, "source_len"}, {{"int", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceIndicesAndTarget_len"], 
+         wstpWrapper`sal["_In_reads_", "sourceIndicesAndTarget_len"], 
          "sourceIndices"}, {{"size_t", "const"}, 
          "sourceIndicesAndTarget_len"}}, "target = source[[sourceIndices]]"}],
      "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[2840, "Bytes"]]],
+    Quantity[0.0468792`5.821495189610153, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0.0470000000000006, "Seconds"], "MemoryUsed" -> 
+    Quantity[2256, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -4832,7 +4842,9 @@ sourceIndices,\n    const size_t sourceIndicesAndTarget_len\n    ),\n    \
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982375973344`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740049617*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -5037,7 +5049,8 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0.0312326`5.645123136998216","\"s\"","seconds",
+                  "\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -5070,9 +5083,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 92, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 153, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`destructureFunction[
+      frameworkBuild`destructureFunction[
       "FUNCTION(void, extract, (\n    _Out_writes_all_ \
 (sourceIndicesAndTargetLength) real* const target,\n\n    \
 _In_reads_(sourceLength) const real* const source,\n    const size_t \
@@ -5081,28 +5094,28 @@ const sourceIndices,\n    const size_t sourceIndicesAndTargetLength\n    ),\n \
    \"target = source[[sourceIndices]]. Note that all of target is updated\"\n \
    )"]], "ExpectedOutput" -> 
     HoldForm[{{"void"}, "extract", {{{"real", "*", "const"}, 
-         $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"],
-          "target"}, {{"real", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceLength"], "source"}, {{
+         wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
+         "target"}, {{"real", "const", "*", "const"}, 
+         wstpWrapper`sal["_In_reads_", "sourceLength"], "source"}, {{
          "size_t", "const"}, "sourceLength"}, {{"int", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceIndicesAndTargetLength"], 
+         wstpWrapper`sal["_In_reads_", "sourceIndicesAndTargetLength"], 
          "sourceIndices"}, {{"size_t", "const"}, 
          "sourceIndicesAndTargetLength"}}, 
        "target = source[[sourceIndices]]. Note that all of target is \
 updated"}], "ActualOutput" -> 
     HoldForm[{{"void"}, "extract", {{{"real", "*", "const"}, 
-         $CellContext`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"],
-          "target"}, {{"real", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceLength"], "source"}, {{
+         wstpWrapper`sal["_Out_writes_all_", "sourceIndicesAndTargetLength"], 
+         "target"}, {{"real", "const", "*", "const"}, 
+         wstpWrapper`sal["_In_reads_", "sourceLength"], "source"}, {{
          "size_t", "const"}, "sourceLength"}, {{"int", "const", "*", "const"}, 
-         $CellContext`sal["_In_reads_", "sourceIndicesAndTargetLength"], 
+         wstpWrapper`sal["_In_reads_", "sourceIndicesAndTargetLength"], 
          "sourceIndices"}, {{"size_t", "const"}, 
          "sourceIndicesAndTargetLength"}}, 
        "target = source[[sourceIndices]]. Note that all of target is \
 updated"}], "ExpectedMessages" -> {}, "ActualMessages" -> {}, 
-    "AbsoluteTimeUsed" -> Quantity[0``7.1505149978319915, "Seconds"], 
-    "CPUTimeUsed" -> Quantity[0., "Seconds"], "MemoryUsed" -> 
-    Quantity[2248, "Bytes"]]],
+    "AbsoluteTimeUsed" -> Quantity[0.0312326`5.645123136998216, "Seconds"], 
+    "CPUTimeUsed" -> Quantity[0.03100000000000236, "Seconds"], "MemoryUsed" -> 
+    Quantity[2296, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -5135,7 +5148,9 @@ updated"}], "ExpectedMessages" -> {}, "ActualMessages" -> {},
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376285677`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497401121173`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5170,7 +5185,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376285677`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740127757*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5205,7 +5222,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376285677`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740127757*^9}],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
@@ -5238,7 +5257,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376285677`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740127757*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5273,7 +5294,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376285677`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740127757*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -5511,9 +5534,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 93, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 154, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`destructureGlobal[
+      frameworkBuild`destructureGlobal[
       "GLOBAL(\n    bool,\n    dprintEnabled,\n    true,\n    \"If true, \
 dprintf writes to stdout, otherwise does nothing\"\n    )"]], 
     "ExpectedOutput" -> 
@@ -5524,7 +5547,7 @@ dprintf writes to stdout, otherwise does nothing\"\n    )"]],
        "If true, dprintf writes to stdout, otherwise does nothing"}], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
     Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[168, "Bytes"]]],
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[376, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -5557,7 +5580,9 @@ dprintf writes to stdout, otherwise does nothing\"\n    )"]],
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376442122`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497401902304`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5592,7 +5617,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376442122`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497401902304`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -5630,7 +5657,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376442122`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497401902304`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5668,7 +5697,9 @@ Cell[BoxData[
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376442122`*^9}],
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.681749740205868*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -5875,7 +5906,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0.0156444`5.344873909405866","\"s\"","seconds",
+                 "0.0156373`5.344676765972195","\"s\"","seconds",
                   "\"Seconds\""},
                  "Quantity"],
                 Short[#, 
@@ -5909,9 +5940,9 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 94, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 155, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      $CellContext`destructureGlobalDynamicArray[
+      frameworkBuild`destructureGlobalDynamicArray[
       "GLOBALDYNAMICARRAY(\n    double, x, lengthx,\n    \"stores the current \
 data vector 'x' which is updated to reduce the energy ||F(x)||^2\"\n    );"]],
      "ExpectedOutput" -> 
@@ -5921,9 +5952,9 @@ energy ||F(x)||^2"}], "ActualOutput" ->
     HoldForm[{{"double", "*"}, "x", "lengthx", 
        "stores the current data vector 'x' which is updated to reduce the \
 energy ||F(x)||^2"}], "ExpectedMessages" -> {}, "ActualMessages" -> {}, 
-    "AbsoluteTimeUsed" -> Quantity[0.0156444`5.344873909405866, "Seconds"], 
-    "CPUTimeUsed" -> Quantity[0.015999999999998238`, "Seconds"], "MemoryUsed" -> 
-    Quantity[464, "Bytes"]]],
+    "AbsoluteTimeUsed" -> Quantity[0.0156373`5.344676765972195, "Seconds"], 
+    "CPUTimeUsed" -> Quantity[0.015000000000000568`, "Seconds"], "MemoryUsed" -> 
+    Quantity[416, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
@@ -5956,7 +5987,9 @@ energy ||F(x)||^2"}], "ExpectedMessages" -> {}, "ActualMessages" -> {},
    3.6811621081814566`*^9, 3.6811623334674826`*^9, {3.6811624022900314`*^9, 
    3.681162420794035*^9}, 3.681163686687052*^9, 3.681163881089608*^9, 
    3.681163998839534*^9, 3.681164094330638*^9, 3.6811643016620493`*^9, 
-   3.6811980108498774`*^9, 3.6811982376598186`*^9}]
+   3.6811980108498774`*^9, 3.6811982373941827`*^9, 3.681748756876459*^9, 
+   3.6817490119729548`*^9, 3.6817491612128973`*^9, 3.6817492513510237`*^9, 
+   3.6817493335104785`*^9, 3.6817497402683764`*^9}]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -6100,8 +6133,8 @@ Cell[BoxData[{
    3.6811640871634226`*^9, 3.681164088587593*^9}}],
 
 Cell[BoxData["\<\"\\n:Begin:\\n:Function:       sqr_CUDA\\n:Pattern:        \
-sqrCUDA[gridDim_Integer, blockDim_Integer, x : _Integer]\\n:Arguments:      \
-{gridDim, blockDim, x}\\n:ArgumentTypes:  { Manual }\\n:ReturnType:     \
+sqrCUDA[gridDim_Integer]\\n:Arguments:      {gridDim, blockDim, \
+x}\\n:ArgumentTypes:  { Manual }\\n:ReturnType:     \
 Manual\\n:End:\\n:Evaluate: sqrCUDA::usage = \\\"\\\"\\n\"\>"], "Output",
  CellChangeTimes->{3.6800103727411327`*^9, 3.680023671014343*^9, 
   3.680024239831081*^9, 3.6800244028885565`*^9, 3.6809718036660347`*^9, 
@@ -6112,7 +6145,9 @@ Manual\\n:End:\\n:Evaluate: sqrCUDA::usage = \\\"\\\"\\n\"\>"], "Output",
   3.681062580357956*^9, 3.6810626422320223`*^9, 3.6811621085285144`*^9, 
   3.6811636869526873`*^9, 3.6811638814021206`*^9, 3.6811639991207952`*^9, 
   3.681164094580648*^9, 3.6811643019276843`*^9, 3.6811980111467676`*^9, 
-  3.6811982376754613`*^9}],
+  3.6811982376754613`*^9, 3.6817487583372893`*^9, 3.6817490130910363`*^9, 
+  3.681749162386388*^9, 3.6817492525279355`*^9, 3.6817493346876163`*^9, 
+  3.6817497405183873`*^9}],
 
 Cell[BoxData["\<\"__host__ __device__ int sqr(int x);\\nextern \\\"C\\\" void \
 sqr_()\\n{\\nWSGet(int, x, Integer32);\\nint _result_;\\n_result_ = \
@@ -6133,7 +6168,9 @@ blockDim);\\nmemoryFree(_returns_);\\n}\\n\"\>"], "Output",
   3.681062580357956*^9, 3.6810626422320223`*^9, 3.6811621085285144`*^9, 
   3.6811636869526873`*^9, 3.6811638814021206`*^9, 3.6811639991207952`*^9, 
   3.681164094580648*^9, 3.6811643019276843`*^9, 3.6811980111467676`*^9, 
-  3.6811982376910877`*^9}],
+  3.6811982376754613`*^9, 3.6817487583372893`*^9, 3.6817490130910363`*^9, 
+  3.681749162386388*^9, 3.6817492525279355`*^9, 3.6817493346876163`*^9, 
+  3.6817497405183873`*^9}],
 
 Cell[BoxData["\<\"__host__ __device__ int readAtTid(int const * const v, int \
 n);\\nextern \\\"C\\\" void readAtTid_()\\n{\\nWSGetList(int, v, v_length, \
@@ -6159,7 +6196,9 @@ Integer32);\\nmemoryFree(v_in);\\nmemoryFree(_returns_);\\n}\\n\"\>"], \
   3.681062580357956*^9, 3.6810626422320223`*^9, 3.6811621085285144`*^9, 
   3.6811636869526873`*^9, 3.6811638814021206`*^9, 3.6811639991207952`*^9, 
   3.681164094580648*^9, 3.6811643019276843`*^9, 3.6811980111467676`*^9, 
-  3.6811982376910877`*^9}]
+  3.6811982376754613`*^9, 3.6817487583372893`*^9, 3.6817490130910363`*^9, 
+  3.681749162386388*^9, 3.6817492525279355`*^9, 3.6817493346876163`*^9, 
+  3.6817497405183873`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -6209,19 +6248,6 @@ Cell[BoxData[
    3.680006470200638*^9}, {3.6800078050592365`*^9, 3.6800078308914843`*^9}, {
    3.680971628564556*^9, 3.680971630064617*^9}}],
 
-Cell[CellGroupData[{
-
-Cell["Input-Output", "Chapter",
- CellChangeTimes->{{3.6800054865943213`*^9, 3.6800054872231255`*^9}, {
-  3.681162248532938*^9, 3.6811622523584538`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"input", "=", 
-   RowBox[{"Import", "[", 
-    RowBox[{"\"\<main.cu\>\"", ",", "\"\<Text\>\""}], "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.6811622760743136`*^9, 3.6811622780274954`*^9}}],
-
 Cell["\<\
 This processes Framework.sln\[CloseCurlyQuote]s main.cu and generates \
 WSTPTemplateFile.tm and wstpExternC.cu.
@@ -6238,7 +6264,8 @@ Cell[BoxData[
    RowBox[{"isValidFunction", "[", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"t", ":", "ctypePattern"}], ",", "n_String", ",", 
+      RowBox[{"t", ":", 
+       RowBox[{"CTypePattern", "[", "]"}]}], ",", "n_String", ",", 
       RowBox[{"args", ":", 
        RowBox[{"{", 
         RowBox[{"cargPattern", "..."}], "}"}]}], ",", "u_String"}], "}"}], 
@@ -6253,17 +6280,234 @@ Cell[BoxData[
       RowBox[{"t", "\[Equal]", 
        RowBox[{"{", "\"\<void\>\"", "}"}]}]}], ")"}]}]}], ";"}]], "Input",
  CellChangeTimes->{{3.6800237397110634`*^9, 3.6800237948468423`*^9}, {
-  3.680023866959838*^9, 3.6800238682854776`*^9}, {3.6811625268769674`*^9, 
-  3.6811625341222544`*^9}, {3.681162719378687*^9, 3.6811627298246565`*^9}}],
+   3.680023866959838*^9, 3.6800238682854776`*^9}, {3.6811625268769674`*^9, 
+   3.6811625341222544`*^9}, {3.681162719378687*^9, 3.6811627298246565`*^9}, 
+   3.6817491208459377`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"isValidVariable", "[", 
+     RowBox[{"{", 
+      RowBox[{"t_", ",", "___"}], "}"}], "]"}], ":=", 
+    RowBox[{"knownTypeQ", "@", "t"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"isValidVariable", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\"\<SOPPartition\>\"", ",", "\"\<*\>\""}], "}"}], ",", 
+    "\"\<partitionTable\>\"", ",", "\"\<partitions\>\"", ",", 
+    "\"\< partitions of the SOPD\>\""}], "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.681198064919033*^9, 3.6811981022456293`*^9}, {
+  3.681198213051813*^9, 3.6811982233334894`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.681198224817953*^9, 3.6811982383629727`*^9}, 
+   3.681748758774803*^9, 3.6817490134348016`*^9, 3.681749162573897*^9, 
+   3.6817492527154427`*^9, 3.6817493348594966`*^9, 3.6817497407058773`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["end of package", "Title",
+ CellChangeTimes->{{3.681748906942644*^9, 3.6817489086927176`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"EndPackage", "[", "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["concrete case at hand", "Title",
+ CellChangeTimes->{{3.681748879610608*^9, 3.6817489039256916`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Input-Output", "Chapter",
+ CellChangeTimes->{{3.6800054865943213`*^9, 3.6800054872231255`*^9}, {
+  3.681162248532938*^9, 3.6811622523584538`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6811622760743136`*^9, 3.6811622780274954`*^9}, 
+   3.6817489158865843`*^9, {3.6817492241818595`*^9, 3.6817492263261175`*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"vv", "=", 
-  RowBox[{"First", "[", 
-   RowBox[{"destructureFunction", "/@", 
-    RowBox[{"findFunctions", "@", "input"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.680023846218974*^9, 3.680023851173125*^9}}],
+ RowBox[{
+  RowBox[{"(*", "input", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"$input", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], "~", "FileNameJoin", "~", 
+        "\"\<main.cu\>\""}], ",", "\"\<Text\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"$vv", "=", 
+    RowBox[{"First", "[", 
+     RowBox[{"destructureFunction", "/@", 
+      RowBox[{"findFunctions", "@", "$input"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"isValidFunction", "@", "$vv"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"$functions", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"destructureFunction", "/@", 
+       RowBox[{"findFunctions", "@", "$input"}]}], ",", "isValidFunction"}], 
+     "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"VerificationTest", "[", 
+    RowBox[{"AllHeads", "[", 
+     RowBox[{"$functions", ",", "List"}], "]"}], "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"$cpuFunctions", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"destructureFunction", "/@", 
+       RowBox[{"findCpuFunctions", "@", "$input"}]}], ",", 
+      "isValidFunction"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"VerificationTest", "[", 
+    RowBox[{"AllHeads", "[", 
+     RowBox[{"$cpuFunctions", ",", "List"}], "]"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"$constants", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"destructureConstant", "/@", 
+       RowBox[{"findConstants", "@", "$input"}]}], ",", "isValidVariable"}], 
+     "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"VerificationTest", "[", 
+    RowBox[{"AllHeads", "[", 
+     RowBox[{"$constants", ",", "List"}], "]"}], "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"$globals", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"destructureGlobal", "/@", 
+       RowBox[{"findGlobals", "@", "$input"}]}], ",", "isValidVariable"}], 
+     "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"VerificationTest", "[", 
+    RowBox[{"AllHeads", "[", 
+     RowBox[{"$globals", ",", "List"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"$gda", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"destructureGlobalDynamicArray", "/@", 
+       RowBox[{"findGlobalDynamicArrays", "@", "$input"}]}], ",", 
+      "isValidVariable"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"VerificationTest", "[", 
+    RowBox[{"AllHeads", "[", 
+     RowBox[{"$gda", ",", "List"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "output", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"$pre", "=", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "~", "FileNameJoin", "~", 
+      "\"\<generated\>\""}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+      "$pre", "~", "FileNameJoin", "~", 
+       "\"\<$WSTPWrappingCDefinesCUDA.h\>\""}], ",", 
+      RowBox[{"WSTPWrappingCDefinesCUDA", "[", "]"}], ",", "\"\<Text\>\""}], 
+     "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+     "$pre", "~", "FileNameJoin", "~", "\"\<WSTPTemplateFile.tm\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<:Evaluate: $oldContextPath = $ContextPath; $ContextPath = \
+{\\\"System`\\\"};\n:Evaluate: Begin@\\\"SOPCompiled`Private`\\\";\n\
+:Evaluate: ClearAll@\\\"SOPCompiled`Private`*\\\";\>\"", ",", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "Package", " ", "because", " ", "we", " ", "want", " ", "to", " ", 
+          "make", " ", "sure", " ", "we", " ", "create", " ", "new", " ", 
+          RowBox[{"names", " ", "--"}], " ", "with", " ", "just", " ", 
+          "Begin"}], ",", " ", 
+         RowBox[{
+         "the", " ", "$ContextPath", " ", "might", " ", "already", " ", 
+          "contain", " ", "these", " ", "anmes"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"buildTemplateFileSpecForFunction", "@@@", 
+        RowBox[{"(", 
+         RowBox[{"$functions", "~", "Join", "~", "$cpuFunctions"}], ")"}]}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"buildCUDATemplateFileSpecForFunction", "@@@", "$functions"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"buildTemplateFileSpecForGetter", "@@@", 
+        RowBox[{"(", 
+         RowBox[{
+         "$constants", "~", "Join", "~", "$globals", "~", "Join", "~", 
+          "$gda"}], ")"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"buildTemplateFileSpecForSetter", "@@@", 
+        RowBox[{"(", 
+         RowBox[{"$globals", "~", "Join", "~", "$gda"}], ")"}]}], ",", 
+       "\[IndentingNewLine]", 
+       "\"\<\\n:Evaluate: End[];\n:Evaluate: $ContextPath = \
+$oldContextPath;\\n\>\""}], "\[IndentingNewLine]", "]"}], ",", 
+     "\"\<String\>\""}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{"$pre", "~", "FileNameJoin", "~", "\"\<wstpExternC.cu\>\""}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"ToCCodeString", "@", 
+      RowBox[{"CProgram", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"buildExternCFunctionForFunction", "@@@", "$cpuFunctions"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"buildExternCUDAFunctionForFunction", "@@@", "$functions"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"buildExternCFunctionGetter", "@@@", 
+          RowBox[{"Most", "/@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"Most", "/@", "$constants"}], ")"}], "~", "Join", "~", 
+             RowBox[{"(", 
+              RowBox[{"Most", "/@", "$globals"}], ")"}], "~", "Join", "~", 
+             "$gda"}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"buildExternCFunctionSetter", "@@@", 
+          RowBox[{"Most", "/@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"Most", "/@", "$globals"}], ")"}], "~", "Join", "~", 
+             "$gda"}], ")"}]}]}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
+     "\[IndentingNewLine]", ",", "\"\<String\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6798433110487475`*^9, 3.6798433112049885`*^9}, {
+   3.679843495689531*^9, 3.679843499002138*^9}, {3.6799097782843733`*^9, 
+   3.679909801397273*^9}, 3.679909914625842*^9, {3.6799433466123047`*^9, 
+   3.679943349237413*^9}, 3.679943524794818*^9, {3.6799435556312537`*^9, 
+   3.679943557912578*^9}, {3.6799907146453*^9, 3.679990757165355*^9}, 
+   3.6800054823180013`*^9, {3.6800056338520803`*^9, 3.6800057851878977`*^9}, {
+   3.68000660227844*^9, 3.680006639605032*^9}, {3.6800067514245405`*^9, 
+   3.6800067796387615`*^9}, {3.680006976637575*^9, 3.680006991252792*^9}, 
+   3.6800071490026417`*^9, {3.680007756468606*^9, 3.680007797454764*^9}, {
+   3.6800078527748027`*^9, 3.680007870923436*^9}, {3.680971793743782*^9, 
+   3.680971793884411*^9}, {3.6810323097865276`*^9, 3.681032337813613*^9}, {
+   3.6810336365588408`*^9, 3.6810336690065327`*^9}, 3.681054220683333*^9, 
+   3.6811616121140347`*^9, {3.6811624670672874`*^9, 3.681162474731449*^9}, {
+   3.6811627757044964`*^9, 3.6811627831203794`*^9}, {3.681198566650938*^9, 
+   3.6811985704721684`*^9}, {3.6817489390832453`*^9, 3.681748969809824*^9}, {
+   3.681749234208401*^9, 3.6817492435069795`*^9}, {3.681749778349815*^9, 
+   3.6817498235399747`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6290,124 +6534,91 @@ Cell[BoxData[
    ",", "\<\"the local energy vector computing function\"\>"}], 
   "}"}]], "Output",
  CellChangeTimes->{
-  3.680023851725815*^9, 3.6800242399772825`*^9, 3.680024403038747*^9, 
-   3.680971804041034*^9, 3.6809730923644066`*^9, 3.681052794377388*^9, 
-   3.681053283557754*^9, 3.681053573613693*^9, 3.6810537077200117`*^9, 
-   3.681054663045306*^9, 3.6810558002674356`*^9, 3.6810561790922503`*^9, 
-   3.6810568482553368`*^9, 3.681056912802663*^9, 3.6810606848267455`*^9, 
-   3.681061121279023*^9, 3.6810625809517546`*^9, 3.6810626426851625`*^9, 
-   3.6811621085910316`*^9, {3.6811622564762554`*^9, 3.6811622862256002`*^9}, 
-   3.6811623410083303`*^9, 3.6811624375990257`*^9, 3.6811627322105*^9, 
-   3.68116368767148*^9, 3.681163882058399*^9, 3.681163999730194*^9, 
-   3.6811640951744375`*^9, 3.6811643025527244`*^9, 3.6811980117561665`*^9, 
-   3.6811982383317375`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"isValidFunction", "@", "vv"}]], "Input",
- CellChangeTimes->{{3.6800238537953997`*^9, 3.68002385518513*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501057578535`*^9}],
 
 Cell[BoxData["True"], "Output",
- CellChangeTimes->{{3.6800238554795136`*^9, 3.6800238698914814`*^9}, 
-   3.6800242400063*^9, 3.6800244030677643`*^9, 3.680971804119162*^9, 
-   3.68097309242689*^9, 3.6810527945245514`*^9, 3.6810532837199564`*^9, 
-   3.6810535738710146`*^9, 3.681053708080461*^9, 3.681054663201561*^9, 
-   3.681055800626831*^9, 3.681056179467269*^9, 3.6810568485723267`*^9, 
-   3.681056913115176*^9, 3.6810606849205*^9, 3.6810611213883824`*^9, 
-   3.681062581061144*^9, 3.6810626427945275`*^9, 3.6811621086066403`*^9, 
-   3.6811624468623247`*^9, 3.6811626850061874`*^9, 3.6811627338408146`*^9, 
-   3.681163687702747*^9, 3.6811638820896487`*^9, 3.68116399974582*^9, 
-   3.681164095190048*^9, 3.6811643025683355`*^9, 3.681198011771789*^9, 
-   3.681198238347365*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"isValidVariable", "[", 
-     RowBox[{"{", 
-      RowBox[{"t_", ",", "___"}], "}"}], "]"}], ":=", 
-    RowBox[{"knownTypeQ", "@", "t"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"isValidVariable", "[", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"\"\<SOPPartition\>\"", ",", "\"\<*\>\""}], "}"}], ",", 
-    "\"\<partitionTable\>\"", ",", "\"\<partitions\>\"", ",", 
-    "\"\< partitions of the SOPD\>\""}], "}"}], "]"}]}], "Input",
- CellChangeTimes->{{3.681198064919033*^9, 3.6811981022456293`*^9}, {
-  3.681198213051813*^9, 3.6811982233334894`*^9}}],
-
-Cell[BoxData["False"], "Output",
- CellChangeTimes->{{3.681198224817953*^9, 3.6811982383629727`*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"functions", "=", 
-  RowBox[{"Select", "[", 
-   RowBox[{
-    RowBox[{"destructureFunction", "/@", 
-     RowBox[{"findFunctions", "@", "input"}]}], ",", "isValidFunction"}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"VerificationTest", "[", 
-   RowBox[{"AllHeads", "[", 
-    RowBox[{"functions", ",", "List"}], "]"}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"cpuFunctions", "=", 
-  RowBox[{"Select", "[", 
-   RowBox[{
-    RowBox[{"destructureFunction", "/@", 
-     RowBox[{"findCpuFunctions", "@", "input"}]}], ",", "isValidFunction"}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"VerificationTest", "[", 
-   RowBox[{"AllHeads", "[", 
-    RowBox[{"cpuFunctions", ",", "List"}], "]"}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"constants", "=", 
-  RowBox[{"Select", "[", 
-   RowBox[{
-    RowBox[{"destructureConstant", "/@", 
-     RowBox[{"findConstants", "@", "input"}]}], ",", "isValidVariable"}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"VerificationTest", "[", 
-   RowBox[{"AllHeads", "[", 
-    RowBox[{"constants", ",", "List"}], "]"}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"globals", "=", 
-  RowBox[{"Select", "[", 
-   RowBox[{
-    RowBox[{"destructureGlobal", "/@", 
-     RowBox[{"findGlobals", "@", "input"}]}], ",", "isValidVariable"}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"VerificationTest", "[", 
-   RowBox[{"AllHeads", "[", 
-    RowBox[{"globals", ",", "List"}], "]"}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"gda", "=", 
-  RowBox[{"Select", "[", 
-   RowBox[{
-    RowBox[{"destructureGlobalDynamicArray", "/@", 
-     RowBox[{"findGlobalDynamicArrays", "@", "input"}]}], ",", 
-    "isValidVariable"}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"VerificationTest", "[", 
-  RowBox[{"AllHeads", "[", 
-   RowBox[{"gda", ",", "List"}], "]"}], "]"}]}], "Input",
- CellChangeTimes->{{3.680005494963765*^9, 3.6800055596554847`*^9}, {
-   3.680007733584052*^9, 3.6800077460245905`*^9}, {3.6800237997099285`*^9, 
-   3.680023814520406*^9}, 3.6811622435171413`*^9, 3.6811624490811853`*^9, {
-   3.681198080997813*^9, 3.681198092248273*^9}}],
+ CellChangeTimes->{
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501057608404`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6464,14 +6675,6 @@ Cell[BoxData[
          ",", "\<\"out\"\>"}], "}"}]}], "}"}], 
      ",", "\<\"the derivatives along the i-th variable of the local energy \
 vector computing function\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", "\<\"int\"\>", "}"}], ",", "\<\"nextEven\"\>", ",", 
-     RowBox[{"{", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"{", "\<\"int\"\>", "}"}], ",", "\<\"i\"\>"}], "}"}], "}"}], 
-     ",", "\<\"support even allocation\"\>"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", "\<\"int\"\>", "}"}], ",", "\<\"cs_cumsum\"\>", ",", 
@@ -6751,6 +6954,20 @@ as often as desired\"\>"}], "}"}], ",",
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", "\<\"void\"\>", "}"}], 
+     ",", "\<\"buildFxAndJFxAndSolveRepeatedlyThreadIdPartition\"\>", ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\<\"int\"\>", ",", "\<\"const\"\>"}], "}"}], 
+        ",", "\<\"iterations\"\>"}], "}"}], "}"}], 
+     ",", "\<\"buildFxAndJFxAndSolveRepeatedly on the partition given by \
+linear_global_threadId.does nothing when linear_global_threadId is >= \
+partitionsTODO this should be the block id, threads in the same block should \
+cooperate in the same partition\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "\<\"void\"\>", "}"}], 
      ",", "\<\"receiveAndPrintOptimizationData\"\>", ",", 
      RowBox[{"{", 
       RowBox[{
@@ -6927,20 +7144,47 @@ purpose\"\>"}], "}"}], ",",
       "}"}], ",", "\<\"returns more than one thing: when called via WSTP this \
 will return an Association with all results\"\>"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.681198239003624*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501071165247`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -7081,7 +7325,7 @@ Cell[BoxData[
               PaneBox[
                TagBox[
                 RowBox[{"AllHeads", "[", 
-                 RowBox[{"functions", ",", "List"}], "]"}],
+                 RowBox[{"$functions", ",", "List"}], "]"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -7129,7 +7373,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -7162,31 +7406,58 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 95, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 169, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      paul`AllHeads[$CellContext`functions, List]], "ExpectedOutput" -> 
+      $CellContext`AllHeads[$CellContext`$functions, List]], "ExpectedOutput" -> 
     HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
-    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[160, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.68119823901925*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501071962414`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -7281,20 +7552,47 @@ yIndicesAppropriately sized vectors for receiving these data items are newly \
 allocated in __managed__ memory, hence this is a CPU only function\"\>"}], 
     "}"}]}], "}"}]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.681198239034876*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107274373*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -7435,7 +7733,7 @@ Cell[BoxData[
               PaneBox[
                TagBox[
                 RowBox[{"AllHeads", "[", 
-                 RowBox[{"cpuFunctions", ",", "List"}], "]"}],
+                 RowBox[{"$cpuFunctions", ",", "List"}], "]"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -7483,7 +7781,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -7516,49 +7814,103 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 96, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 170, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      paul`AllHeads[$CellContext`cpuFunctions, List]], "ExpectedOutput" -> 
-    HoldForm[True], "ActualOutput" -> HoldForm[True], 
+      $CellContext`AllHeads[$CellContext`$cpuFunctions, List]], 
+    "ExpectedOutput" -> HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.6811982390505013`*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107359048*^9}],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.6811982390505013`*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107359048*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -7699,7 +8051,7 @@ Cell[BoxData[
               PaneBox[
                TagBox[
                 RowBox[{"AllHeads", "[", 
-                 RowBox[{"constants", ",", "List"}], "]"}],
+                 RowBox[{"$constants", ",", "List"}], "]"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -7747,7 +8099,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -7780,31 +8132,58 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 97, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 171, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      paul`AllHeads[$CellContext`constants, List]], "ExpectedOutput" -> 
+      $CellContext`AllHeads[$CellContext`$constants, List]], "ExpectedOutput" -> 
     HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.681198239066146*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107437174*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -7833,20 +8212,47 @@ of courseDefault: true\"\>"}], "}"}], ",",
      RowBox[{"{", "\<\"real\"\>", "}"}], ",", "\<\"yy\"\>", ",", "\<\"0\"\>", 
      ",", "\<\"yy\"\>"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.681198239081753*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501074996915`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -7987,7 +8393,7 @@ Cell[BoxData[
               PaneBox[
                TagBox[
                 RowBox[{"AllHeads", "[", 
-                 RowBox[{"globals", ",", "List"}], "]"}],
+                 RowBox[{"$globals", ",", "List"}], "]"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -8035,7 +8441,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.150514997831996","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -8068,31 +8474,58 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 98, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 172, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      paul`AllHeads[$CellContext`globals, List]], "ExpectedOutput" -> 
+      $CellContext`AllHeads[$CellContext`$globals, List]], "ExpectedOutput" -> 
     HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.150514997831996, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.6811982390973935`*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107562179*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -8104,20 +8537,47 @@ Cell[BoxData[
     ",", "\<\"stores the current data vector 'x' which is updated to reduce \
 the energy ||F(x)||^2\"\>"}], "}"}], "}"}]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.6811982390973935`*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501075778046`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -8258,7 +8718,7 @@ Cell[BoxData[
               PaneBox[
                TagBox[
                 RowBox[{"AllHeads", "[", 
-                 RowBox[{"gda", ",", "List"}], "]"}],
+                 RowBox[{"$gda", ",", "List"}], "]"}],
                 Short[#, 
                  Rational[2, 3]]& ],
                BaselinePosition->Baseline,
@@ -8306,7 +8766,7 @@ Cell[BoxData[
                TagBox[
                 
                 TemplateBox[{
-                 "0``7.1505149978319915","\"s\"","seconds","\"Seconds\""},
+                 "0``7.150514997831988","\"s\"","seconds","\"Seconds\""},
                  "Quantity"],
                 Short[#, 
                  Rational[2, 3]]& ],
@@ -8339,136 +8799,62 @@ Cell[BoxData[
     DynamicModuleValues:>{}], "]"}],
   TestResultObject[
    Association[
-   "TestIndex" -> 99, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
+   "TestIndex" -> 173, "TestID" -> None, "Outcome" -> "Success", "Input" -> 
     HoldForm[
-      paul`AllHeads[$CellContext`gda, List]], "ExpectedOutput" -> 
+      $CellContext`AllHeads[$CellContext`$gda, List]], "ExpectedOutput" -> 
     HoldForm[True], "ActualOutput" -> HoldForm[True], 
     "ExpectedMessages" -> {}, "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
-    Quantity[0``7.1505149978319915, "Seconds"], "CPUTimeUsed" -> 
+    Quantity[0``7.150514997831988, "Seconds"], "CPUTimeUsed" -> 
     Quantity[0., "Seconds"], "MemoryUsed" -> Quantity[32, "Bytes"]]],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  CellChangeTimes->{
-  3.6800055606337247`*^9, 3.6800059290334034`*^9, 3.6800068906783133`*^9, 
-   3.6800078437675505`*^9, 3.6800079578568945`*^9, 3.6800080398972807`*^9, 
-   3.6800082941555166`*^9, 3.68001031992121*^9, 3.680010372957387*^9, 
-   3.680023671330722*^9, 3.6800238162675705`*^9, 3.6800238747104945`*^9, 
-   3.6800242401895475`*^9, 3.6800244032580023`*^9, 3.6809718043848124`*^9, 
-   3.680973092692543*^9, 3.6810527950231886`*^9, 3.6810532842606316`*^9, 
-   3.6810535743055573`*^9, 3.6810537085690713`*^9, 3.6810546637913675`*^9, 
-   3.6810558010799537`*^9, 3.681056179920394*^9, 3.6810568490567265`*^9, 
-   3.6810569135995674`*^9, 3.6810606854986477`*^9, 3.6810611218259153`*^9, 
-   3.681062581563509*^9, 3.6810626432476883`*^9, 3.6811621089973183`*^9, 
-   3.6811624526603537`*^9, 3.681162737199869*^9, 3.6811636882808647`*^9, 
-   3.6811638826990476`*^9, 3.681164000323969*^9, 3.68116409575257*^9, 
-   3.6811643031464834`*^9, 3.6811980123655696`*^9, {3.6811982293493605`*^9, 
-   3.6811982391130233`*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"pre", "=", 
-    RowBox[{
-     RowBox[{"NotebookDirectory", "[", "]"}], "~", "FileNameJoin", "~", 
-     "\"\<generated\>\""}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{
-     RowBox[{
-     "pre", "~", "FileNameJoin", "~", "\"\<$WSTPWrappingCDefinesCUDA.h\>\""}],
-      ",", "$WSTPWrappingCDefinesCUDA", ",", "\"\<Text\>\""}], "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{
-    RowBox[{"pre", "~", "FileNameJoin", "~", "\"\<WSTPTemplateFile.tm\>\""}], 
-    ",", "\[IndentingNewLine]", 
-    RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
-     RowBox[{
-     "\"\<:Evaluate: BeginPackage@\\\"SOPCompiled`Private`\\\";\\n\n\
-:Evaluate: ClearAll@\\\"SOPCompiled`Private`*\\\";\\n\>\"", ",", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-        "Package", " ", "because", " ", "we", " ", "want", " ", "to", " ", 
-         "make", " ", "sure", " ", "we", " ", "create", " ", "new", " ", 
-         RowBox[{"names", " ", "--"}], " ", "with", " ", "just", " ", 
-         "Begin"}], ",", " ", 
-        RowBox[{
-        "the", " ", "$ContextPath", " ", "might", " ", "already", " ", 
-         "contain", " ", "these", " ", "anmes"}]}], "*)"}], 
-      "\[IndentingNewLine]", 
-      RowBox[{"buildTemplateFileSpecForFunction", "@@@", 
-       RowBox[{"(", 
-        RowBox[{"functions", "~", "Join", "~", "cpuFunctions"}], ")"}]}], ",",
-       "\[IndentingNewLine]", 
-      RowBox[{"buildCUDATemplateFileSpecForFunction", "@@@", "functions"}], 
-      ",", "\[IndentingNewLine]", 
-      RowBox[{"buildTemplateFileSpecForGetter", "@@@", 
-       RowBox[{"(", 
-        RowBox[{
-        "constants", "~", "Join", "~", "globals", "~", "Join", "~", "gda"}], 
-        ")"}]}], ",", "\[IndentingNewLine]", 
-      RowBox[{"buildTemplateFileSpecForSetter", "@@@", 
-       RowBox[{"(", 
-        RowBox[{"globals", "~", "Join", "~", "gda"}], ")"}]}], ",", 
-      "\[IndentingNewLine]", "\"\<:Evaluate: EndPackage[];\\n\>\""}], 
-     "\[IndentingNewLine]", "]"}], ",", "\"\<String\>\""}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"Export", "[", 
-  RowBox[{
-   RowBox[{"pre", "~", "FileNameJoin", "~", "\"\<wstpExternC.cu\>\""}], ",", 
-   "\[IndentingNewLine]", 
-   RowBox[{"ToCCodeString", "@", 
-    RowBox[{"CProgram", "[", 
-     RowBox[{"{", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"buildExternCFunctionForFunction", "@@@", "cpuFunctions"}], 
-       ",", "\[IndentingNewLine]", 
-       RowBox[{"buildExternCUDAFunctionForFunction", "@@@", "functions"}], 
-       ",", "\[IndentingNewLine]", 
-       RowBox[{"buildExternCFunctionGetter", "@@@", 
-        RowBox[{"Most", "/@", 
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"Most", "/@", "constants"}], ")"}], "~", "Join", "~", 
-           RowBox[{"(", 
-            RowBox[{"Most", "/@", "globals"}], ")"}], "~", "Join", "~", 
-           "gda"}], ")"}]}]}], ",", "\[IndentingNewLine]", 
-       RowBox[{"buildExternCFunctionSetter", "@@@", 
-        RowBox[{"Most", "/@", 
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"Most", "/@", "globals"}], ")"}], "~", "Join", "~", 
-           "gda"}], ")"}]}]}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
-   "\[IndentingNewLine]", ",", "\"\<String\>\""}], "]"}]}], "Input",
- CellChangeTimes->{{3.6798433110487475`*^9, 3.6798433112049885`*^9}, {
-   3.679843495689531*^9, 3.679843499002138*^9}, {3.6799097782843733`*^9, 
-   3.679909801397273*^9}, 3.679909914625842*^9, {3.6799433466123047`*^9, 
-   3.679943349237413*^9}, 3.679943524794818*^9, {3.6799435556312537`*^9, 
-   3.679943557912578*^9}, {3.6799907146453*^9, 3.679990757165355*^9}, 
-   3.6800054823180013`*^9, {3.6800056338520803`*^9, 3.6800057851878977`*^9}, {
-   3.68000660227844*^9, 3.680006639605032*^9}, {3.6800067514245405`*^9, 
-   3.6800067796387615`*^9}, {3.680006976637575*^9, 3.680006991252792*^9}, 
-   3.6800071490026417`*^9, {3.680007756468606*^9, 3.680007797454764*^9}, {
-   3.6800078527748027`*^9, 3.680007870923436*^9}, {3.680971793743782*^9, 
-   3.680971793884411*^9}, {3.6810323097865276`*^9, 3.681032337813613*^9}, {
-   3.6810336365588408`*^9, 3.6810336690065327`*^9}, 3.681054220683333*^9, 
-   3.6811616121140347`*^9, {3.6811624670672874`*^9, 3.681162474731449*^9}, {
-   3.6811627757044964`*^9, 3.6811627831203794`*^9}, {3.681198566650938*^9, 
-   3.6811985704721684`*^9}}],
+  3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
+   3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
+   3.6797829199212556`*^9}, 3.679783015526433*^9, 3.6797834315629005`*^9, 
+   3.6797834828078303`*^9, 3.679783533956786*^9, 3.679783578078693*^9, 
+   3.679783687183963*^9, 3.6797838305971947`*^9, 3.67978390117653*^9, {
+   3.679784011529533*^9, 3.679784036798843*^9}, {3.6797840740901346`*^9, 
+   3.679784096646477*^9}, {3.679784154380286*^9, 3.6797841721232147`*^9}, {
+   3.6797842934115195`*^9, 3.679784304767847*^9}, 3.6797844050491886`*^9, 
+   3.6797845009342966`*^9, {3.6798198176643143`*^9, 3.679819846066094*^9}, 
+   3.6798198958497205`*^9, 3.67982101265047*^9, 3.679821084620039*^9, 
+   3.679821237715226*^9, 3.679821414496498*^9, 3.67982292291341*^9, 
+   3.679822966730629*^9, 3.6798231250338507`*^9, 3.6798232974713135`*^9, {
+   3.6798253520748835`*^9, 3.6798253703326163`*^9}, {3.6798256100484266`*^9, 
+   3.6798256330851035`*^9}, 3.6798301976468306`*^9, 3.679832382146491*^9, 
+   3.679832436911957*^9, {3.679834572426363*^9, 3.6798345881306286`*^9}, 
+   3.679834786090098*^9, 3.6798349561433964`*^9, 3.6798434219082685`*^9, {
+   3.6798435042094035`*^9, 3.679843525095882*^9}, 3.679846545726205*^9, 
+   3.679848767364602*^9, 3.679854282752781*^9, 3.679854511095456*^9, 
+   3.6798545683834476`*^9, 3.6798551646904984`*^9, 3.67985593977095*^9, 
+   3.679943109299673*^9, {3.6799433342727013`*^9, 3.6799433582528734`*^9}, 
+   3.6799434904204454`*^9, 3.679943631572384*^9, 3.6799438967562337`*^9, 
+   3.6799441644887824`*^9, 3.679944466078594*^9, 3.679945136997368*^9, 
+   3.6799454957975388`*^9, 3.6799457069351077`*^9, 3.6799458203025017`*^9, 
+   3.679945851038596*^9, {3.680006631701153*^9, 3.6800066408255587`*^9}, 
+   3.6800067062712154`*^9, 3.6800067826985817`*^9, 3.6800068982908173`*^9, 
+   3.680007027896531*^9, 3.6800071495713367`*^9, 3.6800080426557026`*^9, 
+   3.680008115031027*^9, 3.680008297463645*^9, 3.6800103202766957`*^9, 
+   3.6800103733178368`*^9, 3.6800236716931896`*^9, {3.6800238890964603`*^9, 
+   3.680023901681147*^9}, 3.6800242404899282`*^9, 3.680024403549364*^9, 
+   3.680971805119218*^9, 3.6809730934269295`*^9, 3.6809784609659986`*^9, 
+   3.6810527963798666`*^9, 3.6810532856523676`*^9, 3.681053575688266*^9, 
+   3.681053709960807*^9, {3.681053824201372*^9, 3.6810538416241083`*^9}, 
+   3.6810542218865223`*^9, 3.6810546650570445`*^9, 3.6810558025956554`*^9, 
+   3.6810558512540865`*^9, 3.681056181350874*^9, 3.6810568508283215`*^9, 
+   3.6810569152871213`*^9, 3.681060686420577*^9, 3.6810611227478313`*^9, 
+   3.681062582516657*^9, 3.6810626442008333`*^9, 3.6811621095986924`*^9, 
+   3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
+   3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
+   3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750107640323*^9}],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Paul\\\\Dropbox\\\\Paul\\\\\
-MasterarbeitShared\\\\Research\\\\MathematicaLibraries\\\\Framework\\\\\
-generated\\\\WSTPTemplateFile.tm\"\>"], "Output",
+MasterarbeitShared\\\\Research\\\\MathematicaLibraries\\\\\
+SOPCompiledFramework\\\\generated\\\\WSTPTemplateFile.tm\"\>"], "Output",
  CellChangeTimes->{
   3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
    3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
@@ -8509,11 +8895,12 @@ generated\\\\WSTPTemplateFile.tm\"\>"], "Output",
    3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
    3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
    3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
-   3.6811982392224007`*^9}],
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.6817501078278303`*^9}],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Paul\\\\Dropbox\\\\Paul\\\\\
-MasterarbeitShared\\\\Research\\\\MathematicaLibraries\\\\Framework\\\\\
-generated\\\\wstpExternC.cu\"\>"], "Output",
+MasterarbeitShared\\\\Research\\\\MathematicaLibraries\\\\\
+SOPCompiledFramework\\\\generated\\\\wstpExternC.cu\"\>"], "Output",
  CellChangeTimes->{
   3.67978042201815*^9, 3.679780675543709*^9, 3.679781656022152*^9, {
    3.67978171665596*^9, 3.679781753935523*^9}, {3.679782911606723*^9, 
@@ -8554,13 +8941,14 @@ generated\\\\wstpExternC.cu\"\>"], "Output",
    3.6811624788057303`*^9, {3.6811627559812965`*^9, 3.6811627836828575`*^9}, 
    3.681163688546781*^9, 3.6811638830428104`*^9, 3.681164000620875*^9, 
    3.681164096031517*^9, 3.68116430342776*^9, 3.6811980126155605`*^9, 
-   3.6811982392848854`*^9}]
+   3.6811982392224007`*^9, 3.6817487595717173`*^9, {3.6817497995635233`*^9, 
+   3.681749827278087*^9}, 3.681750108030965*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{869, 1041},
-WindowMargins->{{186, Automatic}, {Automatic, 63}},
+WindowSize->{869, 1021},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
 StyleDefinitions->"Default.nb"
 ]
@@ -8575,87 +8963,88 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 228, 5, 30, "Text"],
 Cell[CellGroupData[{
-Cell[811, 29, 1779, 44, 145, "Input"],
-Cell[2593, 75, 8905, 242, 72, "Output"],
-Cell[11501, 319, 8959, 243, 72, "Output"],
-Cell[20463, 564, 10392, 270, 72, "Output"],
-Cell[30858, 836, 9194, 249, 72, "Output"]
+Cell[580, 22, 427, 9, 50, "Input"],
+Cell[1010, 33, 189, 2, 30, "Output"]
+}, Open  ]],
+Cell[1214, 38, 228, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1467, 47, 1779, 44, 145, "Input"],
+Cell[3249, 93, 9070, 244, 72, "Output"],
+Cell[12322, 339, 9120, 245, 72, "Output"],
+Cell[21445, 586, 10614, 273, 72, "Output"],
+Cell[32062, 861, 9357, 251, 72, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40089, 1090, 106, 1, 90, "Title"],
-Cell[40198, 1093, 348, 6, 49, "Text"],
-Cell[40549, 1101, 137, 1, 30, "Text"],
+Cell[41456, 1117, 106, 1, 90, "Title"],
+Cell[41565, 1120, 348, 6, 49, "Text"],
+Cell[41916, 1128, 137, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[40711, 1106, 21253, 532, 3034, "Input"],
-Cell[61967, 1640, 2271, 32, 30, "Output"],
-Cell[64241, 1674, 10830, 274, 72, "Output"],
-Cell[75074, 1950, 2235, 32, 30, "Output"],
-Cell[77312, 1984, 10573, 269, 72, "Output"],
-Cell[87888, 2255, 10585, 269, 72, "Output"],
-Cell[98476, 2526, 10313, 262, 72, "Output"],
-Cell[108792, 2790, 10912, 275, 72, "Output"],
-Cell[119707, 3067, 10973, 277, 72, "Output"],
-Cell[130683, 3346, 11568, 287, 72, "Output"],
-Cell[142254, 3635, 11617, 290, 72, "Output"],
-Cell[153874, 3927, 11153, 281, 72, "Output"],
-Cell[165030, 4210, 2232, 32, 30, "Output"],
-Cell[167265, 4244, 11705, 293, 72, "Output"],
-Cell[178973, 4539, 12360, 295, 72, "Output"],
-Cell[191336, 4836, 12528, 301, 72, "Output"],
-Cell[203867, 5139, 2239, 33, 30, "Output"],
-Cell[206109, 5174, 2243, 33, 30, "Output"],
-Cell[208355, 5209, 2168, 31, 30, "Output"],
-Cell[210526, 5242, 2237, 33, 30, "Output"],
-Cell[212766, 5277, 11282, 282, 72, "Output"],
-Cell[224051, 5561, 2239, 33, 30, "Output"],
-Cell[226293, 5596, 2331, 36, 30, "Output"],
-Cell[228627, 5634, 2321, 36, 30, "Output"],
-Cell[230951, 5672, 11501, 286, 72, "Output"]
+Cell[42078, 1133, 21049, 526, 2958, "Input"],
+Cell[63130, 1661, 10978, 275, 72, "Output"],
+Cell[74111, 1938, 2385, 34, 30, "Output"],
+Cell[76499, 1974, 10717, 270, 72, "Output"],
+Cell[87219, 2246, 10731, 270, 72, "Output"],
+Cell[97953, 2518, 10464, 264, 72, "Output"],
+Cell[108420, 2784, 11063, 277, 72, "Output"],
+Cell[119486, 3063, 11126, 279, 72, "Output"],
+Cell[130615, 3344, 11723, 289, 72, "Output"],
+Cell[142341, 3635, 11764, 292, 72, "Output"],
+Cell[154108, 3929, 11302, 283, 72, "Output"],
+Cell[165413, 4214, 2382, 34, 30, "Output"],
+Cell[167798, 4250, 11855, 295, 72, "Output"],
+Cell[179656, 4547, 12557, 299, 72, "Output"],
+Cell[192216, 4848, 12723, 304, 72, "Output"],
+Cell[204942, 5154, 2387, 35, 30, "Output"],
+Cell[207332, 5191, 2391, 35, 30, "Output"],
+Cell[209726, 5228, 2316, 33, 30, "Output"],
+Cell[212045, 5263, 2385, 35, 30, "Output"],
+Cell[214433, 5300, 11435, 284, 72, "Output"],
+Cell[225871, 5586, 2389, 35, 30, "Output"],
+Cell[228263, 5623, 2481, 38, 30, "Output"],
+Cell[230747, 5663, 2469, 38, 30, "Output"],
+Cell[233219, 5703, 11654, 288, 72, "Output"]
 }, Open  ]],
-Cell[242467, 5961, 273, 4, 30, "Input"],
+Cell[244888, 5994, 273, 4, 30, "Input"],
 Cell[CellGroupData[{
-Cell[242765, 5969, 5277, 130, 810, "Input"],
-Cell[248045, 6101, 985, 13, 202, "Output"],
-Cell[249033, 6116, 1369, 19, 468, "Output"],
-Cell[250405, 6137, 1705, 24, 639, "Output"]
+Cell[245186, 6002, 5277, 130, 810, "Input"],
+Cell[250466, 6134, 1101, 15, 202, "Output"],
+Cell[251570, 6151, 1517, 21, 468, "Output"],
+Cell[253090, 6174, 1853, 26, 639, "Output"]
 }, Open  ]],
-Cell[252125, 6164, 2436, 45, 164, "Input"],
+Cell[254958, 6203, 2436, 45, 164, "Input"],
+Cell[257397, 6250, 426, 8, 68, "Text"],
+Cell[257826, 6260, 908, 24, 50, "Input"],
 Cell[CellGroupData[{
-Cell[254586, 6213, 152, 2, 64, "Chapter"],
-Cell[254741, 6217, 225, 5, 30, "Input"],
-Cell[254969, 6224, 426, 8, 68, "Text"],
-Cell[255398, 6234, 850, 22, 50, "Input"],
-Cell[CellGroupData[{
-Cell[256273, 6260, 232, 5, 30, "Input"],
-Cell[256508, 6267, 1615, 35, 50, "Output"]
+Cell[258759, 6288, 655, 17, 69, "Input"],
+Cell[259417, 6307, 248, 3, 30, "Output"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[258160, 6307, 131, 2, 30, "Input"],
-Cell[258294, 6311, 777, 11, 30, "Output"]
+Cell[259714, 6316, 99, 1, 90, "Title"],
+Cell[259816, 6319, 58, 1, 30, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[259108, 6327, 655, 17, 69, "Input"],
-Cell[259766, 6346, 100, 1, 30, "Output"]
-}, Open  ]],
+Cell[259911, 6325, 106, 1, 90, "Title"],
 Cell[CellGroupData[{
-Cell[259903, 6352, 2240, 57, 278, "Input"],
-Cell[262146, 6411, 20456, 531, 1171, "Output"],
-Cell[282605, 6944, 9065, 244, 72, "Output"],
-Cell[291673, 7190, 4411, 106, 221, "Output"],
-Cell[296087, 7298, 9074, 244, 72, "Output"],
-Cell[305164, 7544, 1062, 16, 30, "Output"],
-Cell[306229, 7562, 9066, 244, 72, "Output"],
-Cell[315298, 7808, 1981, 40, 88, "Output"],
-Cell[317282, 7850, 9062, 244, 72, "Output"],
-Cell[326347, 8096, 1328, 23, 50, "Output"],
-Cell[327678, 8121, 9056, 244, 72, "Output"]
-}, Open  ]],
+Cell[260042, 6330, 152, 2, 64, "Chapter"],
+Cell[260197, 6334, 174, 2, 30, "Input"],
 Cell[CellGroupData[{
-Cell[336771, 8370, 4532, 96, 496, "Input"],
-Cell[341306, 8468, 3110, 43, 50, "Output"],
-Cell[344419, 8513, 3105, 43, 50, "Output"]
+Cell[260396, 6340, 7727, 169, 1040, "Input"],
+Cell[268126, 6511, 3861, 65, 50, "Output"],
+Cell[271990, 6578, 3057, 42, 30, "Output"],
+Cell[275050, 6622, 22793, 564, 1228, "Output"],
+Cell[297846, 7188, 11087, 271, 72, "Output"],
+Cell[308936, 7461, 6420, 133, 221, "Output"],
+Cell[315359, 7596, 11090, 271, 72, "Output"],
+Cell[326452, 7869, 3069, 43, 30, "Output"],
+Cell[329524, 7914, 11084, 271, 72, "Output"],
+Cell[340611, 8187, 3992, 67, 88, "Output"],
+Cell[344606, 8256, 11080, 271, 72, "Output"],
+Cell[355689, 8529, 3337, 50, 50, "Output"],
+Cell[359029, 8581, 11072, 271, 72, "Output"],
+Cell[370104, 8854, 3221, 44, 50, "Output"],
+Cell[373328, 8900, 3214, 44, 50, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

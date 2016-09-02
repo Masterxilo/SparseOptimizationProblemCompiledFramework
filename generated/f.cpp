@@ -1,10 +1,3 @@
 {
-out[0] = times(x(2), plus(neg(times(max(0., plus(times(x(1), times(plus(neg(x(16)), x(17)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(16)), x(17)))), sqr(plus(1.e-7, plus(neg(x(16)), x(19)))))))), times(x(0), times(plus(neg(x(16)), x(19)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(16)), x(17)))), sqr(plus(1.e-7, plus(neg(x(16)), x(19)))))))))), x(25))), plus(times(max(0., plus(times(x(1), times(plus(neg(x(19)), x(20)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(19)), x(20)))), sqr(plus(1.e-7, plus(neg(x(19)), x(22)))))))), times(x(0), times(plus(neg(x(19)), x(22)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(19)), x(20)))), sqr(plus(1.e-7, plus(neg(x(19)), x(22)))))))))), x(28)), plus(x(34), neg(x(37))))));
-out[1] = times(x(2), plus(neg(times(max(0., plus(times(x(1), times(plus(neg(x(18)), x(19)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(18)), x(19)))), sqr(plus(1.e-7, plus(neg(x(18)), x(21)))))))), times(x(0), times(plus(neg(x(18)), x(21)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(18)), x(19)))), sqr(plus(1.e-7, plus(neg(x(18)), x(21)))))))))), x(27))), plus(times(max(0., plus(times(x(1), times(plus(neg(x(19)), x(20)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(19)), x(20)))), sqr(plus(1.e-7, plus(neg(x(19)), x(22)))))))), times(x(0), times(plus(neg(x(19)), x(22)), rsqrt(plus(sqr(plus(1.e-7, plus(neg(x(19)), x(20)))), sqr(plus(1.e-7, plus(neg(x(19)), x(22)))))))))), x(28)), plus(x(36), neg(x(37))))));
-out[2] = times(x(3), plus(x(16), plus(x(18), plus(times(-4, x(19)), plus(x(20), x(22))))));
-out[3] = times(x(4), plus(neg(x(10)), x(19)));
-out[4] = times(x(5), times(plus(x(28), neg(x(31))), sqrt(pow(plus(1, times(3, sqrt(sqr(plus(times(x(37), inv(plus(1, x(37)))), neg(times(x(40), inv(plus(1, x(40)))))))))), -3))));
-out[5] = times(x(5), times(plus(x(28), neg(x(29))), sqrt(pow(plus(1, times(3, sqrt(sqr(plus(times(x(37), inv(plus(1, x(37)))), neg(times(x(38), inv(plus(1, x(38)))))))))), -3))));
-out[6] = times(x(5), times(plus(neg(x(25)), x(28)), sqrt(pow(plus(1, times(3, sqrt(sqr(plus(neg(times(x(34), inv(plus(1, x(34))))), times(x(37), inv(plus(1, x(37))))))))), -3))));
-out[7] = times(x(5), times(plus(neg(x(27)), x(28)), sqrt(pow(plus(1, times(3, sqrt(sqr(plus(neg(times(x(36), inv(plus(1, x(36))))), times(x(37), inv(plus(1, x(37))))))))), -3))));
+out[0] = plus(1, neg(cos(x(0))));
 }

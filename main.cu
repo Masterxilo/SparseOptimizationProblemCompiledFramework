@@ -59,6 +59,7 @@ Only primitive types can be passed back and forth automatically as of now.
 
 #define WL_WSTP_MAIN        // undefine to use main below to debug without mathematica 
 #define WL_ALLOC_CONSOLE
+#define WL_WSTP_PRE_MAIN
 #include <paulwl.h> 
 #include <paul.h>
 
@@ -823,30 +824,28 @@ FUNCTION(void, extract, (
 //__managed__ char memory[40000/*"Maximum Shared Memory Per Block" -> 49152*/ * 1000]; // TODO could allocate 8 byte sized type, should be aligned then (?)
 //__managed__ bool claimedMemory = false; // makes sure that SOMEMEM is only called by one function on the stack
 
-#ifdef __CUDA_ARCH__
+// "A default heap of eight megabytes is allocated if any program uses malloc() without explicitly specifying the heap size." -- want more 
+
+void preWsMain() { // using a constructor to do this seems not to work
+    int const mb = 100;
+    dprintf("setting cuda malloc heap size to %d mb\n", mb);
+    cudaDeviceSetLimit(cudaLimitMallocHeapSize, mb * 1000 * 1000); // basically the only memory we will use, so have some!
+    CUDA_CHECK_ERRORS();
+}
+
 #define SOMEMEM() \
-    __shared__ char memory[0xc000/4 /*"Maximum Shared Memory Per Block" -> 49152 = 0xc000 (reduced due to debug?) -- also cannot be much larger on stack: msvc default is 1MB*/  /* fake*/]; /* with * 100, stack overflow in CPU, with * 10, cudaGetLastError 2 cudaErrorMemoryAllocation out of memory */\
+    const size_t memory_size = 4000  * 1000;\
+    char* const memory = (char*)malloc(memory_size);/*use global memory afterall*/\
     char* mem = (char*)(((unsigned long long)memory+7) & (~ 0x7ull)); /* align on 8 byte boundary */\
     assert(aligned(mem, 8) && after(mem, memory));\
-    int memsz = sizeof(memory)-8;/*be safe*/ \
-    //assert(!claimedMemory); claimedMemory = true;
+    int memsz = memory_size - 8;/*be safe*/ \
+    assert(memsz>0);\
+    bool claimedMemory = true;\
+    dprintf("allocated %d bytes at %p using malloc\n", memory_size, memory);\
+    assert(memory); /*attempting to access a null pointer just gives a kernel launch failure on GPU most of the time - at least when debugger cannot be attached */
 
+#define FREESOMEMEM() {assert(claimedMemory); claimedMemory = false; free(memory); mem = 0;}
 
-#define FREESOMEMEM() //claimedMemory = false;
-
-#else
-bool claimedMemory = false;
-char memory[40000/*"Maximum Shared Memory Per Block" -> 49152 -- also cannot be much larger on stack: msvc default is 1MB*/ * 10/* fake*/ * 1000]; /* with * 100, stack overflow in CPU, with * 10, cudaGetLastError 2 cudaErrorMemoryAllocation out of memory */
-// on the cpu, just use lots and lots of memory
-#define SOMEMEM() \
-    char* mem = (char*)(((unsigned long long)memory+7) & (~ 0x7ull)); /* align on 8 byte boundary */\
-    assert(aligned(mem, 8) && after(mem, memory));\
-    int memsz = sizeof(memory)-8;/*be safe*/ \
-    assert(!claimedMemory); claimedMemory = true;
-
-#define FREESOMEMEM() assert(claimedMemory); claimedMemory = false;
-
-#endif
 
 #define SOMEMEMP mem, memsz
 
@@ -1229,9 +1228,12 @@ FUNCTION(
     dprintf("allocating sparse matrix for %d entries\n", maxNNZ);
     cs* J = cs_spalloc(sop->lengthFx, sop->lengthY, maxNNZ, 1, SOMEMEMP); // might run out of memory here
 
+    dprintf("buildFxandJFx\n");
     buildFxandJFx(sop, J, buildFx);
 
     dprintf("used %d of %d allocated spaces in J\n", J->nz, J->nzmax);
+    assert(J->nz > 0); // there must be at least one (nonzero) entry in the jacobian, otherwise we have taken the derivative only over variables no ocurring (or no variables at all!)
+
     J = cs_triplet(J, SOMEMEMP); // "optimizes storage of J, after which it may no longer be modified" 
     // TODO recycle memory
 
@@ -1260,7 +1262,7 @@ FUNCTION(
     extractSop(partition);
 
     // TODO we might want to do this externally
-    dprintf("buildFxAndJFxAndSolveRepeatedly %d times\n", iterations);
+    dprintf("\n=== buildFxAndJFxAndSolveRepeatedly %d times in partition %d  ===\n", iterations, partition);
     assert(iterations > 0); // TODO iterations should be size_t
     
     DO(i, iterations) {
@@ -1285,8 +1287,12 @@ FUNCTION(
     "TODO this should be the block id, threads in the same block should cooperate in the same partition"
     )
 {
-    if (linear_global_threadId() >= partitions) return;
+    if (linear_global_threadId() >= partitions) {
+        dprintf("\n--- thread id %d has nothing to do  - there are only %d partitions\n", linear_global_threadId(), partitions);
+        return;
+    }
 
+    dprintf("\n=== Starting work on partition %d in the thread of the same id ===\n", linear_global_threadId());
     buildFxAndJFxAndSolveRepeatedly(linear_global_threadId(), iterations);
 }
 
