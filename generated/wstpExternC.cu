@@ -74,41 +74,6 @@ memoryFree(input_in);
 memoryFree(out);
 }
 
-__host__ __device__ void df(int const i, real const * const input, real * const out);
-
-extern "C" void df_()
-{
-WSGet(int, i, Integer32);
-WSGetList(float, input, input_length, Real32);
-float * out;
-out = tmalloc<float>(lengthfz);
-df(i, input, out);
-WSPutList(Real32, out, lengthfz);
-WSReleaseList(input, input_length, Real32);
-memoryFree(out);
-}
-
-__global__ void KERNEL_df(int const i, real const * const input, real * const out)
-{
-df(i, input, out);
-}
-
-extern "C" void df_CUDA()
-{
-WSGet(int, gridDim, Integer32);
-WSGet(int, blockDim, Integer32);
-WSGet(int, i, Integer32);
-WSGetList(float, input, input_length, Real32);
-float * input_in;
-input_in = mallocmemcpy(input, input_length);
-float * out;
-out = tmalloc<float>(lengthfz);
-CUDAKERNEL_LAUNCH(KERNEL_df, gridDim, blockDim, i, input_in, out);
-WSPutList(Real32, out, lengthfz);
-WSReleaseList(input, input_length, Real32);
-memoryFree(input_in);
-memoryFree(out);
-}
 
 __host__ __device__ int cs_cumsum(int * p, int * c, int const n);
 

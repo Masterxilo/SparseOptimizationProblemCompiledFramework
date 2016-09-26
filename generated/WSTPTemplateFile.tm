@@ -11,15 +11,6 @@
 :Evaluate: f::usage = "the local energy vector computing function"
 
 :Begin:
-:Function:       df_
-:Pattern:        df[i : _Integer, input : {___Real}]
-:Arguments:      {i, input}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: df::usage = "the derivatives along the i-th variable of the local energy vector computing function"
-
-:Begin:
 :Function:       cs_cumsum_
 :Pattern:        cscumsum[p : {___Integer}, c : {___Integer}, n : _Integer]
 :Arguments:      {p, c, n}
@@ -243,15 +234,6 @@
 :ReturnType:     Manual
 :End:
 :Evaluate: fCUDA::usage = "the local energy vector computing function"
-
-:Begin:
-:Function:       df_CUDA
-:Pattern:        dfCUDA[gridDim_Integer, blockDim_Integer, i : _Integer, input : {___Real}]
-:Arguments:      {gridDim, blockDim, i, input}
-:ArgumentTypes:  { Manual }
-:ReturnType:     Manual
-:End:
-:Evaluate: dfCUDA::usage = "the derivatives along the i-th variable of the local energy vector computing function"
 
 :Begin:
 :Function:       cs_cumsum_CUDA

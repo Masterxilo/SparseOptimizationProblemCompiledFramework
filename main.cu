@@ -12,6 +12,11 @@ The solution to this may or may not be close to the solution to
 */
 
 /*
+SOPCompiled WL-library, c++ side.
+
+Note: superceded by the SOPCompiled c++ interface/implementation.
+TODO use that from here.
+
 Compile with nvcc, after building the generated files with frameworkBuild.nb
 (only needs to rerun when the external interface changes)
 
@@ -21,7 +26,15 @@ NSIGHT_CUDA_DEBUGGER=1
 
 SetEnvironment["NSIGHT_CUDA_DEBUGGER" -> "1"]
 
-Except for paul.h, standard/windows/cuda headers and generated files, this file is self-contained
+Except for paul.h, standard/windows/cuda headers and generated files, this file is self-contained.
+Generated required files:
+    $CFormDefines
+    f,df.cpp
+    length(f)z.cpp
+The Wolfram WSTP interface (WSTPMain.c, wstpExternC.cu, WSTPTemplateFile.tm) are optional.
+
+TODO currently nvcc compilation seems to fail when df is present in the template file/wstp interface (linking error undefined reference to _Z*...df...). Just remove it from there.
+The SOPCompiled interface only uses a handful of functions from here anyways (receive* and solve* basically)
 */
 
 #define _USE_MATH_DEFINES
@@ -57,16 +70,20 @@ Only primitive types can be passed back and forth automatically as of now.
 */
 
 
+#ifdef USE_WOLFRAM_LANGUAGE_INTERFACE
+
 #define WL_WSTP_MAIN        // undefine to use main below to debug without mathematica 
 #define WL_ALLOC_CONSOLE
 #define WL_WSTP_PRE_MAIN
 #include <paulwl.h> 
-#include <paul.h>
 
+#endif
+
+#include <paul.h>
 
 // Most global data, can be queries via State
 #define GLOBAL(type, name, defaultValue, usage) __managed__ type name = defaultValue
-#define GLOBALDYNAMICARRAY(elementtype, name, sizevar, usage) __managed__ elementtype* name = 0; __managed__ int sizevar = 0; // lengths are int because that's what WSTP expects -- it doesn't seem to support larger arrays (at least not sent at once) -- should be size_t
+#define GLOBALDYNAMICARRAY(elementtype, name, sizevar, usage)  __managed__ int sizevar = 0; /*lengths are int because that's what WSTP expects -- it doesn't seem to support larger arrays (at least not sent at once) -- should be size_t*/ __managed__ elementtype* name = 0;
 
 #define GLOBALDYNAMICARRAY_SHAREDLENGTH(elementtype, name, sizevar, usage) __managed__ elementtype* name = 0; // TODO would be nice if it was detected that the variable already exists
 
@@ -87,6 +104,15 @@ Only primitive types can be passed back and forth automatically as of now.
 #define FUNCTION(ret, name, args, usage) /** usage */ __host__ __device__ ret name args
 #define MEMBERFUNCTION(ret, name, args, usage) /** usage */ __host__ __device__ ret name args
 
+
+
+
+
+
+
+
+
+
 // FOR with const iterating variable
 // for (int i = 0; i < 10; i++) i+=10; is legal but bad
 // FOR(int,i,0,10) i+=10; is illegal
@@ -100,10 +126,19 @@ Only primitive types can be passed back and forth automatically as of now.
 #define FOR01(type, var, maxExclusive) FOR(type, var, 0, maxExclusive, 1)
 #define FOR01S(var, maxExclusive) FOR(size_t, var, 0, maxExclusive, 1)
 
-// Like Mathematica's Do, but starts at 0 and goes to maxExclusive-1
+// Like Mathematica's Do[..., {var, max}], but starts at 0 and goes to maxExclusive-1
+// var is const within the loop body and is of unspecified integral type.
 #define DO(var, maxExclusive) FOR01S(var, maxExclusive) MAKE_CONST(var)
 
 #define MAKE_CONST(var) BLOCK_DECLARE(auto var##_ = var) BLOCK_DECLARE(const auto var = var##_)
+
+
+
+
+
+
+
+
 
 // Special:
 
@@ -137,10 +172,14 @@ CONSTANTD int lengthfz =
 #include "lengthfz.cpp" /* generated for each problem */
 ;
 
+#include "$WSTPWrappingCDefinesCUDA.h" /* generated for interface, used also for memory management & CUDA_CHECK_ERRORS*/
 
-#include "$WSTPWrappingCDefinesCUDA.h" /* generated for interface, used for memory management */
+#ifdef USE_WOLFRAM_LANGUAGE_INTERFACE
+
 #ifdef WL_WSTP_MAIN
 #include "wstpExternC.cu"              /* generated for interface */
+#endif
+
 #endif
 
 #include "$CFormDefines.cpp"  /* generated for problem, rarely changes */  // Required for including *working* definitions of f and df -- this defines what times(x,y) etc. mean
@@ -151,13 +190,17 @@ CONSTANTD int lengthfz =
 // should not accept just anything
 FUNCTION(void, f, (
     _In_reads_(lengthz) const real* const input,
-    _Out_writes_(lengthfz) real* const out
+    _Out_writes_(lengthfz) //_Out_writes_all_(lengthfz) 
+    real* const out
     ), "the local energy vector computing function") {
 #include "f.cpp" /* generated for each problem, depends on $CFormDefines*/
 }
-FUNCTION(void, df, (int const i,
+
+FUNCTION(void, df, (
+    _In_range_(0, lengthz - 1) unsigned int const i,
     _In_reads_(lengthz) real const * const input,
-    _Out_writes_(lengthfz) real * const out
+    _Out_writes_(lengthfz)  //_Out_writes_all_(lengthfz) 
+    real * const out
     ), "the derivatives along the i-th variable of the local energy vector computing function") {
 #include "df.cpp" /* generated for each problem */
 }
@@ -556,7 +599,7 @@ FUNCTION(void, assertFinite, (_In_reads_(n) const real* const x, const int n), "
         assertFinite(x[i]);
 }
 
-FUNCTION(void,assertFinite,(const vector& const v),"assert that each element in v is finite") {
+FUNCTION(void,assertFinite,(const vector& v),"assert that each element in v is finite") {
     assertFinite(v.x, v.n);
 }
 
@@ -686,9 +729,11 @@ FUNCTION(void,conjgrad_normal,(
     vector p = vector_copy(r, MEMPOOLPARAM);//p=r;
 
     real rsold = dot(r, r);//rsold=r'*r;
+
+    vector Ap;
     if (sqrt(rsold) < 1e-5) goto end; // low residual: solution found
 
-    vector Ap = vector_allocate(A.cols, MEMPOOLPARAM);
+    Ap = vector_allocate(A.cols, MEMPOOLPARAM);
 
     for (int i = 1; i <= b.n; i++) {
         mv(t, A, p); mv(Ap, AT, t);//t = A*p;Ap=A^T*t;//Ap=A^T*A*p;
@@ -827,21 +872,22 @@ FUNCTION(void, extract, (
 // "A default heap of eight megabytes is allocated if any program uses malloc() without explicitly specifying the heap size." -- want more 
 
 void preWsMain() { // using a constructor to do this seems not to work
-    int const mb = 100;
-    dprintf("setting cuda malloc heap size to %d mb\n", mb);
+    int const mb = 400;
+    printf("setting cuda malloc heap size to %d mb\n", mb);
     cudaDeviceSetLimit(cudaLimitMallocHeapSize, mb * 1000 * 1000); // basically the only memory we will use, so have some!
     CUDA_CHECK_ERRORS();
 }
+// TODO easily exceeded with lots of partitions on big scenes - small partitions don't need that much memory
 
 #define SOMEMEM() \
-    const size_t memory_size = 4000  * 1000;\
+    const size_t memory_size = 8 * 1000  * 1000;\
     char* const memory = (char*)malloc(memory_size);/*use global memory afterall*/\
     char* mem = (char*)(((unsigned long long)memory+7) & (~ 0x7ull)); /* align on 8 byte boundary */\
     assert(aligned(mem, 8) && after(mem, memory));\
     int memsz = memory_size - 8;/*be safe*/ \
     assert(memsz>0);\
     bool claimedMemory = true;\
-    dprintf("allocated %d bytes at %p using malloc\n", memory_size, memory);\
+    printf("allocated %d bytes at %p using malloc\n", memory_size, memory);\
     assert(memory); /*attempting to access a null pointer just gives a kernel launch failure on GPU most of the time - at least when debugger cannot be attached */
 
 #define FREESOMEMEM() {assert(claimedMemory); claimedMemory = false; free(memory); mem = 0;}
@@ -879,8 +925,6 @@ struct SOPPartition {
     */
     int* yIndices; /* lengthY */
 };
-
-
 
 GLOBALDYNAMICARRAY(
     SOPPartition, partitionTable, partitions,
@@ -1043,7 +1087,7 @@ FUNCTION(void,
     assert(J && x && sop && sop->minusFx && sop->h);
     assert(cs_is_compressed_col(J));
 
-    dprintf("sparse leastSquares (cg) %d x %d... (this might take a while)\n",
+    printf("sparse leastSquares (cg) %d x %d... (this might take a while)\n",
         J->m, J->n);
 
     assert(sop->lengthY > 0);
@@ -1262,7 +1306,7 @@ FUNCTION(
     extractSop(partition);
 
     // TODO we might want to do this externally
-    dprintf("\n=== buildFxAndJFxAndSolveRepeatedly %d times in partition %d  ===\n", iterations, partition);
+    printf("\n=== buildFxAndJFxAndSolveRepeatedly %d times in partition %d of %d ===\n", iterations, partition, partitions);
     assert(iterations > 0); // TODO iterations should be size_t
     
     DO(i, iterations) {
@@ -1292,7 +1336,7 @@ FUNCTION(
         return;
     }
 
-    dprintf("\n=== Starting work on partition %d in the thread of the same id ===\n", linear_global_threadId());
+    printf("\n=== Starting work on partition %d in the thread of the same id ===\n", linear_global_threadId());
     buildFxAndJFxAndSolveRepeatedly(linear_global_threadId(), iterations);
 }
 
@@ -1463,11 +1507,11 @@ FUNCTION(real, addf, (real x, real y), "x + y with floats") {
     return x + y;
 }
 
-
 FUNCTION(int, multiout, (_Inout_updates_(l) int* x, int l), "returns more than one thing: when called via WSTP this will return an Association with all results") {
     *x = 0;
     return 1;
 }
+
 #ifndef WL_WSTP_MAIN 
 __global__ void mainc() {
 

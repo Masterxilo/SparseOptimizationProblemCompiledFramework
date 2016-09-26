@@ -7,10 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "Framework.vcxp
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug No Wolfram|x64 = Debug No Wolfram|x64
 		Debug|x64 = Debug|x64
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6714EC43-CACC-45F7-8FC4-71E1D086A09F}.Debug No Wolfram|x64.ActiveCfg = Debug No Wolfram|x64
+		{6714EC43-CACC-45F7-8FC4-71E1D086A09F}.Debug No Wolfram|x64.Build.0 = Debug No Wolfram|x64
 		{6714EC43-CACC-45F7-8FC4-71E1D086A09F}.Debug|x64.ActiveCfg = Debug|x64
 		{6714EC43-CACC-45F7-8FC4-71E1D086A09F}.Debug|x64.Build.0 = Debug|x64
 		{6714EC43-CACC-45F7-8FC4-71E1D086A09F}.Release|x64.ActiveCfg = Release|x64

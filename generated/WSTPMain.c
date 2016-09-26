@@ -199,7 +199,7 @@ static int _tr0(mlp) WSLINK mlp;
 } /* _tr0 */
 
 
-void df_ P(( void));
+void cs_cumsum_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr1( WSLINK mlp)
@@ -210,7 +210,7 @@ static int _tr1(mlp) WSLINK mlp;
 	int	res = 0;
 	if( !mlp) return res; /* avoid unused parameter warning */
 
-	df_();
+	cs_cumsum_();
 
 	res = 1;
 
@@ -218,7 +218,7 @@ static int _tr1(mlp) WSLINK mlp;
 } /* _tr1 */
 
 
-void cs_cumsum_ P(( void));
+void print_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr2( WSLINK mlp)
@@ -229,7 +229,7 @@ static int _tr2(mlp) WSLINK mlp;
 	int	res = 0;
 	if( !mlp) return res; /* avoid unused parameter warning */
 
-	cs_cumsum_();
+	print_();
 
 	res = 1;
 
@@ -237,7 +237,7 @@ static int _tr2(mlp) WSLINK mlp;
 } /* _tr2 */
 
 
-void print_ P(( void));
+void printd_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr3( WSLINK mlp)
@@ -248,7 +248,7 @@ static int _tr3(mlp) WSLINK mlp;
 	int	res = 0;
 	if( !mlp) return res; /* avoid unused parameter warning */
 
-	print_();
+	printd_();
 
 	res = 1;
 
@@ -256,7 +256,7 @@ static int _tr3(mlp) WSLINK mlp;
 } /* _tr3 */
 
 
-void printd_ P(( void));
+void printv_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr4( WSLINK mlp)
@@ -267,7 +267,7 @@ static int _tr4(mlp) WSLINK mlp;
 	int	res = 0;
 	if( !mlp) return res; /* avoid unused parameter warning */
 
-	printd_();
+	printv_();
 
 	res = 1;
 
@@ -275,7 +275,7 @@ static int _tr4(mlp) WSLINK mlp;
 } /* _tr4 */
 
 
-void printv_ P(( void));
+void assertFinite_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr5( WSLINK mlp)
@@ -286,7 +286,7 @@ static int _tr5(mlp) WSLINK mlp;
 	int	res = 0;
 	if( !mlp) return res; /* avoid unused parameter warning */
 
-	printv_();
+	assertFinite_();
 
 	res = 1;
 
@@ -294,31 +294,12 @@ static int _tr5(mlp) WSLINK mlp;
 } /* _tr5 */
 
 
-void assertFinite_ P(( void));
+void lengthzGet_ P(( void));
 
 #if WSPROTOTYPES
 static int _tr6( WSLINK mlp)
 #else
 static int _tr6(mlp) WSLINK mlp;
-#endif
-{
-	int	res = 0;
-	if( !mlp) return res; /* avoid unused parameter warning */
-
-	assertFinite_();
-
-	res = 1;
-
-	return res;
-} /* _tr6 */
-
-
-void lengthzGet_ P(( void));
-
-#if WSPROTOTYPES
-static int _tr7( WSLINK mlp)
-#else
-static int _tr7(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -330,15 +311,15 @@ static int _tr7(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr7 */
+} /* _tr6 */
 
 
 void lengthfzGet_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr8( WSLINK mlp)
+static int _tr7( WSLINK mlp)
 #else
-static int _tr8(mlp) WSLINK mlp;
+static int _tr7(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -350,15 +331,15 @@ static int _tr8(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr8 */
+} /* _tr7 */
 
 
 void assertEachInRange_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr9( WSLINK mlp)
+static int _tr8( WSLINK mlp)
 #else
-static int _tr9(mlp) WSLINK mlp;
+static int _tr8(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -369,15 +350,15 @@ static int _tr9(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr9 */
+} /* _tr8 */
 
 
 void axpyWithReindexing_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr10( WSLINK mlp)
+static int _tr9( WSLINK mlp)
 #else
-static int _tr10(mlp) WSLINK mlp;
+static int _tr9(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -388,15 +369,15 @@ static int _tr10(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr10 */
+} /* _tr9 */
 
 
 void extract_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr11( WSLINK mlp)
+static int _tr10( WSLINK mlp)
 #else
-static int _tr11(mlp) WSLINK mlp;
+static int _tr10(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -407,15 +388,15 @@ static int _tr11(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr11 */
+} /* _tr10 */
 
 
 void getY_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr12( WSLINK mlp)
+static int _tr11( WSLINK mlp)
 #else
-static int _tr12(mlp) WSLINK mlp;
+static int _tr11(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -426,15 +407,15 @@ static int _tr12(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr12 */
+} /* _tr11 */
 
 
 void buildFxAndJFxAndSolveRepeatedly_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr13( WSLINK mlp)
+static int _tr12( WSLINK mlp)
 #else
-static int _tr13(mlp) WSLINK mlp;
+static int _tr12(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -445,15 +426,15 @@ static int _tr13(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr13 */
+} /* _tr12 */
 
 
 void buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr14( WSLINK mlp)
+static int _tr13( WSLINK mlp)
 #else
-static int _tr14(mlp) WSLINK mlp;
+static int _tr13(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -464,15 +445,15 @@ static int _tr14(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr14 */
+} /* _tr13 */
 
 
 void receiveAndPrintOptimizationData_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr15( WSLINK mlp)
+static int _tr14( WSLINK mlp)
 #else
-static int _tr15(mlp) WSLINK mlp;
+static int _tr14(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -483,15 +464,15 @@ static int _tr15(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr15 */
+} /* _tr14 */
 
 
 void makeAndPrintSparseMatrix_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr16( WSLINK mlp)
+static int _tr15( WSLINK mlp)
 #else
-static int _tr16(mlp) WSLINK mlp;
+static int _tr15(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -502,15 +483,15 @@ static int _tr16(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr16 */
+} /* _tr15 */
 
 
 void testMain_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr17( WSLINK mlp)
+static int _tr16( WSLINK mlp)
 #else
-static int _tr17(mlp) WSLINK mlp;
+static int _tr16(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -522,15 +503,15 @@ static int _tr17(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr17 */
+} /* _tr16 */
 
 
 void xx43_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr18( WSLINK mlp)
+static int _tr17( WSLINK mlp)
 #else
-static int _tr18(mlp) WSLINK mlp;
+static int _tr17(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -542,15 +523,15 @@ static int _tr18(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr18 */
+} /* _tr17 */
 
 
 void get42_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr19( WSLINK mlp)
+static int _tr18( WSLINK mlp)
 #else
-static int _tr19(mlp) WSLINK mlp;
+static int _tr18(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -562,15 +543,15 @@ static int _tr19(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr19 */
+} /* _tr18 */
 
 
 void add_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr20( WSLINK mlp)
+static int _tr19( WSLINK mlp)
 #else
-static int _tr20(mlp) WSLINK mlp;
+static int _tr19(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -581,15 +562,15 @@ static int _tr20(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr20 */
+} /* _tr19 */
 
 
 void addf_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr21( WSLINK mlp)
+static int _tr20( WSLINK mlp)
 #else
-static int _tr21(mlp) WSLINK mlp;
+static int _tr20(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -600,15 +581,15 @@ static int _tr21(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr21 */
+} /* _tr20 */
 
 
 void multiout_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr22( WSLINK mlp)
+static int _tr21( WSLINK mlp)
 #else
-static int _tr22(mlp) WSLINK mlp;
+static int _tr21(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -619,15 +600,15 @@ static int _tr22(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr22 */
+} /* _tr21 */
 
 
 void setPartitions_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr23( WSLINK mlp)
+static int _tr22( WSLINK mlp)
 #else
-static int _tr23(mlp) WSLINK mlp;
+static int _tr22(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -638,15 +619,15 @@ static int _tr23(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr23 */
+} /* _tr22 */
 
 
 void receiveSharedOptimizationData_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr24( WSLINK mlp)
+static int _tr23( WSLINK mlp)
 #else
-static int _tr24(mlp) WSLINK mlp;
+static int _tr23(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -657,15 +638,15 @@ static int _tr24(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr24 */
+} /* _tr23 */
 
 
 void receiveOptimizationData_ P(( void));
 
 #if WSPROTOTYPES
-static int _tr25( WSLINK mlp)
+static int _tr24( WSLINK mlp)
 #else
-static int _tr25(mlp) WSLINK mlp;
+static int _tr24(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -676,15 +657,15 @@ static int _tr25(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr25 */
+} /* _tr24 */
 
 
 void f_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr26( WSLINK mlp)
+static int _tr25( WSLINK mlp)
 #else
-static int _tr26(mlp) WSLINK mlp;
+static int _tr25(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -695,34 +676,15 @@ static int _tr26(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr26 */
-
-
-void df_CUDA P(( void));
-
-#if WSPROTOTYPES
-static int _tr27( WSLINK mlp)
-#else
-static int _tr27(mlp) WSLINK mlp;
-#endif
-{
-	int	res = 0;
-	if( !mlp) return res; /* avoid unused parameter warning */
-
-	df_CUDA();
-
-	res = 1;
-
-	return res;
-} /* _tr27 */
+} /* _tr25 */
 
 
 void cs_cumsum_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr28( WSLINK mlp)
+static int _tr26( WSLINK mlp)
 #else
-static int _tr28(mlp) WSLINK mlp;
+static int _tr26(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -733,15 +695,15 @@ static int _tr28(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr28 */
+} /* _tr26 */
 
 
 void print_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr29( WSLINK mlp)
+static int _tr27( WSLINK mlp)
 #else
-static int _tr29(mlp) WSLINK mlp;
+static int _tr27(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -752,15 +714,15 @@ static int _tr29(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr29 */
+} /* _tr27 */
 
 
 void printd_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr30( WSLINK mlp)
+static int _tr28( WSLINK mlp)
 #else
-static int _tr30(mlp) WSLINK mlp;
+static int _tr28(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -771,15 +733,15 @@ static int _tr30(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr30 */
+} /* _tr28 */
 
 
 void printv_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr31( WSLINK mlp)
+static int _tr29( WSLINK mlp)
 #else
-static int _tr31(mlp) WSLINK mlp;
+static int _tr29(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -790,15 +752,15 @@ static int _tr31(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr31 */
+} /* _tr29 */
 
 
 void assertFinite_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr32( WSLINK mlp)
+static int _tr30( WSLINK mlp)
 #else
-static int _tr32(mlp) WSLINK mlp;
+static int _tr30(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -809,15 +771,15 @@ static int _tr32(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr32 */
+} /* _tr30 */
 
 
 void lengthzGet_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr33( WSLINK mlp)
+static int _tr31( WSLINK mlp)
 #else
-static int _tr33(mlp) WSLINK mlp;
+static int _tr31(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -828,15 +790,15 @@ static int _tr33(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr33 */
+} /* _tr31 */
 
 
 void lengthfzGet_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr34( WSLINK mlp)
+static int _tr32( WSLINK mlp)
 #else
-static int _tr34(mlp) WSLINK mlp;
+static int _tr32(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -847,15 +809,15 @@ static int _tr34(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr34 */
+} /* _tr32 */
 
 
 void assertEachInRange_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr35( WSLINK mlp)
+static int _tr33( WSLINK mlp)
 #else
-static int _tr35(mlp) WSLINK mlp;
+static int _tr33(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -866,15 +828,15 @@ static int _tr35(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr35 */
+} /* _tr33 */
 
 
 void axpyWithReindexing_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr36( WSLINK mlp)
+static int _tr34( WSLINK mlp)
 #else
-static int _tr36(mlp) WSLINK mlp;
+static int _tr34(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -885,15 +847,15 @@ static int _tr36(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr36 */
+} /* _tr34 */
 
 
 void extract_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr37( WSLINK mlp)
+static int _tr35( WSLINK mlp)
 #else
-static int _tr37(mlp) WSLINK mlp;
+static int _tr35(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -904,15 +866,15 @@ static int _tr37(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr37 */
+} /* _tr35 */
 
 
 void getY_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr38( WSLINK mlp)
+static int _tr36( WSLINK mlp)
 #else
-static int _tr38(mlp) WSLINK mlp;
+static int _tr36(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -923,15 +885,15 @@ static int _tr38(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr38 */
+} /* _tr36 */
 
 
 void buildFxAndJFxAndSolveRepeatedly_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr39( WSLINK mlp)
+static int _tr37( WSLINK mlp)
 #else
-static int _tr39(mlp) WSLINK mlp;
+static int _tr37(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -942,15 +904,15 @@ static int _tr39(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr39 */
+} /* _tr37 */
 
 
 void buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr40( WSLINK mlp)
+static int _tr38( WSLINK mlp)
 #else
-static int _tr40(mlp) WSLINK mlp;
+static int _tr38(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -961,15 +923,15 @@ static int _tr40(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr40 */
+} /* _tr38 */
 
 
 void receiveAndPrintOptimizationData_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr41( WSLINK mlp)
+static int _tr39( WSLINK mlp)
 #else
-static int _tr41(mlp) WSLINK mlp;
+static int _tr39(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -980,15 +942,15 @@ static int _tr41(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr41 */
+} /* _tr39 */
 
 
 void makeAndPrintSparseMatrix_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr42( WSLINK mlp)
+static int _tr40( WSLINK mlp)
 #else
-static int _tr42(mlp) WSLINK mlp;
+static int _tr40(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -999,15 +961,15 @@ static int _tr42(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr42 */
+} /* _tr40 */
 
 
 void testMain_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr43( WSLINK mlp)
+static int _tr41( WSLINK mlp)
 #else
-static int _tr43(mlp) WSLINK mlp;
+static int _tr41(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1018,15 +980,15 @@ static int _tr43(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr43 */
+} /* _tr41 */
 
 
 void xx43_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr44( WSLINK mlp)
+static int _tr42( WSLINK mlp)
 #else
-static int _tr44(mlp) WSLINK mlp;
+static int _tr42(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1037,15 +999,15 @@ static int _tr44(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr44 */
+} /* _tr42 */
 
 
 void get42_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr45( WSLINK mlp)
+static int _tr43( WSLINK mlp)
 #else
-static int _tr45(mlp) WSLINK mlp;
+static int _tr43(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1056,15 +1018,15 @@ static int _tr45(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr45 */
+} /* _tr43 */
 
 
 void add_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr46( WSLINK mlp)
+static int _tr44( WSLINK mlp)
 #else
-static int _tr46(mlp) WSLINK mlp;
+static int _tr44(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1075,15 +1037,15 @@ static int _tr46(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr46 */
+} /* _tr44 */
 
 
 void addf_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr47( WSLINK mlp)
+static int _tr45( WSLINK mlp)
 #else
-static int _tr47(mlp) WSLINK mlp;
+static int _tr45(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1094,15 +1056,15 @@ static int _tr47(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr47 */
+} /* _tr45 */
 
 
 void multiout_CUDA P(( void));
 
 #if WSPROTOTYPES
-static int _tr48( WSLINK mlp)
+static int _tr46( WSLINK mlp)
 #else
-static int _tr48(mlp) WSLINK mlp;
+static int _tr46(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1113,15 +1075,15 @@ static int _tr48(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr48 */
+} /* _tr46 */
 
 
 void dprintEnabled_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr49( WSLINK mlp)
+static int _tr47( WSLINK mlp)
 #else
-static int _tr49(mlp) WSLINK mlp;
+static int _tr47(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1133,15 +1095,15 @@ static int _tr49(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr49 */
+} /* _tr47 */
 
 
 void xx_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr50( WSLINK mlp)
+static int _tr48( WSLINK mlp)
 #else
-static int _tr50(mlp) WSLINK mlp;
+static int _tr48(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1153,15 +1115,15 @@ static int _tr50(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr50 */
+} /* _tr48 */
 
 
 void a_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr51( WSLINK mlp)
+static int _tr49( WSLINK mlp)
 #else
-static int _tr51(mlp) WSLINK mlp;
+static int _tr49(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1173,15 +1135,15 @@ static int _tr51(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr51 */
+} /* _tr49 */
 
 
 void b_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr52( WSLINK mlp)
+static int _tr50( WSLINK mlp)
 #else
-static int _tr52(mlp) WSLINK mlp;
+static int _tr50(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1193,15 +1155,15 @@ static int _tr52(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr52 */
+} /* _tr50 */
 
 
 void yy_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr53( WSLINK mlp)
+static int _tr51( WSLINK mlp)
 #else
-static int _tr53(mlp) WSLINK mlp;
+static int _tr51(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1213,15 +1175,15 @@ static int _tr53(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr53 */
+} /* _tr51 */
 
 
 void x_get P(( void));
 
 #if WSPROTOTYPES
-static int _tr54( WSLINK mlp)
+static int _tr52( WSLINK mlp)
 #else
-static int _tr54(mlp) WSLINK mlp;
+static int _tr52(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1233,15 +1195,15 @@ static int _tr54(mlp) WSLINK mlp;
 	res = 1;
 
 L0:	return res;
-} /* _tr54 */
+} /* _tr52 */
 
 
 void dprintEnabled_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr55( WSLINK mlp)
+static int _tr53( WSLINK mlp)
 #else
-static int _tr55(mlp) WSLINK mlp;
+static int _tr53(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1252,15 +1214,15 @@ static int _tr55(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr55 */
+} /* _tr53 */
 
 
 void xx_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr56( WSLINK mlp)
+static int _tr54( WSLINK mlp)
 #else
-static int _tr56(mlp) WSLINK mlp;
+static int _tr54(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1271,15 +1233,15 @@ static int _tr56(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr56 */
+} /* _tr54 */
 
 
 void a_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr57( WSLINK mlp)
+static int _tr55( WSLINK mlp)
 #else
-static int _tr57(mlp) WSLINK mlp;
+static int _tr55(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1290,15 +1252,15 @@ static int _tr57(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr57 */
+} /* _tr55 */
 
 
 void b_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr58( WSLINK mlp)
+static int _tr56( WSLINK mlp)
 #else
-static int _tr58(mlp) WSLINK mlp;
+static int _tr56(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1309,15 +1271,15 @@ static int _tr58(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr58 */
+} /* _tr56 */
 
 
 void yy_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr59( WSLINK mlp)
+static int _tr57( WSLINK mlp)
 #else
-static int _tr59(mlp) WSLINK mlp;
+static int _tr57(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1328,15 +1290,15 @@ static int _tr59(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr59 */
+} /* _tr57 */
 
 
 void x_set P(( void));
 
 #if WSPROTOTYPES
-static int _tr60( WSLINK mlp)
+static int _tr58( WSLINK mlp)
 #else
-static int _tr60(mlp) WSLINK mlp;
+static int _tr58(mlp) WSLINK mlp;
 #endif
 {
 	int	res = 0;
@@ -1347,7 +1309,7 @@ static int _tr60(mlp) WSLINK mlp;
 	res = 1;
 
 	return res;
-} /* _tr60 */
+} /* _tr58 */
 
 
 static struct func {
@@ -1355,68 +1317,66 @@ static struct func {
 	int   manual;
 	int   (*f_func)P((WSLINK));
 	const char  *f_name;
-	} _tramps[61] = {
+	} _tramps[59] = {
 		{ 0, 2, _tr0, "f_" },
-		{ 0, 2, _tr1, "df_" },
-		{ 0, 2, _tr2, "cs_cumsum_" },
-		{ 0, 2, _tr3, "print_" },
-		{ 0, 2, _tr4, "printd_" },
-		{ 0, 2, _tr5, "printv_" },
-		{ 0, 2, _tr6, "assertFinite_" },
-		{ 0, 0, _tr7, "lengthzGet_" },
-		{ 0, 0, _tr8, "lengthfzGet_" },
-		{ 0, 2, _tr9, "assertEachInRange_" },
-		{ 0, 2, _tr10, "axpyWithReindexing_" },
-		{ 0, 2, _tr11, "extract_" },
-		{ 0, 2, _tr12, "getY_" },
-		{ 0, 2, _tr13, "buildFxAndJFxAndSolveRepeatedly_" },
-		{ 0, 2, _tr14, "buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_" },
-		{ 0, 2, _tr15, "receiveAndPrintOptimizationData_" },
-		{ 0, 2, _tr16, "makeAndPrintSparseMatrix_" },
-		{ 0, 0, _tr17, "testMain_" },
-		{ 0, 0, _tr18, "xx43_" },
-		{ 0, 0, _tr19, "get42_" },
-		{ 0, 2, _tr20, "add_" },
-		{ 0, 2, _tr21, "addf_" },
-		{ 0, 2, _tr22, "multiout_" },
-		{ 0, 2, _tr23, "setPartitions_" },
-		{ 0, 2, _tr24, "receiveSharedOptimizationData_" },
-		{ 0, 2, _tr25, "receiveOptimizationData_" },
-		{ 0, 2, _tr26, "f_CUDA" },
-		{ 0, 2, _tr27, "df_CUDA" },
-		{ 0, 2, _tr28, "cs_cumsum_CUDA" },
-		{ 0, 2, _tr29, "print_CUDA" },
-		{ 0, 2, _tr30, "printd_CUDA" },
-		{ 0, 2, _tr31, "printv_CUDA" },
-		{ 0, 2, _tr32, "assertFinite_CUDA" },
-		{ 0, 2, _tr33, "lengthzGet_CUDA" },
-		{ 0, 2, _tr34, "lengthfzGet_CUDA" },
-		{ 0, 2, _tr35, "assertEachInRange_CUDA" },
-		{ 0, 2, _tr36, "axpyWithReindexing_CUDA" },
-		{ 0, 2, _tr37, "extract_CUDA" },
-		{ 0, 2, _tr38, "getY_CUDA" },
-		{ 0, 2, _tr39, "buildFxAndJFxAndSolveRepeatedly_CUDA" },
-		{ 0, 2, _tr40, "buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA" },
-		{ 0, 2, _tr41, "receiveAndPrintOptimizationData_CUDA" },
-		{ 0, 2, _tr42, "makeAndPrintSparseMatrix_CUDA" },
-		{ 0, 2, _tr43, "testMain_CUDA" },
-		{ 0, 2, _tr44, "xx43_CUDA" },
-		{ 0, 2, _tr45, "get42_CUDA" },
-		{ 0, 2, _tr46, "add_CUDA" },
-		{ 0, 2, _tr47, "addf_CUDA" },
-		{ 0, 2, _tr48, "multiout_CUDA" },
-		{ 0, 0, _tr49, "dprintEnabled_get" },
-		{ 0, 0, _tr50, "xx_get" },
-		{ 0, 0, _tr51, "a_get" },
-		{ 0, 0, _tr52, "b_get" },
-		{ 0, 0, _tr53, "yy_get" },
-		{ 0, 0, _tr54, "x_get" },
-		{ 0, 2, _tr55, "dprintEnabled_set" },
-		{ 0, 2, _tr56, "xx_set" },
-		{ 0, 2, _tr57, "a_set" },
-		{ 0, 2, _tr58, "b_set" },
-		{ 0, 2, _tr59, "yy_set" },
-		{ 0, 2, _tr60, "x_set" }
+		{ 0, 2, _tr1, "cs_cumsum_" },
+		{ 0, 2, _tr2, "print_" },
+		{ 0, 2, _tr3, "printd_" },
+		{ 0, 2, _tr4, "printv_" },
+		{ 0, 2, _tr5, "assertFinite_" },
+		{ 0, 0, _tr6, "lengthzGet_" },
+		{ 0, 0, _tr7, "lengthfzGet_" },
+		{ 0, 2, _tr8, "assertEachInRange_" },
+		{ 0, 2, _tr9, "axpyWithReindexing_" },
+		{ 0, 2, _tr10, "extract_" },
+		{ 0, 2, _tr11, "getY_" },
+		{ 0, 2, _tr12, "buildFxAndJFxAndSolveRepeatedly_" },
+		{ 0, 2, _tr13, "buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_" },
+		{ 0, 2, _tr14, "receiveAndPrintOptimizationData_" },
+		{ 0, 2, _tr15, "makeAndPrintSparseMatrix_" },
+		{ 0, 0, _tr16, "testMain_" },
+		{ 0, 0, _tr17, "xx43_" },
+		{ 0, 0, _tr18, "get42_" },
+		{ 0, 2, _tr19, "add_" },
+		{ 0, 2, _tr20, "addf_" },
+		{ 0, 2, _tr21, "multiout_" },
+		{ 0, 2, _tr22, "setPartitions_" },
+		{ 0, 2, _tr23, "receiveSharedOptimizationData_" },
+		{ 0, 2, _tr24, "receiveOptimizationData_" },
+		{ 0, 2, _tr25, "f_CUDA" },
+		{ 0, 2, _tr26, "cs_cumsum_CUDA" },
+		{ 0, 2, _tr27, "print_CUDA" },
+		{ 0, 2, _tr28, "printd_CUDA" },
+		{ 0, 2, _tr29, "printv_CUDA" },
+		{ 0, 2, _tr30, "assertFinite_CUDA" },
+		{ 0, 2, _tr31, "lengthzGet_CUDA" },
+		{ 0, 2, _tr32, "lengthfzGet_CUDA" },
+		{ 0, 2, _tr33, "assertEachInRange_CUDA" },
+		{ 0, 2, _tr34, "axpyWithReindexing_CUDA" },
+		{ 0, 2, _tr35, "extract_CUDA" },
+		{ 0, 2, _tr36, "getY_CUDA" },
+		{ 0, 2, _tr37, "buildFxAndJFxAndSolveRepeatedly_CUDA" },
+		{ 0, 2, _tr38, "buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA" },
+		{ 0, 2, _tr39, "receiveAndPrintOptimizationData_CUDA" },
+		{ 0, 2, _tr40, "makeAndPrintSparseMatrix_CUDA" },
+		{ 0, 2, _tr41, "testMain_CUDA" },
+		{ 0, 2, _tr42, "xx43_CUDA" },
+		{ 0, 2, _tr43, "get42_CUDA" },
+		{ 0, 2, _tr44, "add_CUDA" },
+		{ 0, 2, _tr45, "addf_CUDA" },
+		{ 0, 2, _tr46, "multiout_CUDA" },
+		{ 0, 0, _tr47, "dprintEnabled_get" },
+		{ 0, 0, _tr48, "xx_get" },
+		{ 0, 0, _tr49, "a_get" },
+		{ 0, 0, _tr50, "b_get" },
+		{ 0, 0, _tr51, "yy_get" },
+		{ 0, 0, _tr52, "x_get" },
+		{ 0, 2, _tr53, "dprintEnabled_set" },
+		{ 0, 2, _tr54, "xx_set" },
+		{ 0, 2, _tr55, "a_set" },
+		{ 0, 2, _tr56, "b_set" },
+		{ 0, 2, _tr57, "yy_set" },
+		{ 0, 2, _tr58, "x_set" }
 		};
 
 static const char* evalstrs[] = {
@@ -1427,9 +1387,6 @@ static const char* evalstrs[] = {
 	"ClearAll@\"SOPCompiled`Private`*\";",
 	(const char*)0,
 	"f::usage = \"the local energy vector computing function\"",
-	(const char*)0,
-	"df::usage = \"the derivatives along the i-th variable of the loca",
-	"l energy vector computing function\"",
 	(const char*)0,
 	"cscumsum::usage = \"p [0..n] = cumulative sum of c [0..n-1], and ",
 	"then copy p [0..n-1] into c \"",
@@ -1512,9 +1469,6 @@ static const char* evalstrs[] = {
 	"y, hence this is a CPU only function\"",
 	(const char*)0,
 	"fCUDA::usage = \"the local energy vector computing function\"",
-	(const char*)0,
-	"dfCUDA::usage = \"the derivatives along the i-th variable of the ",
-	"local energy vector computing function\"",
 	(const char*)0,
 	"cscumsumCUDA::usage = \"p [0..n] = cumulative sum of c [0..n-1], ",
 	"and then copy p [0..n-1] into c \"",
@@ -1625,7 +1579,7 @@ static const char* evalstrs[] = {
 	(const char*)0,
 	(const char*)0
 };
-#define CARDOF_EVALSTRS 66
+#define CARDOF_EVALSTRS 64
 
 static int _definepattern P(( WSLINK, char*, char*, int));
 
@@ -1647,128 +1601,124 @@ int WSInstall(mlp) WSLINK mlp;
 	if (_res) _res = _doevalstr( mlp, 2);
 	if (_res) _res = _definepattern(mlp, (char *)"f[input : {___Real}]", (char *)"{input}", 0);
 	if (_res) _res = _doevalstr( mlp, 3);
-	if (_res) _res = _definepattern(mlp, (char *)"df[i : _Integer, input : {___Real}]", (char *)"{i, input}", 1);
+	if (_res) _res = _definepattern(mlp, (char *)"cscumsum[p : {___Integer}, c : {___Integer}, n : _Integer]", (char *)"{p, c, n}", 1);
 	if (_res) _res = _doevalstr( mlp, 4);
-	if (_res) _res = _definepattern(mlp, (char *)"cscumsum[p : {___Integer}, c : {___Integer}, n : _Integer]", (char *)"{p, c, n}", 2);
+	if (_res) _res = _definepattern(mlp, (char *)"print[x : _String]", (char *)"{x}", 2);
 	if (_res) _res = _doevalstr( mlp, 5);
-	if (_res) _res = _definepattern(mlp, (char *)"print[x : _String]", (char *)"{x}", 3);
+	if (_res) _res = _definepattern(mlp, (char *)"printd[v : {___Integer}]", (char *)"{v}", 3);
 	if (_res) _res = _doevalstr( mlp, 6);
-	if (_res) _res = _definepattern(mlp, (char *)"printd[v : {___Integer}]", (char *)"{v}", 4);
+	if (_res) _res = _definepattern(mlp, (char *)"printv[v : {___Real}]", (char *)"{v}", 4);
 	if (_res) _res = _doevalstr( mlp, 7);
-	if (_res) _res = _definepattern(mlp, (char *)"printv[v : {___Real}]", (char *)"{v}", 5);
+	if (_res) _res = _definepattern(mlp, (char *)"assertFinite[x : {___Real}]", (char *)"{x}", 5);
 	if (_res) _res = _doevalstr( mlp, 8);
-	if (_res) _res = _definepattern(mlp, (char *)"assertFinite[x : {___Real}]", (char *)"{x}", 6);
+	if (_res) _res = _definepattern(mlp, (char *)"lengthzGet[]", (char *)"{}", 6);
 	if (_res) _res = _doevalstr( mlp, 9);
-	if (_res) _res = _definepattern(mlp, (char *)"lengthzGet[]", (char *)"{}", 7);
+	if (_res) _res = _definepattern(mlp, (char *)"lengthfzGet[]", (char *)"{}", 7);
 	if (_res) _res = _doevalstr( mlp, 10);
-	if (_res) _res = _definepattern(mlp, (char *)"lengthfzGet[]", (char *)"{}", 8);
+	if (_res) _res = _definepattern(mlp, (char *)"assertEachInRange[v : {___Integer}, min : _Integer, max : _Integer]", (char *)"{v, min, max}", 8);
 	if (_res) _res = _doevalstr( mlp, 11);
-	if (_res) _res = _definepattern(mlp, (char *)"assertEachInRange[v : {___Integer}, min : _Integer, max : _Integer]", (char *)"{v, min, max}", 9);
+	if (_res) _res = _definepattern(mlp, (char *)"axpyWithReindexing[targetBase : {___Real}, a : _Real, addedValues : {___Real}, targetIndices : {___Integer}]", (char *)"{targetBase, a, addedValues, targetIndices}", 9);
 	if (_res) _res = _doevalstr( mlp, 12);
-	if (_res) _res = _definepattern(mlp, (char *)"axpyWithReindexing[targetBase : {___Real}, a : _Real, addedValues : {___Real}, targetIndices : {___Integer}]", (char *)"{targetBase, a, addedValues, targetIndices}", 10);
+	if (_res) _res = _definepattern(mlp, (char *)"extract[source : {___Real}, sourceIndices : {___Integer}]", (char *)"{source, sourceIndices}", 10);
 	if (_res) _res = _doevalstr( mlp, 13);
-	if (_res) _res = _definepattern(mlp, (char *)"extract[source : {___Real}, sourceIndices : {___Integer}]", (char *)"{source, sourceIndices}", 11);
+	if (_res) _res = _definepattern(mlp, (char *)"getY[partition : _Integer, lengthY : _Integer]", (char *)"{partition, lengthY}", 11);
 	if (_res) _res = _doevalstr( mlp, 14);
-	if (_res) _res = _definepattern(mlp, (char *)"getY[partition : _Integer, lengthY : _Integer]", (char *)"{partition, lengthY}", 12);
+	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedly[partition : _Integer, iterations : _Integer]", (char *)"{partition, iterations}", 12);
 	if (_res) _res = _doevalstr( mlp, 15);
-	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedly[partition : _Integer, iterations : _Integer]", (char *)"{partition, iterations}", 13);
+	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyThreadIdPartition[iterations : _Integer]", (char *)"{iterations}", 13);
 	if (_res) _res = _doevalstr( mlp, 16);
-	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyThreadIdPartition[iterations : _Integer]", (char *)"{iterations}", 14);
+	if (_res) _res = _definepattern(mlp, (char *)"receiveAndPrintOptimizationData[lengthz : _Integer, lengthfz : _Integer, x : {___Real}, sparseDerivativeZtoYIndices : {___Integer}, xIndices : {___Integer}, yIndices : {___Integer}]", (char *)"{lengthz, lengthfz, x, sparseDerivativeZtoYIndices, xIndices, yIndices}", 14);
 	if (_res) _res = _doevalstr( mlp, 17);
-	if (_res) _res = _definepattern(mlp, (char *)"receiveAndPrintOptimizationData[lengthz : _Integer, lengthfz : _Integer, x : {___Real}, sparseDerivativeZtoYIndices : {___Integer}, xIndices : {___Integer}, yIndices : {___Integer}]", (char *)"{lengthz, lengthfz, x, sparseDerivativeZtoYIndices, xIndices, yIndices}", 15);
+	if (_res) _res = _definepattern(mlp, (char *)"makeAndPrintSparseMatrix[m : _Integer, n : _Integer, x : {___Real}, ij : {___Integer}]", (char *)"{m, n, x, ij}", 15);
 	if (_res) _res = _doevalstr( mlp, 18);
-	if (_res) _res = _definepattern(mlp, (char *)"makeAndPrintSparseMatrix[m : _Integer, n : _Integer, x : {___Real}, ij : {___Integer}]", (char *)"{m, n, x, ij}", 16);
+	if (_res) _res = _definepattern(mlp, (char *)"testMain[]", (char *)"{}", 16);
 	if (_res) _res = _doevalstr( mlp, 19);
-	if (_res) _res = _definepattern(mlp, (char *)"testMain[]", (char *)"{}", 17);
+	if (_res) _res = _definepattern(mlp, (char *)"xx43[]", (char *)"{}", 17);
 	if (_res) _res = _doevalstr( mlp, 20);
-	if (_res) _res = _definepattern(mlp, (char *)"xx43[]", (char *)"{}", 18);
+	if (_res) _res = _definepattern(mlp, (char *)"get42[]", (char *)"{}", 18);
 	if (_res) _res = _doevalstr( mlp, 21);
-	if (_res) _res = _definepattern(mlp, (char *)"get42[]", (char *)"{}", 19);
+	if (_res) _res = _definepattern(mlp, (char *)"add[x : _Integer, y : _Integer]", (char *)"{x, y}", 19);
 	if (_res) _res = _doevalstr( mlp, 22);
-	if (_res) _res = _definepattern(mlp, (char *)"add[x : _Integer, y : _Integer]", (char *)"{x, y}", 20);
+	if (_res) _res = _definepattern(mlp, (char *)"addf[x : _Real, y : _Real]", (char *)"{x, y}", 20);
 	if (_res) _res = _doevalstr( mlp, 23);
-	if (_res) _res = _definepattern(mlp, (char *)"addf[x : _Real, y : _Real]", (char *)"{x, y}", 21);
+	if (_res) _res = _definepattern(mlp, (char *)"multiout[x : {___Integer}]", (char *)"{x}", 21);
 	if (_res) _res = _doevalstr( mlp, 24);
-	if (_res) _res = _definepattern(mlp, (char *)"multiout[x : {___Integer}]", (char *)"{x}", 22);
+	if (_res) _res = _definepattern(mlp, (char *)"setPartitions[newPartitionsCount : _Integer]", (char *)"{newPartitionsCount}", 22);
 	if (_res) _res = _doevalstr( mlp, 25);
-	if (_res) _res = _definepattern(mlp, (char *)"setPartitions[newPartitionsCount : _Integer]", (char *)"{newPartitionsCount}", 23);
+	if (_res) _res = _definepattern(mlp, (char *)"receiveSharedOptimizationData[xI : {___Real}]", (char *)"{xI}", 23);
 	if (_res) _res = _doevalstr( mlp, 26);
-	if (_res) _res = _definepattern(mlp, (char *)"receiveSharedOptimizationData[xI : {___Real}]", (char *)"{xI}", 24);
+	if (_res) _res = _definepattern(mlp, (char *)"receiveOptimizationData[partition : _Integer, sparseDerivativeZtoYIndicesI : {___Integer}, xIndicesI : {___Integer}, yIndicesI : {___Integer}]", (char *)"{partition, sparseDerivativeZtoYIndicesI, xIndicesI, yIndicesI}", 24);
 	if (_res) _res = _doevalstr( mlp, 27);
-	if (_res) _res = _definepattern(mlp, (char *)"receiveOptimizationData[partition : _Integer, sparseDerivativeZtoYIndicesI : {___Integer}, xIndicesI : {___Integer}, yIndicesI : {___Integer}]", (char *)"{partition, sparseDerivativeZtoYIndicesI, xIndicesI, yIndicesI}", 25);
+	if (_res) _res = _definepattern(mlp, (char *)"fCUDA[gridDim_Integer, blockDim_Integer, input : {___Real}]", (char *)"{gridDim, blockDim, input}", 25);
 	if (_res) _res = _doevalstr( mlp, 28);
-	if (_res) _res = _definepattern(mlp, (char *)"fCUDA[gridDim_Integer, blockDim_Integer, input : {___Real}]", (char *)"{gridDim, blockDim, input}", 26);
+	if (_res) _res = _definepattern(mlp, (char *)"cscumsumCUDA[gridDim_Integer, blockDim_Integer, p : {___Integer}, c : {___Integer}, n : _Integer]", (char *)"{gridDim, blockDim, p, c, n}", 26);
 	if (_res) _res = _doevalstr( mlp, 29);
-	if (_res) _res = _definepattern(mlp, (char *)"dfCUDA[gridDim_Integer, blockDim_Integer, i : _Integer, input : {___Real}]", (char *)"{gridDim, blockDim, i, input}", 27);
+	if (_res) _res = _definepattern(mlp, (char *)"printCUDA[gridDim_Integer, blockDim_Integer, x : _String]", (char *)"{gridDim, blockDim, x}", 27);
 	if (_res) _res = _doevalstr( mlp, 30);
-	if (_res) _res = _definepattern(mlp, (char *)"cscumsumCUDA[gridDim_Integer, blockDim_Integer, p : {___Integer}, c : {___Integer}, n : _Integer]", (char *)"{gridDim, blockDim, p, c, n}", 28);
+	if (_res) _res = _definepattern(mlp, (char *)"printdCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}]", (char *)"{gridDim, blockDim, v}", 28);
 	if (_res) _res = _doevalstr( mlp, 31);
-	if (_res) _res = _definepattern(mlp, (char *)"printCUDA[gridDim_Integer, blockDim_Integer, x : _String]", (char *)"{gridDim, blockDim, x}", 29);
+	if (_res) _res = _definepattern(mlp, (char *)"printvCUDA[gridDim_Integer, blockDim_Integer, v : {___Real}]", (char *)"{gridDim, blockDim, v}", 29);
 	if (_res) _res = _doevalstr( mlp, 32);
-	if (_res) _res = _definepattern(mlp, (char *)"printdCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}]", (char *)"{gridDim, blockDim, v}", 30);
+	if (_res) _res = _definepattern(mlp, (char *)"assertFiniteCUDA[gridDim_Integer, blockDim_Integer, x : {___Real}]", (char *)"{gridDim, blockDim, x}", 30);
 	if (_res) _res = _doevalstr( mlp, 33);
-	if (_res) _res = _definepattern(mlp, (char *)"printvCUDA[gridDim_Integer, blockDim_Integer, v : {___Real}]", (char *)"{gridDim, blockDim, v}", 31);
+	if (_res) _res = _definepattern(mlp, (char *)"lengthzGetCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 31);
 	if (_res) _res = _doevalstr( mlp, 34);
-	if (_res) _res = _definepattern(mlp, (char *)"assertFiniteCUDA[gridDim_Integer, blockDim_Integer, x : {___Real}]", (char *)"{gridDim, blockDim, x}", 32);
+	if (_res) _res = _definepattern(mlp, (char *)"lengthfzGetCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 32);
 	if (_res) _res = _doevalstr( mlp, 35);
-	if (_res) _res = _definepattern(mlp, (char *)"lengthzGetCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 33);
+	if (_res) _res = _definepattern(mlp, (char *)"assertEachInRangeCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}, min : _Integer, max : _Integer]", (char *)"{gridDim, blockDim, v, min, max}", 33);
 	if (_res) _res = _doevalstr( mlp, 36);
-	if (_res) _res = _definepattern(mlp, (char *)"lengthfzGetCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 34);
+	if (_res) _res = _definepattern(mlp, (char *)"axpyWithReindexingCUDA[gridDim_Integer, blockDim_Integer, targetBase : {___Real}, a : _Real, addedValues : {___Real}, targetIndices : {___Integer}]", (char *)"{gridDim, blockDim, targetBase, a, addedValues, targetIndices}", 34);
 	if (_res) _res = _doevalstr( mlp, 37);
-	if (_res) _res = _definepattern(mlp, (char *)"assertEachInRangeCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}, min : _Integer, max : _Integer]", (char *)"{gridDim, blockDim, v, min, max}", 35);
+	if (_res) _res = _definepattern(mlp, (char *)"extractCUDA[gridDim_Integer, blockDim_Integer, source : {___Real}, sourceIndices : {___Integer}]", (char *)"{gridDim, blockDim, source, sourceIndices}", 35);
 	if (_res) _res = _doevalstr( mlp, 38);
-	if (_res) _res = _definepattern(mlp, (char *)"axpyWithReindexingCUDA[gridDim_Integer, blockDim_Integer, targetBase : {___Real}, a : _Real, addedValues : {___Real}, targetIndices : {___Integer}]", (char *)"{gridDim, blockDim, targetBase, a, addedValues, targetIndices}", 36);
+	if (_res) _res = _definepattern(mlp, (char *)"getYCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, lengthY : _Integer]", (char *)"{gridDim, blockDim, partition, lengthY}", 36);
 	if (_res) _res = _doevalstr( mlp, 39);
-	if (_res) _res = _definepattern(mlp, (char *)"extractCUDA[gridDim_Integer, blockDim_Integer, source : {___Real}, sourceIndices : {___Integer}]", (char *)"{gridDim, blockDim, source, sourceIndices}", 37);
+	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, iterations : _Integer]", (char *)"{gridDim, blockDim, partition, iterations}", 37);
 	if (_res) _res = _doevalstr( mlp, 40);
-	if (_res) _res = _definepattern(mlp, (char *)"getYCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, lengthY : _Integer]", (char *)"{gridDim, blockDim, partition, lengthY}", 38);
+	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA[gridDim_Integer, blockDim_Integer, iterations : _Integer]", (char *)"{gridDim, blockDim, iterations}", 38);
 	if (_res) _res = _doevalstr( mlp, 41);
-	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, iterations : _Integer]", (char *)"{gridDim, blockDim, partition, iterations}", 39);
+	if (_res) _res = _definepattern(mlp, (char *)"receiveAndPrintOptimizationDataCUDA[gridDim_Integer, blockDim_Integer, lengthz : _Integer, lengthfz : _Integer, x : {___Real}, sparseDerivativeZtoYIndices : {___Integer}, xIndices : {___Integer}, yIndices : {___Integer}]", (char *)"{gridDim, blockDim, lengthz, lengthfz, x, sparseDerivativeZtoYIndices, xIndices, yIndices}", 39);
 	if (_res) _res = _doevalstr( mlp, 42);
-	if (_res) _res = _definepattern(mlp, (char *)"buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA[gridDim_Integer, blockDim_Integer, iterations : _Integer]", (char *)"{gridDim, blockDim, iterations}", 40);
+	if (_res) _res = _definepattern(mlp, (char *)"makeAndPrintSparseMatrixCUDA[gridDim_Integer, blockDim_Integer, m : _Integer, n : _Integer, x : {___Real}, ij : {___Integer}]", (char *)"{gridDim, blockDim, m, n, x, ij}", 40);
 	if (_res) _res = _doevalstr( mlp, 43);
-	if (_res) _res = _definepattern(mlp, (char *)"receiveAndPrintOptimizationDataCUDA[gridDim_Integer, blockDim_Integer, lengthz : _Integer, lengthfz : _Integer, x : {___Real}, sparseDerivativeZtoYIndices : {___Integer}, xIndices : {___Integer}, yIndices : {___Integer}]", (char *)"{gridDim, blockDim, lengthz, lengthfz, x, sparseDerivativeZtoYIndices, xIndices, yIndices}", 41);
+	if (_res) _res = _definepattern(mlp, (char *)"testMainCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 41);
 	if (_res) _res = _doevalstr( mlp, 44);
-	if (_res) _res = _definepattern(mlp, (char *)"makeAndPrintSparseMatrixCUDA[gridDim_Integer, blockDim_Integer, m : _Integer, n : _Integer, x : {___Real}, ij : {___Integer}]", (char *)"{gridDim, blockDim, m, n, x, ij}", 42);
+	if (_res) _res = _definepattern(mlp, (char *)"xx43CUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 42);
 	if (_res) _res = _doevalstr( mlp, 45);
-	if (_res) _res = _definepattern(mlp, (char *)"testMainCUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 43);
+	if (_res) _res = _definepattern(mlp, (char *)"get42CUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 43);
 	if (_res) _res = _doevalstr( mlp, 46);
-	if (_res) _res = _definepattern(mlp, (char *)"xx43CUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 44);
+	if (_res) _res = _definepattern(mlp, (char *)"addCUDA[gridDim_Integer, blockDim_Integer, x : _Integer, y : _Integer]", (char *)"{gridDim, blockDim, x, y}", 44);
 	if (_res) _res = _doevalstr( mlp, 47);
-	if (_res) _res = _definepattern(mlp, (char *)"get42CUDA[gridDim_Integer, blockDim_Integer]", (char *)"{gridDim, blockDim}", 45);
+	if (_res) _res = _definepattern(mlp, (char *)"addfCUDA[gridDim_Integer, blockDim_Integer, x : _Real, y : _Real]", (char *)"{gridDim, blockDim, x, y}", 45);
 	if (_res) _res = _doevalstr( mlp, 48);
-	if (_res) _res = _definepattern(mlp, (char *)"addCUDA[gridDim_Integer, blockDim_Integer, x : _Integer, y : _Integer]", (char *)"{gridDim, blockDim, x, y}", 46);
+	if (_res) _res = _definepattern(mlp, (char *)"multioutCUDA[gridDim_Integer, blockDim_Integer, x : {___Integer}]", (char *)"{gridDim, blockDim, x}", 46);
 	if (_res) _res = _doevalstr( mlp, 49);
-	if (_res) _res = _definepattern(mlp, (char *)"addfCUDA[gridDim_Integer, blockDim_Integer, x : _Real, y : _Real]", (char *)"{gridDim, blockDim, x, y}", 47);
+	if (_res) _res = _definepattern(mlp, (char *)"dprintEnabledGet[]", (char *)"{}", 47);
 	if (_res) _res = _doevalstr( mlp, 50);
-	if (_res) _res = _definepattern(mlp, (char *)"multioutCUDA[gridDim_Integer, blockDim_Integer, x : {___Integer}]", (char *)"{gridDim, blockDim, x}", 48);
+	if (_res) _res = _definepattern(mlp, (char *)"xxGet[]", (char *)"{}", 48);
 	if (_res) _res = _doevalstr( mlp, 51);
-	if (_res) _res = _definepattern(mlp, (char *)"dprintEnabledGet[]", (char *)"{}", 49);
+	if (_res) _res = _definepattern(mlp, (char *)"aGet[]", (char *)"{}", 49);
 	if (_res) _res = _doevalstr( mlp, 52);
-	if (_res) _res = _definepattern(mlp, (char *)"xxGet[]", (char *)"{}", 50);
+	if (_res) _res = _definepattern(mlp, (char *)"bGet[]", (char *)"{}", 50);
 	if (_res) _res = _doevalstr( mlp, 53);
-	if (_res) _res = _definepattern(mlp, (char *)"aGet[]", (char *)"{}", 51);
+	if (_res) _res = _definepattern(mlp, (char *)"yyGet[]", (char *)"{}", 51);
 	if (_res) _res = _doevalstr( mlp, 54);
-	if (_res) _res = _definepattern(mlp, (char *)"bGet[]", (char *)"{}", 52);
+	if (_res) _res = _definepattern(mlp, (char *)"xGet[]", (char *)"{}", 52);
 	if (_res) _res = _doevalstr( mlp, 55);
-	if (_res) _res = _definepattern(mlp, (char *)"yyGet[]", (char *)"{}", 53);
+	if (_res) _res = _definepattern(mlp, (char *)"dprintEnabledSet[dprintEnabled : _Integer]", (char *)"{dprintEnabled}", 53);
 	if (_res) _res = _doevalstr( mlp, 56);
-	if (_res) _res = _definepattern(mlp, (char *)"xGet[]", (char *)"{}", 54);
+	if (_res) _res = _definepattern(mlp, (char *)"xxSet[xx : _Integer]", (char *)"{xx}", 54);
 	if (_res) _res = _doevalstr( mlp, 57);
-	if (_res) _res = _definepattern(mlp, (char *)"dprintEnabledSet[dprintEnabled : _Integer]", (char *)"{dprintEnabled}", 55);
+	if (_res) _res = _definepattern(mlp, (char *)"aSet[a : _Real]", (char *)"{a}", 55);
 	if (_res) _res = _doevalstr( mlp, 58);
-	if (_res) _res = _definepattern(mlp, (char *)"xxSet[xx : _Integer]", (char *)"{xx}", 56);
+	if (_res) _res = _definepattern(mlp, (char *)"bSet[b : _Real]", (char *)"{b}", 56);
 	if (_res) _res = _doevalstr( mlp, 59);
-	if (_res) _res = _definepattern(mlp, (char *)"aSet[a : _Real]", (char *)"{a}", 57);
+	if (_res) _res = _definepattern(mlp, (char *)"yySet[yy : _Real]", (char *)"{yy}", 57);
 	if (_res) _res = _doevalstr( mlp, 60);
-	if (_res) _res = _definepattern(mlp, (char *)"bSet[b : _Real]", (char *)"{b}", 58);
+	if (_res) _res = _definepattern(mlp, (char *)"xSet[x : {___Real}]", (char *)"{x}", 58);
 	if (_res) _res = _doevalstr( mlp, 61);
-	if (_res) _res = _definepattern(mlp, (char *)"yySet[yy : _Real]", (char *)"{yy}", 59);
 	if (_res) _res = _doevalstr( mlp, 62);
-	if (_res) _res = _definepattern(mlp, (char *)"xSet[x : {___Real}]", (char *)"{x}", 60);
 	if (_res) _res = _doevalstr( mlp, 63);
-	if (_res) _res = _doevalstr( mlp, 64);
-	if (_res) _res = _doevalstr( mlp, 65);
 	if (_res) _res = WSPutSymbol( mlp, "End");
 	if (_res) _res = WSFlush( mlp);
 	return _res;
@@ -1781,7 +1731,7 @@ int WSDoCallPacket( WSLINK mlp)
 int WSDoCallPacket( mlp) WSLINK mlp;
 #endif
 {
-	return _WSDoCallPacket( mlp, _tramps, 61);
+	return _WSDoCallPacket( mlp, _tramps, 59);
 } /* WSDoCallPacket */
 
 /******************************* begin trailer ********************************/
