@@ -1,8 +1,22 @@
 
-#define memoryAllocate(ptr, sizeInBytes) {cudaDeviceSynchronize();cudaMallocManaged(&ptr, (sizeInBytes));cudaDeviceSynchronize();assert(ptr);CUDA_CHECK_ERRORS();}
-#define memoryFree(ptr) {cudaDeviceSynchronize();cudaFree(ptr);cudaDeviceSynchronize();CUDA_CHECK_ERRORS();}
-
 #pragma once
+// should also work for non-cuda
+
+// Unified Memory Management
+// memoryAllocate/Free manage 'universal'/'portable' dynamic memory, 
+// allocatable on the CPU and available to the GPU too
+
+#ifdef __CUDACC__
+
+#define memoryAllocate(ptrtype, ptr, sizeInBytes) {cudaDeviceSynchronize();cudaMallocManaged(&ptr, (sizeInBytes));cudaDeviceSynchronize();assert(ptr);CUDA_CHECK_ERRORS();}
+#define memoryFree(ptr) {cudaDeviceSynchronize();cudaFree(ptr);cudaDeviceSynchronize();CUDA_CHECK_ERRORS();/* // did some earlier kernel throw an assert?*/}
+
+#else
+
+#define memoryAllocate(ptrtype, ptr, sizeInBytes) {ptr = (ptrtype)/*decltype not working*/malloc(sizeInBytes); assert(ptr); }
+#define memoryFree(ptr) {::free(ptr);}
+
+#endif
 
 #ifdef __CUDACC__
 __host__ __device__ 
@@ -37,7 +51,7 @@ template<typename T>
 INLINEFUNCTION T* tmalloc(const size_t n) {
 assert(n);
     T* out;
-    memoryAllocate(out, sizeof(T) * n);
+    memoryAllocate(T*, out, sizeof(T) * n);
     return out;
 }
 
@@ -45,7 +59,7 @@ template<typename T>
 INLINEFUNCTION T* tmalloczeroed(const size_t n) {
 assert(n);
     T* out;
-    memoryAllocate(out, sizeof(T) * n);
+    memoryAllocate(T*, out, sizeof(T) * n);
     memset(out, 0, sizeof(T) * n);
     return out;
 }
@@ -82,17 +96,17 @@ assert(n);
 void freemallocstrcpy(char** dest, const char* const src) {
     if (*dest) memoryFree(*dest);
     auto sz = strlen(src) + 1;
-    memoryAllocate(*dest, sz);
-    strcpy(*dest, src);
+    memoryAllocate(char*, *dest, sz);
+    strcpy_s(*dest, sz + 1, src);
 }
 
 template<typename T>
 void freemalloctmemcpy(T** dest, const T* const src, int n)  {
-assert(n);
+	assert(n);
     if (*dest) memoryFree(*dest);
 
     auto sz = sizeof(T) * n;
 
-    memoryAllocate(*dest, sz);
+    memoryAllocate(T*, *dest, sz);
     memcpy(*dest, src, sz);
 }

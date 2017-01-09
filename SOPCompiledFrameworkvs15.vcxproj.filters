@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\paul">
+      <UniqueIdentifier>{dd2af18a-0e24-4d96-8664-470450f92f57}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cu" />
+    <ClCompile Include="generated\WSTPMain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\MathematicaLibraries\SOPCompiledFramework\generated\wstpExternC.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\MathematicaLibraries\SOPCompiledFramework\Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="generated\WSTPTemplateFile.tm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\_atomicAdd.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\_memcmp.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_memcmp.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_memcpy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_strcpy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_strlen.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_free.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make_malloc.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make_malloc_raii.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_malloc.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\after.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aligned.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\AllocationAligned8State.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\AllocationAligned8State2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\allocZeroedIntegers.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approxEqual.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqual.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqualv.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqualVectors.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assert_restricted.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertApproxEqual_initialBits.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertApproximatelyUnitVector.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertEachInRange.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertFinite.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertFinite2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertLess.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\axpy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\axpyWithReindexing.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\bin.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\build_locator.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky_Backsub.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky_solve.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\chromaticity.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\CLAMP.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\conjgrad_normal.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\conjgrad_normal2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\constructAndSolve.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\createRotation.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg_0guess3.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cumsum.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump_mtx.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_entry.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_free.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_is_compressed_col.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_is_triplet.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_malloc.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_mv.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_print.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_spalloc.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_spalloc_size.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_transpose.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_triplet.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_undump_mtx.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_undump2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_x_used_entries.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\csparse.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\csv_writePoints.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\definedQ.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\divisible.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\dot.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\download.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\evenQ.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\extract_by_indices.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\finiteQ.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\float12_with_mantissa_bits.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fopenrb.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fopenwb.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fSigmaSceneXEnergy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fvector.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\gaussian.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\get42_impl2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\have_opposite_sign.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\highest_bit_position.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ifstream_binary.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\intensity.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\isPowerOf2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMExtrinsics.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMIntrinsics.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMPose.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMRGBDCalib.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMVoxel.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\linearId_volume_cuda.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\linearize.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\make_aligned.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\make_divisible.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\marchingCubes.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Matrix.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Matrix2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\MAX.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\MIN.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\mod.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\mv.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\nextEven.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\norm2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\NZ_COMPRESSED_COLUMN_INDICATOR.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\obj_writePoints.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\oddQ.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ofstream_binary.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcuda.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcudaMallocManaged.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcudaManagedRAII.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PinholeCameraProject.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PinholeCameraUnproject.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\print.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\printd.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PrintHexDump.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\printv.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ptr2size_t.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\random.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\restrictSize.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ROUND.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\scal.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\size_t_ceil.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\size_t2ptr.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\SNORM.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\strictly_after.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\sum.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\system_pause.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\tests.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\toFloat.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\transform_reduce_if.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\transpose.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\undump_vector_float.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\undump23.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\update_from_linearization.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\updateVoxelInformation.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Vector.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate_malloc.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate_malloc_copy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const_impl1.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const_impl2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_copy.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump3.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const_impl1.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const_impl2.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_undump.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_wrapper.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\volume.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\weightedAverage.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\XVarName.cu">
+      <Filter>Source Files\paul</Filter>
+    </None>
+  </ItemGroup>
+</Project>

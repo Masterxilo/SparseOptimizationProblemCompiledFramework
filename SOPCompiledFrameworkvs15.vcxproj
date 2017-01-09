@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CAA33DEF-C2C6-4BB4-BD0D-B3F2466FF92C}</ProjectGuid>
+    <RootNamespace>SOPCompiledFrameworkvs15</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)generated;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)generated;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_WOLFRAM_LANGUAGE_INTERFACE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>wsprep generated/WSTPTemplateFile.tm &gt; generated/WSTPMain.c &amp;&amp; silent_kill.bat $(TargetName)$(TargetExt)</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_WOLFRAM_LANGUAGE_INTERFACE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent>
+      <Command>wsprep generated/WSTPTemplateFile.tm &gt; generated/WSTPMain.c &amp;&amp; silent_kill.bat $(TargetName)$(TargetExt)</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_free.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make_malloc.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_make_malloc_raii.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aa8_malloc.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\after.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\aligned.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\AllocationAligned8State.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\AllocationAligned8State2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\allocZeroedIntegers.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approxEqual.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqual.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqualv.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\approximatelyEqualVectors.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertApproxEqual_initialBits.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertApproximatelyUnitVector.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertEachInRange.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertFinite.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertFinite2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assertLess.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\assert_restricted.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\axpy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\axpyWithReindexing.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_memcmp.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_memcpy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_strcpy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\A_strlen.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\bin.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\build_locator.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky_Backsub.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Cholesky_solve.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\chromaticity.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\CLAMP.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\conjgrad_normal.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\conjgrad_normal2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\constructAndSolve.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\createRotation.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\csparse.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\csv_writePoints.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cg_0guess3.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_cumsum.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_dump_mtx.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_entry.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_free.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_is_compressed_col.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_is_triplet.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_malloc.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_mv.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_print.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_spalloc.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_spalloc_size.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_transpose.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_triplet.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_undump2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_undump_mtx.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\cs_x_used_entries.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\definedQ.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\divisible.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\dot.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\download.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\evenQ.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\extract_by_indices.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\finiteQ.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\float12_with_mantissa_bits.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fopenrb.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fopenwb.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fSigmaSceneXEnergy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\fvector.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\gaussian.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\get42_impl2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\have_opposite_sign.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\highest_bit_position.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ifstream_binary.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\intensity.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\isPowerOf2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMExtrinsics.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMIntrinsics.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMPose.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMRGBDCalib.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ITMVoxel.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\linearId_volume_cuda.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\linearize.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\make_aligned.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\make_divisible.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\marchingCubes.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Matrix.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Matrix2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\MAX.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\MIN.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\mod.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\mv.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\nextEven.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\norm2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\NZ_COMPRESSED_COLUMN_INDICATOR.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\obj_writePoints.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\oddQ.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ofstream_binary.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcuda.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcudaMallocManaged.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\pcudaManagedRAII.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PinholeCameraProject.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PinholeCameraUnproject.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\print.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\printd.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\PrintHexDump.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\printv.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ptr2size_t.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\random.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\restrictSize.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\ROUND.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\scal.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\size_t2ptr.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\size_t_ceil.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\SNORM.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\strictly_after.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\sum.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\system_pause.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\tests.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\toFloat.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\transform_reduce_if.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\transpose.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\undump23.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\undump_vector_float.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\updateVoxelInformation.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\update_from_linearization.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\Vector.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate_malloc.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_allocate_malloc_copy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const_impl1.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_const_impl2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_copy.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_dump3.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const_impl1.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_float_const_impl2.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_undump.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\vector_wrapper.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\volume.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\weightedAverage.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\XVarName.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\_atomicAdd.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\CPPLibraries\Paul\_memcmp.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <None Include="generated\WSTPTemplateFile.tm" />
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\MathematicaLibraries\SOPCompiledFramework\generated\wstpExternC.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Paul%27Masterxilo%27\Dropbox\Paul\MasterarbeitShared\Research\MathematicaLibraries\SOPCompiledFramework\Source.cpp" />
+    <ClCompile Include="main.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="generated\WSTPMain.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

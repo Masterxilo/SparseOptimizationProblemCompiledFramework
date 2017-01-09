@@ -95,7 +95,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>wsprep generated/WSTPTemplateFile.tm &gt; generated/WSTPMain.c &amp;&amp; silent_kill.bat framework.exe</Command>
+      <Command>wsprep generated/WSTPTemplateFile.cuda.tm &gt; generated/WSTPMain.cuda.c &amp;&amp; silent_kill.bat $(TargetName)$(TargetExt)</Command>
     </PreBuildEvent>
     <CudaCompile>
       <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
@@ -118,7 +118,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>wsprep generated/WSTPTemplateFile.tm &gt; generated/WSTPMain.c &amp;&amp; silent_kill.bat framework.exe</Command>
+      <Command>wsprep generated/WSTPTemplateFile.cuda.tm &gt; generated/WSTPMain.cuda.c &amp;&amp; silent_kill.bat framework.exe</Command>
     </PreBuildEvent>
     <CudaCompile>
       <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
@@ -126,12 +126,13 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="generated\wstpExternC.cu">
+    <ClCompile Include="generated\wstpExternC.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug No Wolfram|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </CudaCompile>
-    <CudaCompile Include="main.cu" />
+    </ClCompile>
+    <ClCompile Include="generated\WSTPMain.c" />
+    <ClCompile Include="main.cu">
+      <FileType>Document</FileType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -162,14 +163,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug No Wolfram|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="generated\WSTPMain.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug No Wolfram|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="generated\WSTPTemplateFile.tm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug No Wolfram|x64'">true</ExcludedFromBuild>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -200,6 +200,177 @@
 :Evaluate: receiveOptimizationData::usage = "Receives sparseDerivativeZtoYIndices, xIndices and yIndicesAppropriately sized vectors for receiving these data items are newly allocated in __managed__ memory, hence this is a CPU only function"
 
 :Begin:
+:Function:       f_CUDA
+:Pattern:        fCUDA[gridDim_Integer, blockDim_Integer, input : {___Real}]
+:Arguments:      {gridDim, blockDim, input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: fCUDA::usage = "the local energy fvector computing function"
+
+:Begin:
+:Function:       df_CUDA
+:Pattern:        dfCUDA[gridDim_Integer, blockDim_Integer, i : _Integer, input : {___Real}]
+:Arguments:      {gridDim, blockDim, i, input}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: dfCUDA::usage = "the derivatives along the i-th variable of the local energy fvector computing function"
+
+:Begin:
+:Function:       print_CUDA
+:Pattern:        printCUDA[gridDim_Integer, blockDim_Integer, x : _String]
+:Arguments:      {gridDim, blockDim, x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printCUDA::usage = "prints a string to stdout"
+
+:Begin:
+:Function:       printd_CUDA
+:Pattern:        printdCUDA[gridDim_Integer, blockDim_Integer, v : {___Integer}]
+:Arguments:      {gridDim, blockDim, v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printdCUDA::usage = "dprints a fvector of integers, space separated and newline terminated"
+
+:Begin:
+:Function:       printv_CUDA
+:Pattern:        printvCUDA[gridDim_Integer, blockDim_Integer, v : {___Real}]
+:Arguments:      {gridDim, blockDim, v}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: printvCUDA::usage = "dprints a fvector of doubles, space separated and newline terminated"
+
+:Begin:
+:Function:       lengthzGet_CUDA
+:Pattern:        lengthzGetCUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: lengthzGetCUDA::usage = "lengthz"
+
+:Begin:
+:Function:       lengthfzGet_CUDA
+:Pattern:        lengthfzGetCUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: lengthfzGetCUDA::usage = "lengthfz"
+
+:Begin:
+:Function:       getY_CUDA
+:Pattern:        getYCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, lengthY : _Integer]
+:Arguments:      {gridDim, blockDim, partition, lengthY}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: getYCUDA::usage = "Extracts from x the elements that are ylengthY must match the length passed at initializationTODO make WSTP support having global variables specify the necessary array length, support non size_t lengthsthen we wouldn't need to supply the redundant lengthY here"
+
+:Begin:
+:Function:       buildFxAndJFxAndSolveRepeatedly_CUDA
+:Pattern:        buildFxAndJFxAndSolveRepeatedlyCUDA[gridDim_Integer, blockDim_Integer, partition : _Integer, iterations : _Integer]
+:Arguments:      {gridDim, blockDim, partition, iterations}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: buildFxAndJFxAndSolveRepeatedlyCUDA::usage = "using current data, builds JFx (and Fx) and solves the least squares problemthen does a gradient descent stepreapeats this whole process as often as desired"
+
+:Begin:
+:Function:       buildFxAndJFxAndSolveRepeatedlyThreadIdPartition_CUDA
+:Pattern:        buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA[gridDim_Integer, blockDim_Integer, iterations : _Integer]
+:Arguments:      {gridDim, blockDim, iterations}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: buildFxAndJFxAndSolveRepeatedlyThreadIdPartitionCUDA::usage = "buildFxAndJFxAndSolveRepeatedly on the partition given by linear_global_threadId.does nothing when linear_global_threadId is >= partitionsTODO this should be the block id, threads in the same block should cooperate in the same partition"
+
+:Begin:
+:Function:       receiveAndPrintOptimizationData_CUDA
+:Pattern:        receiveAndPrintOptimizationDataCUDA[gridDim_Integer, blockDim_Integer, lengthz : _Integer, lengthfz : _Integer, x : {___Real}, sparseDerivativeZtoYIndices : {___Integer}, xIndices : {___Integer}, yIndices : {___Integer}]
+:Arguments:      {gridDim, blockDim, lengthz, lengthfz, x, sparseDerivativeZtoYIndices, xIndices, yIndices}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: receiveAndPrintOptimizationDataCUDA::usage = "Receives x, sparseDerivativeZtoYIndices, xIndices and yIndices, checks and prints them,emulating arbitrary lengthz, lengthfzNote: lengthz, lengthfz are fixed at compile-time for other functionsThis is a prototyping function that does not allocate or copy anythinguse for testing"
+
+:Begin:
+:Function:       makeAndPrintSparseMatrix_CUDA
+:Pattern:        makeAndPrintSparseMatrixCUDA[gridDim_Integer, blockDim_Integer, m : _Integer, n : _Integer, x : {___Real}, ij : {___Integer}]
+:Arguments:      {gridDim, blockDim, m, n, x, ij}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: makeAndPrintSparseMatrixCUDA::usage = "Creates a sparse matrix from a list of values and a list of pairs of (i, j) indices specifying where to put the corresponding values (triplet form) then cs_prints it to stdout both in column form and vanilla.The matrix should be fairly small because the required intermediate storage is on the stack.Note: This is a prototyping function without any further purpose"
+
+:Begin:
+:Function:       testMain_CUDA
+:Pattern:        testMainCUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: testMainCUDA::usage = "collection of some tests"
+
+:Begin:
+:Function:       xx43_CUDA
+:Pattern:        xx43CUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: xx43CUDA::usage = "sets xx to 43"
+
+:Begin:
+:Function:       get42_CUDA
+:Pattern:        get42CUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: get42CUDA::usage = "returns the answer to the universe life and everything"
+
+:Begin:
+:Function:       add_CUDA
+:Pattern:        addCUDA[gridDim_Integer, blockDim_Integer, x : _Integer, y : _Integer]
+:Arguments:      {gridDim, blockDim, x, y}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: addCUDA::usage = "x + y"
+
+:Begin:
+:Function:       addf_CUDA
+:Pattern:        addfCUDA[gridDim_Integer, blockDim_Integer, x : _Real, y : _Real]
+:Arguments:      {gridDim, blockDim, x, y}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: addfCUDA::usage = "x + y with floats"
+
+:Begin:
+:Function:       multiout_CUDA
+:Pattern:        multioutCUDA[gridDim_Integer, blockDim_Integer, x : {___Integer}]
+:Arguments:      {gridDim, blockDim, x}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: multioutCUDA::usage = "returns more than one thing: when called via WSTP this will return an Association with all results"
+
+:Begin:
+:Function:       mainc_CUDA
+:Pattern:        maincCUDA[gridDim_Integer, blockDim_Integer]
+:Arguments:      {gridDim, blockDim}
+:ArgumentTypes:  { Manual }
+:ReturnType:     Manual
+:End:
+:Evaluate: maincCUDA::usage = ""
+
+:Begin:
 :Function:       dprintEnabled_get
 :Pattern:        dprintEnabledGet[]
 :Arguments:      {}

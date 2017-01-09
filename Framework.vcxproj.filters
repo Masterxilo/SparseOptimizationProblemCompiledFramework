@@ -29,9 +29,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="generated\WSTPMain.c">
-      <Filter>Source Files\generated</Filter>
-    </ClCompile>
     <ClCompile Include="generated\$CFormDefines.cpp">
       <Filter>Source Files\generated</Filter>
     </ClCompile>
@@ -41,18 +38,14 @@
     <ClCompile Include="generated\f.cpp">
       <Filter>Source Files\generated</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CudaCompile Include="main.cu">
+    <ClCompile Include="main.cu">
       <Filter>Source Files</Filter>
-    </CudaCompile>
-    <CudaCompile Include="generated\wstpExternC.cu">
+    </ClCompile>
+    <ClCompile Include="generated\wstpExternC.c">
       <Filter>Source Files\generated</Filter>
-    </CudaCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="generated\WSTPTemplateFile.tm">
+    </ClCompile>
+    <ClCompile Include="generated\WSTPMain.c">
       <Filter>Source Files\generated</Filter>
-    </None>
+    </ClCompile>
   </ItemGroup>
 </Project>
